@@ -1,11 +1,13 @@
 import { Box, LinearProgress } from '@mui/material';
 
-function LoadingIndicator() {
-  return (
-    <Box sx={box}>
-      <LinearProgress sx={linearProgress} />
-    </Box>
-  );
+function LoadingIndicator({ isLoading }) {
+  if (isLoading) {
+    return (
+      <Box sx={box}>
+        <LinearProgress sx={linearProgress} />
+      </Box>
+    );
+  }
 }
 
 const box = {

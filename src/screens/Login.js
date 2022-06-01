@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import {
   Box,
   Button,
@@ -9,11 +9,22 @@ import {
   TextField,
 } from '@mui/material';
 import { useAuthState } from '../context/auth';
+
 import LoadingIndicator from '../components/LoadingIndicator';
+import SnackbarIndicator from '../components/SnackbarIndicator';
+
 import logoImage from '../assets/if-salas-logo.svg';
 
 function Login() {
-  const { login, isPending } = useAuthState();
+  const { login, isPending, isError, error } = useAuthState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const isSubmitable = email.length !== 0 && password.length !== 0;
+
+  const onTryLogin = () => {
+    isSubmitable && login(email, password);
+  };
 
   return (
     <Fragment>
@@ -33,14 +44,22 @@ function Login() {
               label="E-mail"
               variant="standard"
               type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
             />
             <TextField
               id="password"
               label="Senha"
               variant="standard"
               type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
             />
-            <Button onClick={login} variant="contained">
+            <Button
+              disabled={!isSubmitable}
+              onClick={onTryLogin}
+              variant="contained"
+            >
               Entrar
             </Button>
             <Link href="#">Esqueci minha senha</Link>
@@ -48,18 +67,21 @@ function Login() {
           </Stack>
         </Box>
       </Paper>
-      {isPending && <LoadingIndicator />}
+      <LoadingIndicator isLoading={isPending} />
+      <SnackbarIndicator
+        isOpen={isError}
+        severity="error"
+        message={error && error.message}
+      />
     </Fragment>
   );
 }
 
 const paper = {
-  width: '900px',
+  width: '950px',
   height: '500px',
   display: 'flex',
   justifyContent: 'center',
-  margin: '0 auto',
-  marginTop: '20vh',
   color: 'white',
   textAlign: 'center',
 };

@@ -1,7 +1,14 @@
 import { createContext, useContext, useState } from 'react';
 
 const sleep = time => new Promise(resolve => setTimeout(resolve, time));
-const getUser = () => sleep(1000).then(() => ({ username: 'Leonardo' }));
+const getUser = shouldFail =>
+  sleep(3000).then(() => {
+    if (shouldFail) {
+      return { message: 'Falha na autenticação' };
+    } else {
+      return { username: 'Leonardo' };
+    }
+  });
 
 const AuthContext = createContext();
 
@@ -12,20 +19,17 @@ function AuthProvider(props) {
     error: null,
   });
 
-  if (state.status === 'error' && state.error) {
-    return (
-      <div>
-        <h1>Something went wrong!</h1>
-        <pre>{state.error.message ?? 'Unhandled error!'}</pre>
-      </div>
-    );
-  }
-
-  const login = () => {
+  const login = (email, password) => {
     setState({ ...state, status: 'pending' });
-    return getUser().then(user =>
-      setState({ status: 'success', user: user, error: null })
-    );
+    let shouldFail = email !== 'leo@gmail.com' && password !== '#leo1234';
+
+    return getUser(shouldFail).then(data => {
+      if (shouldFail) {
+        return setState({ status: 'error', user: null, error: data });
+      } else {
+        return setState({ status: 'success', user: data, error: null });
+      }
+    });
   };
 
   const logout = () => {
@@ -47,6 +51,7 @@ function useAuthState() {
 
   return {
     user: state.user,
+    error: state.error,
     isPending,
     isError,
     isSuccess,

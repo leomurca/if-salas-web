@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
+import { createTheme } from '@mui/material';
+import { ThemeProvider } from '@mui/system';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AppProviders from './context';
-import { createTheme } from '@mui/material';
-import { ThemeProvider } from '@mui/system';
+
 import './index.css';
 
 const theme = createTheme({
@@ -13,6 +16,7 @@ const theme = createTheme({
       main: '#32A041',
       black: '#1C1C1C',
       lightGray: '#8C8C8C',
+      mainBackground: '#EEEEEE',
     },
     secondary: {
       main: '#00420C',
