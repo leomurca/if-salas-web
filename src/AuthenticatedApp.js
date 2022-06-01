@@ -1,14 +1,12 @@
-import { useAuthState } from './context/auth';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import Home from './screens/Home';
 
 function AuthenticatedApp() {
-  const { logout, isPending } = useAuthState();
-
   return (
-    <div>
-      <h2>You're logged in!</h2>
-      <button onClick={logout}>Logout</button>
-      {isPending && <h1>Loading...</h1>}
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Navigate to="/" />} />
+    </Routes>
   );
 }
 
