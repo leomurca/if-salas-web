@@ -1,16 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AppProviders from './context';
+import { createTheme } from '@mui/material';
+import { ThemeProvider } from '@mui/system';
+import './index.css';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#32A041',
+      black: '#1C1C1C',
+      lightGray: '#8C8C8C',
+    },
+    secondary: {
+      main: '#00420C',
+    },
+  },
+  typography: {
+    fontFamily: ['Fira Code'].join(','),
+  },
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppProviders>
-      <App />
-    </AppProviders>
+    <ThemeProvider theme={theme}>
+      <AppProviders>
+        <App />
+      </AppProviders>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
