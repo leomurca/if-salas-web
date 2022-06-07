@@ -1,3 +1,4 @@
+// ========== Desktop  ==========
 const desktopPaper = {
   width: '950px',
   height: '500px',
@@ -5,14 +6,6 @@ const desktopPaper = {
   justifyContent: 'center',
   color: 'white',
   textAlign: 'center',
-};
-
-const mobilePaper = {
-  ...desktopPaper,
-  flexDirection: 'column',
-  height: '700px',
-  marginLeft: '10px',
-  marginRight: '10px',
 };
 
 const baseBox = {
@@ -29,12 +22,6 @@ const desktopBoxLogo = {
   backgroundColor: 'secondary.main',
 };
 
-const mobileBoxLogo = {
-  ...desktopBoxLogo,
-  height: '45%',
-  padding: '0',
-};
-
 const desktopBoxForm = {
   ...baseBox,
   '> h1, p ': {
@@ -49,22 +36,45 @@ const desktopBoxForm = {
   },
 };
 
+const logoContainerDesktop = {};
+
+const desktop = {
+  paper: desktopPaper,
+  boxLogo: desktopBoxLogo,
+  boxForm: desktopBoxForm,
+  logoContainer: logoContainerDesktop,
+};
+
+// ========== Mobile ==========
+const mobilePaper = {
+  ...desktopPaper,
+  flexDirection: 'column',
+  height: '700px',
+  marginLeft: '10px',
+  marginRight: '10px',
+};
+
+const mobileBoxLogo = {
+  ...desktopBoxLogo,
+  height: '50%',
+  padding: '0',
+};
+
 const mobileBoxForm = {
   ...desktopBoxForm,
   padding: '0 15px',
   width: 'fit-content',
 };
 
-const desktop = {
-  paper: desktopPaper,
-  boxLogo: desktopBoxLogo,
-  boxForm: desktopBoxForm,
+const logoContainerMobile = {
+  padding: '20px 16px',
 };
 
 const mobile = {
   paper: mobilePaper,
   boxLogo: mobileBoxLogo,
   boxForm: mobileBoxForm,
+  logoContainer: logoContainerMobile,
 };
 
 const styles = { desktop, mobile };

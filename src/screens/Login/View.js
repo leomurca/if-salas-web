@@ -28,13 +28,13 @@ function View({
   error,
   layoutType,
 }) {
-  const { paper, boxLogo, boxForm } = styles[layoutType];
+  const { paper, boxLogo, boxForm, logoContainer } = styles[layoutType];
 
   return (
     <Fragment>
       <Paper sx={paper} elevation={4} variant="elevation">
         <Box sx={boxLogo}>
-          <Container>
+          <Container sx={logoContainer}>
             <img
               src={logoImage}
               width={layoutType === 'desktop' ? '100' : '70'}
@@ -54,6 +54,7 @@ function View({
               type="email"
               value={email}
               onChange={e => onChangeEmail(e.target.value)}
+              autoFocus
             />
             <TextField
               id="password"
