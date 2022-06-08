@@ -1,18 +1,19 @@
 import { lazy, Suspense } from 'react';
 import { Container } from '@mui/material';
-import { useUser } from './context/user';
+import { useAuthState } from './context/auth';
+
 import LoadingIndicator from './components/LoadingIndicator';
 
 const AuthenticatedApp = lazy(() => import('./AuthenticatedApp'));
 const UnauthenticatedApp = lazy(() => import('./UnauthenticatedApp'));
 
 function App() {
-  const user = useUser();
+  const { isAuthenticated } = useAuthState();
 
   return (
     <Suspense fallback={<LoadingIndicator isLoading />}>
       <Container maxWidth="false" sx={container}>
-        {user ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+        {isAuthenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />}
       </Container>
     </Suspense>
   );

@@ -1,12 +1,13 @@
-import { useAuthState } from '../../context/auth';
+import { useUser } from '../../context/user';
 
 function Home() {
-  const { logout, isPending } = useAuthState();
+  const { isPending, state, classrooms } = useUser();
+  console.log(state);
 
   return (
     <div>
       <h2>You're logged in!</h2>
-      <button onClick={logout}>Logout</button>
+      <button onClick={classrooms}>Get classrooms</button>
       {isPending && <h1>Loading...</h1>}
     </div>
   );

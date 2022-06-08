@@ -1,12 +1,17 @@
 import { createContext, useContext, useState } from 'react';
+import { sleep } from '../utils/sleep';
 
-const sleep = time => new Promise(resolve => setTimeout(resolve, time));
 const getUser = shouldFail =>
   sleep(3000).then(() => {
     if (shouldFail) {
       return { message: 'Falha na autenticação' };
     } else {
-      return { username: 'Leonardo' };
+      return {
+        id: '0021564',
+        username: 'leonardomurca',
+        name: 'Leonardo',
+        lastName: 'Murça',
+      };
     }
   });
 
