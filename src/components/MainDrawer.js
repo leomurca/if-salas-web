@@ -62,9 +62,6 @@ const listItem = {
     backgroundColor: '#003708',
     borderLeft: '4px solid #ffffff',
   },
-  ':hover': {
-    backgroundColor: '#003708',
-  },
 };
 
 const listItemIcon = {
