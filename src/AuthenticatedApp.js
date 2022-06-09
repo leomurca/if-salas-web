@@ -1,13 +1,50 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import {
+  CalendarMonth,
+  CalendarMonthOutlined,
+  Home as HomeIcon,
+  HomeOutlined,
+  Info,
+  InfoOutlined,
+} from '@mui/icons-material';
+import MainDrawer from './components/MainDrawer';
 import Home from './screens/Home';
 
 function AuthenticatedApp() {
+  const { pathname } = useLocation();
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Navigate to="/" />} />
-    </Routes>
+    <>
+      <MainDrawer options={menuOptions(pathname)} />
+      <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Navigate to="/home" />} />
+      </Routes>
+    </>
   );
 }
+
+const menuOptions = activePath => [
+  {
+    text: 'Página Inicial',
+    selectedIcon: <HomeIcon />,
+    unselectedIcon: <HomeOutlined />,
+    pathname: '/home',
+    isActive: activePath === '/home',
+  },
+  {
+    text: 'Informações',
+    selectedIcon: <Info />,
+    unselectedIcon: <InfoOutlined />,
+    pathname: '/info',
+    isActive: activePath === '/info',
+  },
+  {
+    text: 'Calendário',
+    selectedIcon: <CalendarMonth />,
+    unselectedIcon: <CalendarMonthOutlined />,
+    pathname: '/calendar',
+    isActive: activePath === '/calendar',
+  },
+];
 
 export default AuthenticatedApp;
