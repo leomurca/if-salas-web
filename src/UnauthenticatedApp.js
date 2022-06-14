@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Login from './screens/Login';
 import UnauthenticatedHome from './screens/UnauthenticatedHome';
@@ -10,7 +10,7 @@ function UnauthenticatedApp() {
       <Routes>
         <Route path="/" element={<UnauthenticatedHome />} />
         <Route path="/login" element={<Login />} />
-        <Route path="*" element={<h1>Route not found!</h1>} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Fragment>
   );

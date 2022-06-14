@@ -1,8 +1,7 @@
 import { useUser } from '../../context/user';
 
 function Home() {
-  const { isPending, state, classrooms } = useUser();
-  console.log(state);
+  const { isPending, classrooms } = useUser();
 
   return (
     <div>

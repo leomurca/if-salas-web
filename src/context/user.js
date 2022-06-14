@@ -66,6 +66,7 @@ function useUser() {
   const isPending = state.status === 'pending';
 
   return {
+    state,
     isPending,
     classrooms,
   };

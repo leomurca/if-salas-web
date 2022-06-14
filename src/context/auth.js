@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { sleep } from '../utils/sleep';
 
 const getUser = shouldFail =>
@@ -11,6 +11,7 @@ const getUser = shouldFail =>
         username: 'leonardomurca',
         name: 'Leonardo',
         lastName: 'Murça',
+        token: 'skdfb9458hnsdfsif4w38r9234ry98423',
       };
     }
   });
@@ -24,6 +25,17 @@ function AuthProvider(props) {
     error: null,
   });
 
+  useEffect(() => {
+    async function bootstrapUser() {
+      const user = window.localStorage.getItem('$USER');
+      if (user) {
+        console.log(user);
+        setState({ status: 'success', user: JSON.parse(user), error: null });
+      }
+    }
+    bootstrapUser();
+  }, [setState]);
+
   const login = (email, password) => {
     setState({ ...state, status: 'pending' });
     let shouldFail = email !== 'leo@gmail.com' && password !== '#leo1234';
@@ -32,6 +44,7 @@ function AuthProvider(props) {
       if (shouldFail) {
         return setState({ status: 'error', user: null, error: data });
       } else {
+        window.localStorage.setItem('$USER', JSON.stringify(data));
         return setState({ status: 'success', user: data, error: null });
       }
     });
