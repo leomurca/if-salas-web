@@ -29,12 +29,11 @@ function AuthProvider(props) {
     async function bootstrapUser() {
       const user = window.localStorage.getItem('$USER');
       if (user) {
-        console.log(user);
         setState({ status: 'success', user: JSON.parse(user), error: null });
       }
     }
     bootstrapUser();
-  }, [setState]);
+  }, []);
 
   const login = (email, password) => {
     setState({ ...state, status: 'pending' });
@@ -51,10 +50,8 @@ function AuthProvider(props) {
   };
 
   const logout = () => {
-    setState({ ...state, status: 'pending' });
-    return getUser().then(() =>
-      setState({ status: 'success', user: null, error: null })
-    );
+    setState({ status: 'success', user: null, error: null });
+    window.localStorage.clear();
   };
 
   return <AuthContext.Provider value={{ state, login, logout }} {...props} />;
