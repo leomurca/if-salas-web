@@ -6,7 +6,7 @@ function Home() {
 
   return (
     <div>
-      <h2>You're logged in!</h2>
+      <h2>Página inicial</h2>
       <button onClick={classrooms}>Get classrooms</button>
       {isPending && <h1>Loading...</h1>}
     </div>

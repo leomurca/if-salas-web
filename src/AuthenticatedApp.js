@@ -9,6 +9,8 @@ import {
 } from '@mui/icons-material';
 import MainDrawer from './components/MainDrawer';
 import Home from './screens/Home';
+import Information from './screens/Information';
+import Calendar from './screens/Calendar';
 
 function AuthenticatedApp() {
   const { pathname } = useLocation();
@@ -17,6 +19,8 @@ function AuthenticatedApp() {
       <MainDrawer options={menuOptions(pathname)} />
       <Routes>
         <Route path="/home" element={<Home />} />
+        <Route path="/info" element={<Information />} />
+        <Route path="/calendar" element={<Calendar />} />
         <Route path="/login" element={<Navigate to="/home" />} />
       </Routes>
     </>
