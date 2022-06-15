@@ -18,7 +18,6 @@ import { useUser } from './context/user';
 
 function AuthenticatedApp() {
   const { state } = useUser();
-  const { pathname } = useLocation();
   const layoutType = useLayoutType();
 
   return (
@@ -35,7 +34,10 @@ function AuthenticatedApp() {
         maxWidth="false"
         sx={layoutType === 'desktop' ? container : mobileContainer}
       >
-        <MainMenu options={menuOptions(pathname)} layoutType={layoutType} />
+        <MainMenu
+          options={menuOptions(state.pathname)}
+          layoutType={layoutType}
+        />
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/info" element={<Information />} />

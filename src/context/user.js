@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { sleep } from '../utils/sleep';
 import { useAuthState } from './auth';
 
@@ -40,16 +41,18 @@ const UserContext = createContext();
 
 function UserProvider(props) {
   const { user } = useAuthState();
+  const { pathname } = useLocation();
   const [state, setState] = useState({
     status: 'idle',
     user: null,
     classrooms: [],
     error: null,
+    pathname: '',
   });
 
   useEffect(() => {
-    setState({ user });
-  }, [user]);
+    setState({ user, pathname });
+  }, [user, pathname]);
 
   const classrooms = () => {
     setState({ ...state, status: 'pending' });
