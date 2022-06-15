@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import {
   CalendarMonth,
   CalendarMonthOutlined,
@@ -15,37 +15,55 @@ import { Container } from '@mui/system';
 import useLayoutType from './hooks/useLayoutType';
 import Toolbar from './components/Toolbar';
 import { useUser } from './context/user';
+import { useAuthState } from './context/auth';
 
 function AuthenticatedApp() {
+  const navigate = useNavigate();
   const { state } = useUser();
+  const { logout } = useAuthState();
   const layoutType = useLayoutType();
 
+  const avatarMenuOptions = [
+    {
+      text: 'Meu Perfil',
+      action: () => navigate('/profile', { replace: true }),
+    },
+    {
+      text: 'Sair',
+      action: logout,
+    },
+  ];
+
   return (
-    <>
-      <Toolbar
-        title={
-          <p style={{ fontSize: layoutType === 'desktop' ? '30px' : '20px' }}>
-            Olá, <strong>{state.user.name}</strong> 👋
-          </p>
-        }
-        layoutType={layoutType}
-      />
-      <Container
-        maxWidth="false"
-        sx={layoutType === 'desktop' ? container : mobileContainer}
-      >
-        <MainMenu
-          options={menuOptions(state.pathname)}
+    state &&
+    state.user && (
+      <>
+        <Toolbar
+          title={
+            <p style={{ fontSize: layoutType === 'desktop' ? '30px' : '20px' }}>
+              Olá, <strong>{state.user.name}</strong> 👋
+            </p>
+          }
           layoutType={layoutType}
+          avatarMenuOptions={avatarMenuOptions}
         />
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/info" element={<Information />} />
-          <Route path="/calendar" element={<Calendar />} />
-          <Route path="/login" element={<Navigate to="/home" />} />
-        </Routes>
-      </Container>
-    </>
+        <Container
+          maxWidth="false"
+          sx={layoutType === 'desktop' ? container : mobileContainer}
+        >
+          <MainMenu
+            options={menuOptions(state.pathname)}
+            layoutType={layoutType}
+          />
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/info" element={<Information />} />
+            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/login" element={<Navigate to="/home" />} />
+          </Routes>
+        </Container>
+      </>
+    )
   );
 }
 

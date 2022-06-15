@@ -11,11 +11,9 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 
-function Toolbar({ title, layoutType }) {
+function Toolbar({ title, layoutType, avatarMenuOptions }) {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorElNotifications, setAnchorElNotifications] = useState(null);
-
-  console.log(layoutType);
 
   switch (layoutType) {
     case 'desktop':
@@ -87,12 +85,11 @@ function Toolbar({ title, layoutType }) {
                 open={Boolean(anchorElUser)}
                 onClose={() => setAnchorElUser(null)}
               >
-                <MenuItem onClick={() => setAnchorElUser(null)}>
-                  <Typography textAlign="center">Meu perfil</Typography>
-                </MenuItem>
-                <MenuItem onClick={() => setAnchorElUser(null)}>
-                  <Typography textAlign="center">Sair</Typography>
-                </MenuItem>
+                {avatarMenuOptions.map(option => (
+                  <MenuItem key={option.text} onClick={option.action}>
+                    <Typography textAlign="center">{option.text}</Typography>
+                  </MenuItem>
+                ))}
               </Menu>
             </Box>
           </Box>
@@ -168,12 +165,11 @@ function Toolbar({ title, layoutType }) {
                 open={Boolean(anchorElUser)}
                 onClose={() => setAnchorElUser(null)}
               >
-                <MenuItem onClick={() => setAnchorElUser(null)}>
-                  <Typography textAlign="center">Meu perfil</Typography>
-                </MenuItem>
-                <MenuItem onClick={() => setAnchorElUser(null)}>
-                  <Typography textAlign="center">Sair</Typography>
-                </MenuItem>
+                {avatarMenuOptions.map(option => (
+                  <MenuItem key={option.text} onClick={option.action}>
+                    <Typography textAlign="center">{option.text}</Typography>
+                  </MenuItem>
+                ))}
               </Menu>
             </Box>
           </Box>
