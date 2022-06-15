@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Container } from '@mui/material';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Login from './screens/Login';
@@ -6,14 +6,24 @@ import UnauthenticatedHome from './screens/UnauthenticatedHome';
 
 function UnauthenticatedApp() {
   return (
-    <Fragment>
+    <Container maxWidth="false" sx={container}>
       <Routes>
         <Route path="/" element={<UnauthenticatedHome />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </Fragment>
+    </Container>
   );
 }
+
+const container = {
+  height: '100vh',
+  margin: 0,
+  padding: 0,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: 'primary.mainBackground',
+};
 
 export default UnauthenticatedApp;

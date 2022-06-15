@@ -7,35 +7,59 @@ import {
   Info,
   InfoOutlined,
 } from '@mui/icons-material';
-import MainDrawer from './components/MainDrawer';
+import MainMenu from './components/MainMenu';
 import Home from './screens/Home';
 import Information from './screens/Information';
 import Calendar from './screens/Calendar';
+import { Container } from '@mui/system';
+import useLayoutType from './hooks/useLayoutType';
 
 function AuthenticatedApp() {
   const { pathname } = useLocation();
+  const layoutType = useLayoutType();
+
   return (
-    <>
-      <MainDrawer options={menuOptions(pathname)} />
+    <Container
+      maxWidth="false"
+      sx={layoutType === 'desktop' ? container : mobileContainer}
+    >
+      <MainMenu options={menuOptions(pathname)} layoutType={layoutType} />
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/info" element={<Information />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/login" element={<Navigate to="/home" />} />
       </Routes>
-    </>
+    </Container>
   );
 }
 
+const container = {
+  height: '100vh',
+  margin: 0,
+  padding: 0,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: 'primary.mainBackground',
+};
+
+const mobileContainer = {
+  ...container,
+  flexDirection: 'column-reverse',
+};
+
 const menuOptions = activePath => [
   {
+    id: 0,
     text: 'Página Inicial',
     selectedIcon: <HomeIcon />,
     unselectedIcon: <HomeOutlined />,
     pathname: '/home',
-    isActive: activePath === '/home',
+    isActive: activePath === '/home' || activePath === '/login',
   },
   {
+    id: 1,
     text: 'Informações',
     selectedIcon: <Info />,
     unselectedIcon: <InfoOutlined />,
@@ -43,6 +67,7 @@ const menuOptions = activePath => [
     isActive: activePath === '/info',
   },
   {
+    id: 2,
     text: 'Calendário',
     selectedIcon: <CalendarMonth />,
     unselectedIcon: <CalendarMonthOutlined />,
