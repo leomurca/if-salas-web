@@ -60,6 +60,7 @@ function AuthenticatedApp() {
             <Route path="/info" element={<Information />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/login" element={<Navigate to="/home" />} />
+            <Route path="/" element={<Navigate to="/home" />} />
           </Routes>
         </Container>
       </>

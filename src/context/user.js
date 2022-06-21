@@ -57,7 +57,13 @@ function UserProvider(props) {
   const classrooms = () => {
     setState({ ...state, status: 'pending' });
     getClassrooms(user.id).then(data =>
-      setState({ status: 'success', user, classrooms: data.data, error: null })
+      setState({
+        status: 'success',
+        user,
+        classrooms: data.data,
+        error: null,
+        pathname,
+      })
     );
   };
 
