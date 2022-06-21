@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { CircularProgress, Grid, Stack } from '@mui/material';
+import { Grid, Skeleton, Stack } from '@mui/material';
 import { useUser } from '../../context/user';
 
 import ClassCard from '../../components/ClassCard';
@@ -22,7 +22,16 @@ function Home() {
         <h1>Turmas</h1>
         <Stack alignItems="center" flexWrap="wrap" direction="row" gap="30px">
           {classrooms === null ? (
-            <CircularProgress sx={{ margin: '0 auto' }} thickness={5} />
+            Array(6)
+              .fill()
+              .map((_, index) => (
+                <Skeleton
+                  key={index}
+                  variant="rectangular"
+                  width={420}
+                  height={145}
+                />
+              ))
           ) : classrooms.length !== 0 ? (
             classrooms.map(classroom => (
               <ClassCard
@@ -42,7 +51,16 @@ function Home() {
         <h2>Atribuídas</h2>
         <Stack alignItems="end" flexWrap="wrap" direction="row" gap="30px">
           {classrooms === null ? (
-            <CircularProgress sx={{ margin: '0 auto' }} thickness={5} />
+            Array(6)
+              .fill()
+              .map((_, index) => (
+                <Skeleton
+                  key={index}
+                  variant="rectangular"
+                  width={420}
+                  height={145}
+                />
+              ))
           ) : classrooms.length !== 0 ? (
             classrooms.map(classroom => (
               <ClassCard
