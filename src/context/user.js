@@ -11,27 +11,55 @@ const getClassrooms = userId =>
         {
           name: 'Introdução à Ciência de Dados',
           abbreviation: 'ICD',
-          teacher: 'Carlos Alexandre Silva',
+          teachers: [
+            {
+              name: 'Carlos Alexandre Silva',
+              avatar:
+                'https://lh3.googleusercontent.com/a-/AOh14GgmBInEbkv1D4FuLyz64phoyOfI4Y8kql8LYVy0_w=s75-c',
+            },
+          ],
         },
         {
           name: 'Gestão de Projetos',
           abbreviation: 'GP',
-          teacher: 'Míriam Lúcia Barbosa',
+          teachers: [
+            {
+              name: 'Míriam Lúcia Barbosa',
+              avatar: '/assets/miriam.jpg',
+            },
+          ],
         },
         {
           name: 'Banco de Dados II',
           abbreviation: 'BDII',
-          teacher: 'Cristiane Norbiato Targa',
+          teachers: [
+            {
+              name: 'Cristiane Norbiato Targa',
+              avatar:
+                'https://lh3.googleusercontent.com/a-/AOh14GhwNeQ0h2eKl2WXGuwyDzvLWtrvyrG2kJtZ7A1EBw=s75-c',
+            },
+          ],
         },
         {
           name: 'Contabilidade Básica',
           abbreviation: 'CB',
-          teacher: 'Alexandre Couto Cardoso',
+          teachers: [
+            {
+              name: 'Alexandre Couto Cardoso',
+              avatar: '/assets/alex.jpg',
+            },
+          ],
         },
         {
           name: 'Linguagens de Programação',
           abbreviation: 'LP',
-          teacher: 'Gabriel Felipe Cândido Novy',
+          teachers: [
+            {
+              name: 'Gabriel Felipe Cândido Novy',
+              avatar:
+                'https://lh3.googleusercontent.com/a-/AOh14GgvfrD--cl25V_3UOAR93sN_jKdYNJ9PXhUH2zXhQ=s75-c',
+            },
+          ],
         },
       ],
     };
@@ -45,7 +73,6 @@ function UserProvider(props) {
   const [state, setState] = useState({
     status: 'idle',
     user: null,
-    classrooms: [],
     error: null,
     pathname: '',
   });
@@ -54,30 +81,21 @@ function UserProvider(props) {
     setState({ user, pathname });
   }, [user, pathname]);
 
-  const classrooms = () => {
-    setState({ ...state, status: 'pending' });
-    getClassrooms(user.id).then(data =>
-      setState({
-        status: 'success',
-        user,
-        classrooms: data.data,
-        error: null,
-        pathname,
-      })
-    );
+  const fetchClassrooms = () => {
+    return getClassrooms(user.id);
   };
 
-  return <UserContext.Provider value={{ state, classrooms }} {...props} />;
+  return <UserContext.Provider value={{ state, fetchClassrooms }} {...props} />;
 }
 
 function useUser() {
-  const { state, classrooms } = useContext(UserContext);
+  const { state, fetchClassrooms } = useContext(UserContext);
   const isPending = state.status === 'pending';
 
   return {
     state,
     isPending,
-    classrooms,
+    fetchClassrooms,
   };
 }
 
