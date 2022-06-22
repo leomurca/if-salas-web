@@ -16,7 +16,7 @@ const getClassrooms = userId =>
             {
               name: 'Carlos Alexandre Silva',
               avatar:
-                'https://lh3.googleusercontent.com/a-/AOh14GgmBInEbkv1D4FuLyz64phoyOfI4Y8kql8LYVy0_w=s75-c',
+                'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=50&q=80',
             },
           ],
         },
@@ -27,8 +27,17 @@ const getClassrooms = userId =>
           teachers: [
             {
               name: 'Míriam Lúcia Barbosa',
-              avatar: '/assets/miriam.jpg',
+              avatar:
+                'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=50&q=80',
             },
+            {
+              name: 'Alexandre Couto Cardoso',
+              avatar: '/assets/alex.jpg',
+            },
+            // {
+            //   name: 'Alexandre Couto Cardoso',
+            //   avatar: '/assets/alex.jpg',
+            // },
           ],
         },
         {

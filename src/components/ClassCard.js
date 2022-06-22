@@ -6,6 +6,7 @@ import {
   Container,
   Avatar,
   Stack,
+  AvatarGroup,
 } from '@mui/material';
 
 function ClassCard({ abbreviation, title, color, teachers }) {
@@ -29,23 +30,31 @@ function ClassCard({ abbreviation, title, color, teachers }) {
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
-          {teachers.map(teacher => (
-            <Stack
-              key={teacher.name}
-              alignItems="center"
-              direction="row"
-              spacing={1}
+          <Stack alignItems="center" direction="row" spacing={1}>
+            <AvatarGroup total={teachers.length}>
+              {teachers.map(t => (
+                <Avatar
+                  key={t.name}
+                  alt={t.name}
+                  src={t.avatar}
+                  sx={{ width: 30, height: 30 }}
+                />
+              ))}
+            </AvatarGroup>
+            <Typography
+              sx={{
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+              }}
+              variant="body2"
+              color="text.secondary"
             >
-              <Avatar
-                alt={teacher.name}
-                src={teacher.avatar}
-                sx={{ width: 30, height: 30 }}
-              />
-              <Typography variant="body2" color="text.secondary">
-                {teacher.name}
-              </Typography>
-            </Stack>
-          ))}
+              {teachers.map(t => t.name).join(',')}
+            </Typography>
+          </Stack>
         </CardContent>
       </CardActionArea>
     </Card>
