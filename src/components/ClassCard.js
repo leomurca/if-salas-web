@@ -8,18 +8,19 @@ import {
   Stack,
 } from '@mui/material';
 
-function ClassCard({ abbreviation, title, teachers }) {
+function ClassCard({ abbreviation, title, color, teachers }) {
   return (
     <Card sx={{ width: 420 }}>
       <CardActionArea sx={{ display: 'flex', flexDirection: 'row' }}>
         <Container
           sx={{
-            backgroundColor: 'tomato',
+            backgroundColor: color,
             width: '140px',
             height: '145px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            color: 'white',
           }}
         >
           <h1>{abbreviation}</h1>

@@ -38,6 +38,7 @@ function Home() {
                 key={classroom.name}
                 abbreviation={classroom.abbreviation}
                 title={classroom.name}
+                color={classroom.color}
                 teachers={classroom.teachers}
               />
             ))
@@ -67,6 +68,7 @@ function Home() {
                 key={classroom.name}
                 abbreviation={classroom.abbreviation}
                 title={classroom.name}
+                color={classroom.color}
                 teachers={classroom.teachers}
               />
             ))

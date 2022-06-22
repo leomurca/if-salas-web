@@ -11,6 +11,7 @@ const getClassrooms = userId =>
         {
           name: 'Introdução à Ciência de Dados',
           abbreviation: 'ICD',
+          color: '#006FF2',
           teachers: [
             {
               name: 'Carlos Alexandre Silva',
@@ -22,6 +23,7 @@ const getClassrooms = userId =>
         {
           name: 'Gestão de Projetos',
           abbreviation: 'GP',
+          color: '#7900F2',
           teachers: [
             {
               name: 'Míriam Lúcia Barbosa',
@@ -32,6 +34,7 @@ const getClassrooms = userId =>
         {
           name: 'Banco de Dados II',
           abbreviation: 'BDII',
+          color: '#FF7A00',
           teachers: [
             {
               name: 'Cristiane Norbiato Targa',
@@ -43,6 +46,7 @@ const getClassrooms = userId =>
         {
           name: 'Contabilidade Básica',
           abbreviation: 'CB',
+          color: '#BB0000',
           teachers: [
             {
               name: 'Alexandre Couto Cardoso',
@@ -53,6 +57,7 @@ const getClassrooms = userId =>
         {
           name: 'Linguagens de Programação',
           abbreviation: 'LP',
+          color: '#039200',
           teachers: [
             {
               name: 'Gabriel Felipe Cândido Novy',
