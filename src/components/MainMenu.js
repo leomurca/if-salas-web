@@ -46,7 +46,7 @@ function MainMenu({ options, layoutType }) {
 
     case 'mobile':
       return (
-        <Box sx={{ width: '100%', position: 'fixed', bottom: 0 }}>
+        <Box sx={{ width: '100%', position: 'fixed', bottom: 0, zIndex: 2 }}>
           <BottomNavigation
             onChange={(_, newValue) => {
               const newOption = options.find(option => option.id === newValue);
