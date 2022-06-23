@@ -4,11 +4,13 @@ import { useUser } from '../../context/user';
 
 import ClassCard from '../../components/ClassCard';
 import useLayoutType from '../../hooks/useLayoutType';
+import AssignmentCard from '../../components/AssignmentCard';
 
 function Home() {
   const layoutType = useLayoutType();
-  const { fetchClassrooms } = useUser();
+  const { fetchClassrooms, fetchAssignments } = useUser();
   const [classrooms, setClassrooms] = useState(null);
+  const [assignments, setAssignments] = useState(null);
 
   useEffect(() => {
     async function getClassrooms() {
@@ -17,6 +19,14 @@ function Home() {
     }
     getClassrooms();
   }, [fetchClassrooms]);
+
+  useEffect(() => {
+    async function getAssignments() {
+      const result = await fetchAssignments();
+      setAssignments(result.data);
+    }
+    getAssignments();
+  }, [fetchAssignments]);
 
   switch (layoutType) {
     case 'desktop':
@@ -61,7 +71,7 @@ function Home() {
             <h1>Atividades</h1>
             <h2>Atribuídas</h2>
             <Stack alignItems="end" flexWrap="wrap" direction="row" gap="30px">
-              {classrooms === null ? (
+              {assignments === null ? (
                 Array(6)
                   .fill()
                   .map((_, index) => (
@@ -72,19 +82,19 @@ function Home() {
                       height={145}
                     />
                   ))
-              ) : classrooms.length !== 0 ? (
-                classrooms.map(classroom => (
-                  <ClassCard
-                    key={classroom.name}
-                    abbreviation={classroom.abbreviation}
-                    title={classroom.name}
-                    color={classroom.color}
-                    teachers={classroom.teachers}
+              ) : assignments.length !== 0 ? (
+                assignments.map(assignment => (
+                  <AssignmentCard
+                    key={assignment.title}
+                    title={assignment.title}
+                    classrooms={assignment.classrooms}
+                    dueDate={assignment.dueDate}
+                    scores={assignment.scores}
                     layoutType={layoutType}
                   />
                 ))
               ) : (
-                <h1>Nenhuma sala de aula encontrada!</h1>
+                <h1>Nenhuma atividade encontrada!</h1>
               )}
             </Stack>
           </Grid>
@@ -147,7 +157,7 @@ function Home() {
             direction="row"
             gap="30px"
           >
-            {classrooms === null ? (
+            {assignments === null ? (
               Array(6)
                 .fill()
                 .map((_, index) => (
@@ -158,14 +168,14 @@ function Home() {
                     height={245}
                   />
                 ))
-            ) : classrooms.length !== 0 ? (
-              classrooms.map(classroom => (
-                <ClassCard
-                  key={classroom.name}
-                  abbreviation={classroom.abbreviation}
-                  title={classroom.name}
-                  color={classroom.color}
-                  teachers={classroom.teachers}
+            ) : assignments.length !== 0 ? (
+              assignments.map(assignment => (
+                <AssignmentCard
+                  key={assignment.title}
+                  title={assignment.title}
+                  classrooms={assignment.classrooms}
+                  dueDate={assignment.dueDate}
+                  scores={assignment.scores}
                   layoutType={layoutType}
                 />
               ))

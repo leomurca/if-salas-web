@@ -14,12 +14,12 @@ function ClassCard({ abbreviation, title, color, teachers, layoutType }) {
   switch (layoutType) {
     case 'desktop':
       return (
-        <Card sx={{ width: 390, height: 145 }}>
+        <Card sx={{ width: 390, height: 135 }}>
           <CardActionArea sx={{ display: 'flex', flexDirection: 'row' }}>
             <Container
               sx={{
                 backgroundColor: color,
-                width: '30%',
+                width: '35%',
                 height: '145px',
                 display: 'flex',
                 alignItems: 'center',
@@ -37,9 +37,10 @@ function ClassCard({ abbreviation, title, color, teachers, layoutType }) {
                   display: '-webkit-box',
                   WebkitLineClamp: 2,
                   WebkitBoxOrient: 'vertical',
+                  fontSize: '17px',
                 }}
                 gutterBottom
-                variant="h5"
+                variant="h6"
                 component="div"
               >
                 {title}
@@ -64,7 +65,7 @@ function ClassCard({ abbreviation, title, color, teachers, layoutType }) {
                       WebkitLineClamp: 2,
                       WebkitBoxOrient: 'vertical',
                     }}
-                    variant="body2"
+                    variant="body3"
                     color="text.secondary"
                   >
                     {teachers.map(t => t.name).join(', ')}
@@ -94,7 +95,7 @@ function ClassCard({ abbreviation, title, color, teachers, layoutType }) {
               <h1>{abbreviation}</h1>
             </Container>
             <CardContent sx={{ width: '100%' }}>
-              <Typography gutterBottom variant="h5" component="div">
+              <Typography gutterBottom variant="h6" component="div">
                 {title}
               </Typography>
               <Stack alignItems="center" direction="row" spacing={1}>
