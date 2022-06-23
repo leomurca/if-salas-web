@@ -194,6 +194,49 @@ const getAssignments = userId =>
             },
           ],
         },
+        {
+          id: '1717',
+          title: 'Trabalho interdisciplinar',
+          dueDate: '2022-08-20 23:59',
+          scores: [
+            {
+              classroomId: '666',
+              value: 20,
+            },
+            {
+              classroomId: '321',
+              value: 30,
+            },
+          ],
+          classrooms: [
+            {
+              id: '666',
+              name: 'Banco de Dados II',
+              abbreviation: 'BDII',
+              color: '#FF7A00',
+              teachers: [
+                {
+                  name: 'Cristiane Norbiato Targa',
+                  avatar:
+                    'https://lh3.googleusercontent.com/a-/AOh14GhwNeQ0h2eKl2WXGuwyDzvLWtrvyrG2kJtZ7A1EBw=s75-c',
+                },
+              ],
+            },
+            {
+              id: '321',
+              name: 'Introdução à Ciência de Dados',
+              abbreviation: 'ICD',
+              color: '#006FF2',
+              teachers: [
+                {
+                  name: 'Carlos Alexandre Silva',
+                  avatar:
+                    'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=50&q=80',
+                },
+              ],
+            },
+          ],
+        },
       ],
     };
   });

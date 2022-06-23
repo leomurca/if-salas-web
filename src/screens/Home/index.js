@@ -70,7 +70,13 @@ function Home() {
           <Grid sx={{ borderLeft: '4px solid #CFCFCF' }} item xs={4}>
             <h1>Atividades</h1>
             <h2>Atribuídas</h2>
-            <Stack alignItems="end" flexWrap="wrap" direction="row" gap="30px">
+            <Stack
+              sx={{ paddingBottom: '100px' }}
+              alignItems="end"
+              flexWrap="wrap"
+              direction="row"
+              gap="30px"
+            >
               {assignments === null ? (
                 Array(6)
                   .fill()
