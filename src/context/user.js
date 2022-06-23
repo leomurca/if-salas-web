@@ -34,10 +34,6 @@ const getClassrooms = userId =>
               name: 'Alexandre Couto Cardoso',
               avatar: '/assets/alex.jpg',
             },
-            // {
-            //   name: 'Alexandre Couto Cardoso',
-            //   avatar: '/assets/alex.jpg',
-            // },
           ],
         },
         {

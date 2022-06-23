@@ -7,6 +7,7 @@ import {
   Avatar,
   Stack,
   AvatarGroup,
+  Tooltip,
 } from '@mui/material';
 
 function ClassCard({ abbreviation, title, color, teachers, layoutType }) {
@@ -54,19 +55,21 @@ function ClassCard({ abbreviation, title, color, teachers, layoutType }) {
                     />
                   ))}
                 </AvatarGroup>
-                <Typography
-                  sx={{
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    display: '-webkit-box',
-                    WebkitLineClamp: 2,
-                    WebkitBoxOrient: 'vertical',
-                  }}
-                  variant="body2"
-                  color="text.secondary"
-                >
-                  {teachers.map(t => t.name).join(',')}
-                </Typography>
+                <Tooltip title={teachers.map(t => t.name).join(', ')}>
+                  <Typography
+                    sx={{
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      display: '-webkit-box',
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: 'vertical',
+                    }}
+                    variant="body2"
+                    color="text.secondary"
+                  >
+                    {teachers.map(t => t.name).join(', ')}
+                  </Typography>
+                </Tooltip>
               </Stack>
             </CardContent>
           </CardActionArea>
@@ -116,7 +119,7 @@ function ClassCard({ abbreviation, title, color, teachers, layoutType }) {
                   variant="body2"
                   color="text.secondary"
                 >
-                  {teachers.map(t => t.name).join(',')}
+                  {teachers.map(t => t.name).join(', ')}
                 </Typography>
               </Stack>
             </CardContent>
