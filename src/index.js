@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import 'dayjs/locale/pt-br'; // carregar sob demanda
+import dayjs from 'dayjs';
 
 import { BrowserRouter } from 'react-router-dom';
 import { createTheme } from '@mui/material';
@@ -10,6 +12,8 @@ import reportWebVitals from './reportWebVitals';
 import AppProviders from './context';
 
 import './index.css';
+
+dayjs.locale('pt-br');
 
 const theme = createTheme({
   palette: {

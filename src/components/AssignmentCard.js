@@ -7,6 +7,9 @@ import {
   Tooltip,
   Divider,
 } from '@mui/material';
+import dayjs from 'dayjs';
+
+import { capitalizeFirstLetter } from '../utils/capitalizeFirstLetter';
 
 function AssignmentCard({ title, classrooms, dueDate, scores, layoutType }) {
   switch (layoutType) {
@@ -57,7 +60,10 @@ function AssignmentCard({ title, classrooms, dueDate, scores, layoutType }) {
                   variant="p"
                   component="div"
                 >
-                  <strong>Data de entrega: </strong> {dueDate}
+                  <strong>Data de entrega: </strong>{' '}
+                  {capitalizeFirstLetter(
+                    dayjs(dueDate).format('dddd, DD/MM | HH:mm[h]')
+                  )}
                 </Typography>
                 <Typography variant="p" component="div">
                   <strong>Valor: </strong>
@@ -115,7 +121,10 @@ function AssignmentCard({ title, classrooms, dueDate, scores, layoutType }) {
                   variant="p"
                   component="div"
                 >
-                  <strong>Data de entrega: </strong> {dueDate}
+                  <strong>Data de entrega: </strong>
+                  {capitalizeFirstLetter(
+                    dayjs(dueDate).format('dddd, DD/MM | HH:mm[h]')
+                  )}
                 </Typography>
                 <Typography variant="p" component="div">
                   <strong>Valor: </strong>

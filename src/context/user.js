@@ -81,7 +81,7 @@ const getClassrooms = userId =>
   });
 
 const getAssignments = userId =>
-  sleep(3000).then(() => {
+  sleep(4000).then(() => {
     console.log('userId: ' + userId);
     return {
       data: [
@@ -89,7 +89,7 @@ const getAssignments = userId =>
           id: '5435',
           title:
             'Prova 1 - Armazenamento de Dados. Python em CD. Armazenamento Analítico',
-          dueDate: '2022-07-01',
+          dueDate: '2022-07-01 23:59',
           scores: [
             {
               classroomId: '321',
@@ -115,7 +115,7 @@ const getAssignments = userId =>
         {
           id: '1234',
           title: 'Trabalho NoSQL',
-          dueDate: '2022-06-29',
+          dueDate: '2022-06-29 22:00',
           scores: [
             {
               classroomId: '666',
@@ -141,7 +141,7 @@ const getAssignments = userId =>
         {
           id: '1234',
           title: 'Atividade 2 - Estudo de caso Sapiens Informática',
-          dueDate: '2022-06-25',
+          dueDate: '2022-06-25 23:59',
           scores: [
             {
               classroomId: '123',
@@ -172,7 +172,7 @@ const getAssignments = userId =>
           id: '3671',
           title:
             'AA08 - Atividade de Aprendizagem 08 - Componentes de rateio de custos',
-          dueDate: '2022-07-23',
+          dueDate: '2022-07-23 10:00',
           scores: [
             {
               classroomId: '765',
