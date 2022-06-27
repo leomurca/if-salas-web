@@ -247,7 +247,6 @@ function UserProvider(props) {
   const { user } = useAuthState();
   const { pathname } = useLocation();
   const [state, setState] = useState({
-    status: 'idle',
     user: null,
     error: null,
     pathname: '',
@@ -257,13 +256,9 @@ function UserProvider(props) {
     setState({ user, pathname });
   }, [user, pathname]);
 
-  const fetchClassrooms = () => {
-    return getClassrooms(user.id);
-  };
+  const fetchClassrooms = () => getClassrooms(user.id);
 
-  const fetchAssignments = () => {
-    return getAssignments(user.id);
-  };
+  const fetchAssignments = () => getAssignments(user.id);
 
   return (
     <UserContext.Provider
@@ -275,11 +270,9 @@ function UserProvider(props) {
 
 function useUser() {
   const { state, fetchClassrooms, fetchAssignments } = useContext(UserContext);
-  const isPending = state.status === 'pending';
 
   return {
     state,
-    isPending,
     fetchClassrooms,
     fetchAssignments,
   };
