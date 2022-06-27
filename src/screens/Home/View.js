@@ -95,16 +95,14 @@ function View({ layoutType, classrooms, assignments }) {
             gap="30px"
           >
             {classrooms === null ? (
-              Array(6)
-                .fill()
-                .map((_, index) => (
-                  <Skeleton
-                    key={index}
-                    variant="rectangular"
-                    width="100%"
-                    height={245}
-                  />
-                ))
+              createArrayFrom1ToN(6).map(i => (
+                <Skeleton
+                  key={i}
+                  variant="rectangular"
+                  width="100%"
+                  height={245}
+                />
+              ))
             ) : classrooms.length !== 0 ? (
               classrooms.map(classroom => (
                 <ClassCard
@@ -131,16 +129,14 @@ function View({ layoutType, classrooms, assignments }) {
             gap="30px"
           >
             {assignments === null ? (
-              Array(6)
-                .fill()
-                .map((_, index) => (
-                  <Skeleton
-                    key={index}
-                    variant="rectangular"
-                    width="100%"
-                    height={245}
-                  />
-                ))
+              createArrayFrom1ToN(6).map(i => (
+                <Skeleton
+                  key={i}
+                  variant="rectangular"
+                  width="100%"
+                  height={245}
+                />
+              ))
             ) : assignments.length !== 0 ? (
               assignments.map(assignment => (
                 <AssignmentCard

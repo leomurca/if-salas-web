@@ -110,6 +110,7 @@ function AssignmentCard({ title, classrooms, dueDate, scores, layoutType }) {
                 .filter((_, i) => i > 0)
                 .map(c => (
                   <div
+                    key={c.id}
                     style={{
                       position: 'absolute',
                       width: '100%',
