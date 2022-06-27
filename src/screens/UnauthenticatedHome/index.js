@@ -1,9 +1,11 @@
 import { Link } from '@mui/material';
 import { Container } from '@mui/system';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
 import styles from './styles';
 
 function UnauthenticatedHome() {
+  useDocumentTitle('Seja bem-vindo');
   const { container } = styles.desktop;
 
   return (

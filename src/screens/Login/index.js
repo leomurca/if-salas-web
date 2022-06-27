@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useAuthState } from '../../context/auth';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import useLayoutType from '../../hooks/useLayoutType';
 
 import View from './View';
 
 function Login() {
+  useDocumentTitle('Entrar');
   const { login, isPending, isError, error } = useAuthState();
   const layoutType = useLayoutType();
   const [email, setEmail] = useState('');
