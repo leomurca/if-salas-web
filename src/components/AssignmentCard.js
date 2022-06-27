@@ -12,7 +12,6 @@ import dayjs from 'dayjs';
 import { capitalizeFirstLetter } from '../utils/capitalizeFirstLetter';
 
 function AssignmentCard({ title, classrooms, dueDate, scores, layoutType }) {
-  console.log(classrooms);
   switch (layoutType) {
     case 'desktop':
       return (
@@ -28,6 +27,7 @@ function AssignmentCard({ title, classrooms, dueDate, scores, layoutType }) {
               .filter((_, i) => i > 0)
               .map(c => (
                 <div
+                  key={c.id}
                   style={{
                     position: 'absolute',
                     height: '100%',
