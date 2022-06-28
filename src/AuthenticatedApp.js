@@ -16,6 +16,7 @@ import useLayoutType from './hooks/useLayoutType';
 import Toolbar from './components/Toolbar';
 import { useUser } from './context/user';
 import { useAuthState } from './context/auth';
+import Classroom from './screens/Classroom';
 
 function AuthenticatedApp() {
   const navigate = useNavigate();
@@ -59,6 +60,9 @@ function AuthenticatedApp() {
             <Route path="/home" element={<Home />} />
             <Route path="/info" element={<Information />} />
             <Route path="/calendar" element={<Calendar />} />
+            <Route path="/class">
+              <Route path=":id" element={<Classroom />} />
+            </Route>
             <Route path="/login" element={<Navigate to="/home" />} />
             <Route path="/" element={<Navigate to="/home" />} />
           </Routes>

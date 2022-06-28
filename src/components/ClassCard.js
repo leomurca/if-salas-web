@@ -10,12 +10,22 @@ import {
   Tooltip,
 } from '@mui/material';
 
-function ClassCard({ abbreviation, title, color, teachers, layoutType }) {
+function ClassCard({
+  abbreviation,
+  title,
+  color,
+  teachers,
+  layoutType,
+  onClick,
+}) {
   switch (layoutType) {
     case 'desktop':
       return (
         <Card sx={{ width: 390, height: 135 }}>
-          <CardActionArea sx={{ display: 'flex', flexDirection: 'row' }}>
+          <CardActionArea
+            onClick={() => onClick()}
+            sx={{ display: 'flex', flexDirection: 'row' }}
+          >
             <Container
               sx={{
                 backgroundColor: color,
@@ -80,7 +90,10 @@ function ClassCard({ abbreviation, title, color, teachers, layoutType }) {
     case 'mobile':
       return (
         <Card sx={{ width: '100%' }}>
-          <CardActionArea sx={{ display: 'flex', flexDirection: 'column' }}>
+          <CardActionArea
+            onClick={() => onClick()}
+            sx={{ display: 'flex', flexDirection: 'column' }}
+          >
             <Container
               sx={{
                 backgroundColor: color,

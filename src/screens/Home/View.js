@@ -6,7 +6,7 @@ import AssignmentCard from '../../components/AssignmentCard';
 import styles from './styles';
 import { createArrayFrom1ToN } from '../../utils/createArrayFrom1ToN';
 
-function View({ layoutType, classrooms, assignments }) {
+function View({ layoutType, classrooms, assignments, onClickClassCard }) {
   const { container, divider, assignmentsStack } = styles[layoutType];
 
   switch (layoutType) {
@@ -39,6 +39,7 @@ function View({ layoutType, classrooms, assignments }) {
                     color={classroom.color}
                     teachers={classroom.teachers}
                     layoutType={layoutType}
+                    onClick={() => onClickClassCard(classroom.id)}
                   />
                 ))
               ) : (
@@ -112,6 +113,7 @@ function View({ layoutType, classrooms, assignments }) {
                   color={classroom.color}
                   teachers={classroom.teachers}
                   layoutType={layoutType}
+                  onClick={() => onClickClassCard(classroom.id)}
                 />
               ))
             ) : (
