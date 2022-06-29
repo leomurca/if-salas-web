@@ -96,7 +96,10 @@ const menuOptions = activePath => [
     unselectedIcon: <HomeOutlined />,
     pathname: '/home',
     isActive:
-      activePath === '/home' || activePath === '/login' || activePath === '/',
+      activePath === '/home' ||
+      activePath === '/login' ||
+      activePath === '/' ||
+      activePath.indexOf('class') !== -1,
   },
   {
     id: 1,
