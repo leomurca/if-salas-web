@@ -15,169 +15,164 @@ function Toolbar({ title, layoutType, avatarMenuOptions }) {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorElNotifications, setAnchorElNotifications] = useState(null);
 
-  switch (layoutType) {
-    case 'desktop':
-      return (
-        <Box sx={box}>
-          {title}
-          <Box sx={{ flexGrow: 0 }}>
-            <Box
-              sx={{
-                display: 'flex',
-                gap: '20px',
+  if (layoutType === 'desktop') {
+    return (
+      <Box sx={box}>
+        {title}
+        <Box sx={{ flexGrow: 0 }}>
+          <Box
+            sx={{
+              display: 'flex',
+              gap: '20px',
+            }}
+          >
+            <Tooltip title="Ver notificações">
+              <IconButton
+                size="large"
+                aria-label="show 17 new notifications"
+                color="inherit"
+                onClick={e => setAnchorElNotifications(e.currentTarget)}
+                sx={{ p: 2 }}
+              >
+                <Badge badgeContent={17} color="success">
+                  <NotificationsOutlined />
+                </Badge>
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElNotifications}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
               }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElNotifications)}
+              onClose={() => setAnchorElNotifications(null)}
             >
-              <Tooltip title="Ver notificações">
-                <IconButton
-                  size="large"
-                  aria-label="show 17 new notifications"
-                  color="inherit"
-                  onClick={e => setAnchorElNotifications(e.currentTarget)}
-                  sx={{ p: 2 }}
-                >
-                  <Badge badgeContent={17} color="success">
-                    <NotificationsOutlined />
-                  </Badge>
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: '45px' }}
-                id="menu-appbar"
-                anchorEl={anchorElNotifications}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElNotifications)}
-                onClose={() => setAnchorElNotifications(null)}
+              <MenuItem onClick={() => setAnchorElNotifications(null)}>
+                <Typography textAlign="center">Notificacoes</Typography>
+              </MenuItem>
+            </Menu>
+            <Tooltip title="Ver opções">
+              <IconButton
+                onClick={e => setAnchorElUser(e.currentTarget)}
+                sx={{ p: 0 }}
               >
-                <MenuItem onClick={() => setAnchorElNotifications(null)}>
-                  <Typography textAlign="center">Notificacoes</Typography>
-                </MenuItem>
-              </Menu>
-              <Tooltip title="Ver opções">
-                <IconButton
-                  onClick={e => setAnchorElUser(e.currentTarget)}
-                  sx={{ p: 0 }}
-                >
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-              </Tooltip>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
 
-              <Menu
-                sx={{ mt: '45px' }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={() => setAnchorElUser(null)}
-              >
-                {avatarMenuOptions.map(option => (
-                  <MenuItem key={option.text} onClick={option.action}>
-                    <Typography textAlign="center">{option.text}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={() => setAnchorElUser(null)}
+            >
+              {avatarMenuOptions.map(option => (
+                <MenuItem key={option.text} onClick={option.action}>
+                  <Typography textAlign="center">{option.text}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
           </Box>
         </Box>
-      );
-
-    case 'mobile':
-      return (
-        <Box sx={mobileBox}>
-          {title}
-          <Box sx={{ flexGrow: 0 }}>
-            <Box
-              sx={{
-                display: 'flex',
-                gap: '20px',
+      </Box>
+    );
+  } else if (layoutType === 'mobile') {
+    return (
+      <Box sx={mobileBox}>
+        {title}
+        <Box sx={{ flexGrow: 0 }}>
+          <Box
+            sx={{
+              display: 'flex',
+              gap: '20px',
+            }}
+          >
+            <Tooltip title="Ver notificações">
+              <IconButton
+                size="large"
+                aria-label="show 17 new notifications"
+                color="inherit"
+                onClick={e => setAnchorElNotifications(e.currentTarget)}
+                sx={{ p: 2 }}
+              >
+                <Badge badgeContent={17} color="success">
+                  <NotificationsOutlined />
+                </Badge>
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElNotifications}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
               }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElNotifications)}
+              onClose={() => setAnchorElNotifications(null)}
             >
-              <Tooltip title="Ver notificações">
-                <IconButton
-                  size="large"
-                  aria-label="show 17 new notifications"
-                  color="inherit"
-                  onClick={e => setAnchorElNotifications(e.currentTarget)}
-                  sx={{ p: 2 }}
-                >
-                  <Badge badgeContent={17} color="success">
-                    <NotificationsOutlined />
-                  </Badge>
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: '45px' }}
-                id="menu-appbar"
-                anchorEl={anchorElNotifications}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElNotifications)}
-                onClose={() => setAnchorElNotifications(null)}
+              <MenuItem onClick={() => setAnchorElNotifications(null)}>
+                <Typography textAlign="center">Notificacoes</Typography>
+              </MenuItem>
+            </Menu>
+            <Tooltip title="Ver opções">
+              <IconButton
+                onClick={e => setAnchorElUser(e.currentTarget)}
+                sx={{ p: 0 }}
               >
-                <MenuItem onClick={() => setAnchorElNotifications(null)}>
-                  <Typography textAlign="center">Notificacoes</Typography>
-                </MenuItem>
-              </Menu>
-              <Tooltip title="Ver opções">
-                <IconButton
-                  onClick={e => setAnchorElUser(e.currentTarget)}
-                  sx={{ p: 0 }}
-                >
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-              </Tooltip>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
 
-              <Menu
-                sx={{ mt: '45px' }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={() => setAnchorElUser(null)}
-              >
-                {avatarMenuOptions.map(option => (
-                  <MenuItem key={option.text} onClick={option.action}>
-                    <Typography textAlign="center">{option.text}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={() => setAnchorElUser(null)}
+            >
+              {avatarMenuOptions.map(option => (
+                <MenuItem key={option.text} onClick={option.action}>
+                  <Typography textAlign="center">{option.text}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
           </Box>
         </Box>
-      );
-
-    default:
-      return null;
+      </Box>
+    );
   }
 }
 

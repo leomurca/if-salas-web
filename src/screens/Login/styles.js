@@ -77,5 +77,13 @@ const mobile = {
   logoContainer: logoContainerMobile,
 };
 
-const styles = { desktop, mobile };
+// ========== Unset ==========
+const unset = {
+  paper: null,
+  boxLogo: null,
+  boxForm: null,
+  logoContainer: null,
+};
+
+const styles = { desktop, mobile, unset };
 export default styles;

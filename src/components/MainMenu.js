@@ -20,59 +20,54 @@ function MainMenu({ options, layoutType }) {
     options.find(option => option.isActive)
   );
 
-  switch (layoutType) {
-    case 'desktop':
-      return (
-        <Drawer sx={drawer} variant="permanent" anchor="left">
-          <Toolbar disableGutters sx={toolbar}>
-            <img src={logoImage} width="70" alt="Logotipo" />
-          </Toolbar>
-          <List>
-            {options.map(option => (
-              <ListItem key={option.text} sx={listItem} disablePadding>
-                <NavLink to={option.pathname}>
-                  <ListItemButton selected={option.isActive}>
-                    <ListItemIcon sx={listItemIcon}>
-                      {option.unselectedIcon}
-                    </ListItemIcon>
-                    <ListItemText primary={option.text} />
-                  </ListItemButton>
-                </NavLink>
-              </ListItem>
-            ))}
-          </List>
-        </Drawer>
-      );
-
-    case 'mobile':
-      return (
-        <Box sx={{ width: '100%', position: 'fixed', bottom: 0, zIndex: 2 }}>
-          <BottomNavigation
-            onChange={(_, newValue) => {
-              const newOption = options.find(option => option.id === newValue);
-              setSelectedOption(newOption);
-              navigate(newOption.pathname, { replace: true });
-            }}
-            showLabels
-            value={selectedOption.id}
-          >
-            {options.map(option => (
-              <BottomNavigationAction
-                key={option.text}
-                label={option.text}
-                icon={
-                  option.id === selectedOption.id
-                    ? option.selectedIcon
-                    : option.unselectedIcon
-                }
-              />
-            ))}
-          </BottomNavigation>
-        </Box>
-      );
-
-    default:
-      return null;
+  if (layoutType === 'desktop') {
+    return (
+      <Drawer sx={drawer} variant="permanent" anchor="left">
+        <Toolbar disableGutters sx={toolbar}>
+          <img src={logoImage} width="70" alt="Logotipo" />
+        </Toolbar>
+        <List>
+          {options.map(option => (
+            <ListItem key={option.text} sx={listItem} disablePadding>
+              <NavLink to={option.pathname}>
+                <ListItemButton selected={option.isActive}>
+                  <ListItemIcon sx={listItemIcon}>
+                    {option.unselectedIcon}
+                  </ListItemIcon>
+                  <ListItemText primary={option.text} />
+                </ListItemButton>
+              </NavLink>
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+    );
+  } else if (layoutType === 'mobile') {
+    return (
+      <Box sx={{ width: '100%', position: 'fixed', bottom: 0, zIndex: 2 }}>
+        <BottomNavigation
+          onChange={(_, newValue) => {
+            const newOption = options.find(option => option.id === newValue);
+            setSelectedOption(newOption);
+            navigate(newOption.pathname, { replace: true });
+          }}
+          showLabels
+          value={selectedOption.id}
+        >
+          {options.map(option => (
+            <BottomNavigationAction
+              key={option.text}
+              label={option.text}
+              icon={
+                option.id === selectedOption.id
+                  ? option.selectedIcon
+                  : option.unselectedIcon
+              }
+            />
+          ))}
+        </BottomNavigation>
+      </Box>
+    );
   }
 }
 

@@ -41,5 +41,12 @@ const mobile = {
   assignmentsStack: mobileAssignmentsStack,
 };
 
-const styles = { desktop, mobile };
+// ========== Unset ==========
+const unset = {
+  container: null,
+  divider: null,
+  assignmentsStack: null,
+};
+
+const styles = { desktop, mobile, unset };
 export default styles;
