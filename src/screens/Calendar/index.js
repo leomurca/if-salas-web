@@ -12,10 +12,20 @@ function Calendar() {
 
   if (layoutType === 'desktop') {
     return (
-      <Stack spacing={2} alignItems="center" sx={{ paddingTop: '40px' }}>
+      <Stack
+        spacing={2}
+        alignItems="center"
+        sx={{ paddingTop: '40px', paddingBottom: '60px' }}
+      >
         <Document
           error={<p>Falha ao carregar o arquivo.</p>}
-          loading={<Skeleton variant="rectangular" width={900} height={1250} />}
+          loading={
+            <Skeleton
+              variant="rectangular"
+              width={innerWidth * 0.35}
+              height={innerHeight * 0.9}
+            />
+          }
           options={{ workerSrc: '/pdf.worker.js' }}
           file={calendarPdf}
         >
