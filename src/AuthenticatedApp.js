@@ -84,7 +84,8 @@ const container = {
 
 const mobileContainer = {
   ...container,
-  flexDirection: 'column-reverse',
+  flexDirection: 'column',
+  justifyContent: 'start',
 };
 
 const menuOptions = activePath => [
