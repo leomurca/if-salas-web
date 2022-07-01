@@ -1,8 +1,11 @@
 import { useState, useEffect, forwardRef } from 'react';
 import { Snackbar, Alert } from '@mui/material';
 
+import styles from './styles';
+
 function SnackbarIndicator({ isOpen, severity, message }) {
   const [open, setOpen] = useState(false);
+  const { snackbarContainer, customAlert } = styles;
 
   useEffect(() => {
     setOpen(isOpen);
@@ -16,12 +19,12 @@ function SnackbarIndicator({ isOpen, severity, message }) {
 
   return (
     <Snackbar
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      anchorOrigin={snackbarContainer}
       open={open}
       autoHideDuration={5000}
       onClose={onClose}
     >
-      <CustomAlert onClose={onClose} severity={severity} sx={{ width: '100%' }}>
+      <CustomAlert onClose={onClose} severity={severity} sx={customAlert}>
         {message}
       </CustomAlert>
     </Snackbar>
