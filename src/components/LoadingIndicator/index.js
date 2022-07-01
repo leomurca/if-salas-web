@@ -1,6 +1,10 @@
 import { Box, LinearProgress } from '@mui/material';
 
+import styles from './styles';
+
 function LoadingIndicator({ isLoading }) {
+  const { box, linearProgress } = styles;
+
   if (isLoading) {
     return (
       <Box sx={box}>
@@ -9,15 +13,5 @@ function LoadingIndicator({ isLoading }) {
     );
   }
 }
-
-const box = {
-  width: '100%',
-  position: 'absolute',
-  top: 0,
-};
-
-const linearProgress = {
-  height: '7px',
-};
 
 export default LoadingIndicator;
