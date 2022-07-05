@@ -11,7 +11,17 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 
+import styles from './styles';
+
 function Toolbar({ title, layoutType, avatarMenuOptions }) {
+  const {
+    box,
+    menuBoxContainer,
+    menuBox,
+    notificationIconButton,
+    menuNotifications,
+    menuUser,
+  } = styles[layoutType];
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorElNotifications, setAnchorElNotifications] = useState(null);
 
@@ -19,20 +29,15 @@ function Toolbar({ title, layoutType, avatarMenuOptions }) {
     return (
       <Box sx={box}>
         {title}
-        <Box sx={{ flexGrow: 0 }}>
-          <Box
-            sx={{
-              display: 'flex',
-              gap: '20px',
-            }}
-          >
+        <Box sx={menuBoxContainer}>
+          <Box sx={menuBox}>
             <Tooltip title="Ver notificações">
               <IconButton
                 size="large"
                 aria-label="show 17 new notifications"
                 color="inherit"
                 onClick={e => setAnchorElNotifications(e.currentTarget)}
-                sx={{ p: 2 }}
+                sx={notificationIconButton}
               >
                 <Badge badgeContent={17} color="success">
                   <NotificationsOutlined />
@@ -40,18 +45,12 @@ function Toolbar({ title, layoutType, avatarMenuOptions }) {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={menuNotifications.sx}
               id="menu-appbar"
               anchorEl={anchorElNotifications}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
+              anchorOrigin={menuNotifications.anchorOrigin}
               keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
+              transformOrigin={menuNotifications.transformOrigin}
               open={Boolean(anchorElNotifications)}
               onClose={() => setAnchorElNotifications(null)}
             >
@@ -69,18 +68,12 @@ function Toolbar({ title, layoutType, avatarMenuOptions }) {
             </Tooltip>
 
             <Menu
-              sx={{ mt: '45px' }}
+              sx={menuUser.sx}
               id="menu-appbar"
               anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
+              anchorOrigin={menuUser.anchorOrigin}
               keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
+              transformOrigin={menuUser.transformOrigin}
               open={Boolean(anchorElUser)}
               onClose={() => setAnchorElUser(null)}
             >
@@ -96,22 +89,17 @@ function Toolbar({ title, layoutType, avatarMenuOptions }) {
     );
   } else if (layoutType === 'mobile') {
     return (
-      <Box sx={mobileBox}>
+      <Box sx={box}>
         {title}
-        <Box sx={{ flexGrow: 0 }}>
-          <Box
-            sx={{
-              display: 'flex',
-              gap: '20px',
-            }}
-          >
+        <Box sx={menuBoxContainer}>
+          <Box sx={menuBox}>
             <Tooltip title="Ver notificações">
               <IconButton
                 size="large"
                 aria-label="show 17 new notifications"
                 color="inherit"
                 onClick={e => setAnchorElNotifications(e.currentTarget)}
-                sx={{ p: 2 }}
+                sx={notificationIconButton}
               >
                 <Badge badgeContent={17} color="success">
                   <NotificationsOutlined />
@@ -119,18 +107,12 @@ function Toolbar({ title, layoutType, avatarMenuOptions }) {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={menuNotifications.sx}
               id="menu-appbar"
               anchorEl={anchorElNotifications}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
+              anchorOrigin={menuNotifications.anchorOrigin}
               keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
+              transformOrigin={menuNotifications.transformOrigin}
               open={Boolean(anchorElNotifications)}
               onClose={() => setAnchorElNotifications(null)}
             >
@@ -148,18 +130,12 @@ function Toolbar({ title, layoutType, avatarMenuOptions }) {
             </Tooltip>
 
             <Menu
-              sx={{ mt: '45px' }}
+              sx={menuUser.sx}
               id="menu-appbar"
               anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
+              anchorOrigin={menuUser.anchorOrigin}
               keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
+              transformOrigin={menuUser.transformOrigin}
               open={Boolean(anchorElUser)}
               onClose={() => setAnchorElUser(null)}
             >
@@ -175,23 +151,5 @@ function Toolbar({ title, layoutType, avatarMenuOptions }) {
     );
   }
 }
-
-const box = {
-  display: 'flex',
-  marginLeft: '230px',
-  height: '130px',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  padding: '0 70px',
-  borderBottom: '3px solid #CFCFCF',
-};
-
-const mobileBox = {
-  ...box,
-  marginLeft: 0,
-  height: '70px',
-  padding: '0 10px',
-  justifyContent: 'space-around',
-};
 
 export default Toolbar;
