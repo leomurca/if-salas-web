@@ -143,6 +143,40 @@ const allAssignments = [
   },
 ];
 
+const getFaq = () =>
+  sleep(2000).then(() => {
+    console.log('Fetching FAQ...');
+    return {
+      data: [
+        {
+          question: 'Como faço para acessar a biblicoteca virtual?',
+          answer:
+            'Mussum Ipsum, cacilds vidis litro abertis. Delegadis gente finis, bibendum egestas augue arcu ut est.Quem num gosta di mé, boa gentis num é.Quem num gosta di mim que vai caçá sua turmis!Leite de capivaris, leite de mula manquis sem cabeça.',
+        },
+        {
+          question: 'Onde consigo informações de estágio?',
+          answer:
+            'Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mim que vai caçá sua turmis!In elementis mé pra quem é amistosis quis leo.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.Si num tem leite então bota uma pinga aí cumpadi! \n Mé faiz elementum girarzis, nisi eros vermeio.Não sou faixa preta cumpadi, sou preto inteiris, inteiris.Manduma pindureta quium dia nois paga.Tá deprimidis, eu conheço uma cachacis que pode alegrar sua vidis.',
+        },
+        {
+          question: 'Como faço para solicitar uma declaração de matrícula?',
+          answer:
+            'Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mim que vai caçá sua turmis!In elementis mé pra quem é amistosis quis leo.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.Si num tem leite então bota uma pinga aí cumpadi! \n Mé faiz elementum girarzis, nisi eros vermeio.Não sou faixa preta cumpadi, sou preto inteiris, inteiris.Manduma pindureta quium dia nois paga.Tá deprimidis, eu conheço uma cachacis que pode alegrar sua vidis.',
+        },
+        {
+          question: 'Onde encontro a matriz curricular do meu curso?',
+          answer:
+            'Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mim que vai caçá sua turmis!In elementis mé pra quem é amistosis quis leo.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.Si num tem leite então bota uma pinga aí cumpadi! \n Mé faiz elementum girarzis, nisi eros vermeio.Não sou faixa preta cumpadi, sou preto inteiris, inteiris.Manduma pindureta quium dia nois paga.Tá deprimidis, eu conheço uma cachacis que pode alegrar sua vidis.',
+        },
+        {
+          question: 'Como faço para solicitar meu histórico escolar?',
+          answer:
+            'Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mim que vai caçá sua turmis!In elementis mé pra quem é amistosis quis leo.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.Si num tem leite então bota uma pinga aí cumpadi! \n Mé faiz elementum girarzis, nisi eros vermeio.Não sou faixa preta cumpadi, sou preto inteiris, inteiris.Manduma pindureta quium dia nois paga.Tá deprimidis, eu conheço uma cachacis que pode alegrar sua vidis.',
+        },
+      ],
+    };
+  });
+
 const getClassrooms = userId =>
   sleep(3000).then(() => {
     console.log('userId: ' + userId);
@@ -188,23 +222,37 @@ function UserProvider(props) {
 
   const fetchClassroomById = classId => getClassroomById(classId);
 
+  const fetchFAQ = () => getFaq();
+
   return (
     <UserContext.Provider
-      value={{ state, fetchClassrooms, fetchAssignments, fetchClassroomById }}
+      value={{
+        state,
+        fetchClassrooms,
+        fetchAssignments,
+        fetchClassroomById,
+        fetchFAQ,
+      }}
       {...props}
     />
   );
 }
 
 function useUser() {
-  const { state, fetchClassrooms, fetchAssignments, fetchClassroomById } =
-    useContext(UserContext);
+  const {
+    state,
+    fetchClassrooms,
+    fetchAssignments,
+    fetchClassroomById,
+    fetchFAQ,
+  } = useContext(UserContext);
 
   return {
     state,
     fetchClassrooms,
     fetchAssignments,
     fetchClassroomById,
+    fetchFAQ,
   };
 }
 

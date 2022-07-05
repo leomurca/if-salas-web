@@ -61,7 +61,7 @@ const desktop = {
 
 // ========== Mobile ==========
 const mobileCardContainer = classrooms => ({
-  width: 390,
+  width: '100%',
   borderTop: `5px solid ${classrooms[0].color}`,
 });
 
