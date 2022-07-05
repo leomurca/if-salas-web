@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   BottomNavigation,
   BottomNavigationAction,
@@ -10,11 +11,12 @@ import {
   ListItemText,
   Toolbar,
 } from '@mui/material';
-import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import logoImage from '../assets/if-salas-logo.svg';
+import logoImage from '../../assets/if-salas-logo.svg';
+import styles from './styles';
 
 function MainMenu({ options, layoutType }) {
+  const { menuContainer, navigator, item, itemIcon } = styles[layoutType];
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState(
     options.find(option => option.isActive)
@@ -22,16 +24,16 @@ function MainMenu({ options, layoutType }) {
 
   if (layoutType === 'desktop') {
     return (
-      <Drawer sx={drawer} variant="permanent" anchor="left">
-        <Toolbar disableGutters sx={toolbar}>
+      <Drawer sx={menuContainer} variant="permanent" anchor="left">
+        <Toolbar disableGutters sx={navigator}>
           <img src={logoImage} width="70" alt="Logotipo" />
         </Toolbar>
         <List>
           {options.map(option => (
-            <ListItem key={option.text} sx={listItem} disablePadding>
+            <ListItem key={option.text} sx={item} disablePadding>
               <NavLink to={option.pathname}>
                 <ListItemButton selected={option.isActive}>
-                  <ListItemIcon sx={listItemIcon}>
+                  <ListItemIcon sx={itemIcon}>
                     {option.unselectedIcon}
                   </ListItemIcon>
                   <ListItemText primary={option.text} />
@@ -44,18 +46,20 @@ function MainMenu({ options, layoutType }) {
     );
   } else if (layoutType === 'mobile') {
     return (
-      <Box sx={{ width: '100%', position: 'fixed', bottom: 0, zIndex: 2 }}>
+      <Box sx={menuContainer}>
         <BottomNavigation
           onChange={(_, newValue) => {
             const newOption = options.find(option => option.id === newValue);
             setSelectedOption(newOption);
             navigate(newOption.pathname, { replace: true });
           }}
+          sx={navigator}
           showLabels
           value={selectedOption.id}
         >
           {options.map(option => (
             <BottomNavigationAction
+              sx={item}
               key={option.text}
               label={option.text}
               icon={
@@ -70,39 +74,5 @@ function MainMenu({ options, layoutType }) {
     );
   }
 }
-
-const drawerWidth = 230;
-const drawer = {
-  width: drawerWidth,
-  flexShrink: 0,
-  '& .MuiDrawer-paper': {
-    width: drawerWidth,
-    boxSizing: 'border-box',
-    backgroundColor: 'secondary.main',
-  },
-};
-
-const toolbar = {
-  display: 'flex',
-  justifyContent: 'center',
-  padding: '20px 0',
-};
-
-const listItem = {
-  '> a': {
-    width: drawerWidth,
-    textDecoration: 'none',
-    color: 'white',
-    height: 'inherit',
-  },
-  '.Mui-selected': {
-    backgroundColor: '#003708',
-    borderLeft: '4px solid #ffffff',
-  },
-};
-
-const listItemIcon = {
-  color: 'white',
-};
 
 export default MainMenu;
