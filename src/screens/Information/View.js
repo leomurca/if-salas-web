@@ -9,34 +9,41 @@ import {
 } from '@mui/material';
 import { createArrayFrom1ToN } from '../../utils/createArrayFrom1ToN';
 
+import styles from './styles';
+
 function View({ faq, layoutType }) {
+  const {
+    stackContainer,
+    skeletonTitle,
+    skeletonQuestion,
+    skeletonStack,
+    accordionSkeletonStack,
+    title,
+    accordionSummary,
+  } = styles[layoutType];
+
   if (layoutType === 'desktop') {
     return (
-      <Stack sx={{ paddingTop: '80px' }} alignItems="center" height="100vh">
+      <Stack sx={stackContainer} alignItems="center" height="100vh">
         {faq === null ? (
-          <Stack width="70%" alignItems="center" gap="10px">
-            <Skeleton
-              variant="rectangular"
-              width={500}
-              height={50}
-              sx={{ marginBottom: '20px' }}
-            />
+          <Stack {...skeletonStack}>
+            <Skeleton {...skeletonTitle} />
             {createArrayFrom1ToN(6).map(i => (
               <Skeleton
                 key={i}
                 variant="rectangular"
-                width={window.innerWidth * 0.6}
-                height={50}
+                width={skeletonQuestion.width(window.innerWidth)}
+                height={skeletonQuestion.height}
               />
             ))}
           </Stack>
         ) : faq.length !== 0 ? (
-          <Stack width="70%" alignItems="center" gap="10px">
-            <h1 style={{ textAlign: 'center' }}>Perguntas Frequentes</h1>
+          <Stack {...accordionSkeletonStack}>
+            <h1 style={title}>Perguntas Frequentes</h1>
             {faq.map((f, index) => (
               <Accordion key={index}>
                 <AccordionSummary
-                  sx={{ backgroundColor: '#f7f7f7' }}
+                  sx={accordionSummary}
                   expandIcon={<ExpandMore />}
                   aria-controls="panel1a-content"
                   id="panel1a-header"
@@ -56,34 +63,26 @@ function View({ faq, layoutType }) {
     );
   } else if (layoutType === 'mobile') {
     return (
-      <Stack
-        sx={{ paddingTop: '30px', paddingBottom: '100px' }}
-        alignItems="center"
-      >
+      <Stack sx={stackContainer} alignItems="center">
         {faq === null ? (
-          <Stack width="70%" alignItems="center" gap="10px">
-            <Skeleton
-              variant="rectangular"
-              width={200}
-              height={50}
-              sx={{ marginBottom: '20px' }}
-            />
+          <Stack {...skeletonStack}>
+            <Skeleton {...skeletonTitle} />
             {createArrayFrom1ToN(6).map(i => (
               <Skeleton
                 key={i}
                 variant="rectangular"
-                width={window.innerWidth * 0.9}
-                height={80}
+                width={skeletonQuestion.width(window.innerWidth)}
+                height={skeletonQuestion.height}
               />
             ))}
           </Stack>
         ) : faq.length !== 0 ? (
-          <Stack width="90%" alignItems="center" gap="10px">
-            <h1 style={{ textAlign: 'center' }}>Perguntas Frequentes</h1>
+          <Stack {...accordionSkeletonStack}>
+            <h1 style={title}>Perguntas Frequentes</h1>
             {faq.map((f, index) => (
               <Accordion key={index}>
                 <AccordionSummary
-                  sx={{ backgroundColor: '#f7f7f7' }}
+                  sx={accordionSummary}
                   expandIcon={<ExpandMore />}
                   aria-controls="panel1a-content"
                   id="panel1a-header"
