@@ -37,6 +37,19 @@ const desktopAccordionSummary = {
   backgroundColor: '#f7f7f7',
 };
 
+const desktopSectorsTitle = {
+  marginTop: '100px',
+  textAlign: 'center',
+};
+
+const desktopSectorsStack = {
+  sx: { padding: '40px', paddingBottom: '100px' },
+  justifyContent: 'center',
+  flexWrap: 'wrap',
+  flexDirection: 'row',
+  gap: '20px',
+};
+
 const desktop = {
   stackContainer: desktopStackContainer,
   skeletonTitle: desktopSkeletonTitle,
@@ -45,6 +58,8 @@ const desktop = {
   accordionSkeletonStack: desktopAccordionSkeletonStack,
   title: desktopTitle,
   accordionSummary: desktopAccordionSummary,
+  sectorsTitle: desktopSectorsTitle,
+  sectorsStack: desktopSectorsStack,
 };
 
 // ========== Mobile ==========
@@ -87,6 +102,17 @@ const mobileAccordionSummary = {
   backgroundColor: '#f7f7f7',
 };
 
+const mobileSectorsTitle = {
+  marginTop: '80px',
+  textAlign: 'center',
+  marginBottom: '30px',
+};
+
+const mobileSectorsStack = {
+  sx: { padding: '20px', paddingBottom: '100px' },
+  gap: '20px',
+};
+
 const mobile = {
   stackContainer: mobileStackContainer,
   skeletonTitle: mobileSkeletonTitle,
@@ -95,6 +121,8 @@ const mobile = {
   accordionSkeletonStack: mobileAccordionSkeletonStack,
   title: mobileTitle,
   accordionSummary: mobileAccordionSummary,
+  sectorsTitle: mobileSectorsTitle,
+  sectorsStack: mobileSectorsStack,
 };
 
 // ========== Unset ==========
@@ -106,6 +134,8 @@ const unset = {
   accordionSkeletonStack: null,
   title: null,
   accordionSummary: null,
+  sectorsTitle: null,
+  sectorsStack: null,
 };
 
 const styles = { desktop, mobile, unset };

@@ -7,11 +7,12 @@ import {
   Stack,
   Skeleton,
 } from '@mui/material';
+import SectorCard from '../../components/SectorCard';
 import { createArrayFrom1ToN } from '../../utils/createArrayFrom1ToN';
 
 import styles from './styles';
 
-function View({ faq, layoutType }) {
+function View({ faq, sectors, layoutType }) {
   const {
     stackContainer,
     skeletonTitle,
@@ -20,6 +21,8 @@ function View({ faq, layoutType }) {
     accordionSkeletonStack,
     title,
     accordionSummary,
+    sectorsTitle,
+    sectorsStack,
   } = styles[layoutType];
 
   if (layoutType === 'desktop') {
@@ -59,6 +62,18 @@ function View({ faq, layoutType }) {
         ) : (
           <h1>Nenhuma pergunta encontrada</h1>
         )}
+        <h1 style={sectorsTitle}>Setores do IFMG Campus Sabará</h1>
+        <Stack {...sectorsStack}>
+          {sectors.map(sector => (
+            <SectorCard
+              key={sector.title}
+              title={sector.title}
+              description={sector.description}
+              coverImage={sector.coverImage}
+              informationUrl={sector.informationUrl}
+            />
+          ))}
+        </Stack>
       </Stack>
     );
   } else if (layoutType === 'mobile') {
@@ -98,6 +113,18 @@ function View({ faq, layoutType }) {
         ) : (
           <h1>Nenhuma pergunta encontrada</h1>
         )}
+        <h1 style={sectorsTitle}>Setores do IFMG Campus Sabará</h1>
+        <Stack {...sectorsStack}>
+          {sectors.map(sector => (
+            <SectorCard
+              key={sector.title}
+              title={sector.title}
+              description={sector.description}
+              coverImage={sector.coverImage}
+              informationUrl={sector.informationUrl}
+            />
+          ))}
+        </Stack>
       </Stack>
     );
   }
