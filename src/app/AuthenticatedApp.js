@@ -1,39 +1,23 @@
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
-import {
-  CalendarMonth,
-  CalendarMonthOutlined,
-  Home as HomeIcon,
-  HomeOutlined,
-  Info,
-  InfoOutlined,
-} from '@mui/icons-material';
-import MainMenu from './components/MainMenu';
-import Home from './screens/Home';
-import Information from './screens/Information';
-import Calendar from './screens/Calendar';
 import { Container } from '@mui/system';
-import useLayoutType from './hooks/useLayoutType';
-import Toolbar from './components/Toolbar';
-import { useUser } from './context/user';
-import { useAuthState } from './context/auth';
-import Classroom from './screens/Classroom';
+import { useUser } from '../context/user';
+import { useAuthState } from '../context/auth';
+
+import MainMenu from '../components/MainMenu';
+import Home from '../screens/Home';
+import Information from '../screens/Information';
+import Calendar from '../screens/Calendar';
+import useLayoutType from '../hooks/useLayoutType';
+import Toolbar from '../components/Toolbar';
+import Classroom from '../screens/Classroom';
+
+import { avatarMenuOptions, menuOptions } from './data';
 
 function AuthenticatedApp() {
   const navigate = useNavigate();
   const { state } = useUser();
   const { logout } = useAuthState();
   const layoutType = useLayoutType();
-
-  const avatarMenuOptions = [
-    {
-      text: 'Meu Perfil',
-      action: () => navigate('/profile', { replace: true }),
-    },
-    {
-      text: 'Sair',
-      action: logout,
-    },
-  ];
 
   return (
     state &&
@@ -46,7 +30,7 @@ function AuthenticatedApp() {
             </p>
           }
           layoutType={layoutType}
-          avatarMenuOptions={avatarMenuOptions}
+          avatarMenuOptions={avatarMenuOptions(navigate, logout)}
         />
         <Container
           maxWidth="false"
@@ -87,36 +71,5 @@ const mobileContainer = {
   flexDirection: 'column',
   justifyContent: 'start',
 };
-
-const menuOptions = activePath => [
-  {
-    id: 0,
-    text: 'Página Inicial',
-    selectedIcon: <HomeIcon />,
-    unselectedIcon: <HomeOutlined />,
-    pathname: '/home',
-    isActive:
-      activePath === '/home' ||
-      activePath === '/login' ||
-      activePath === '/' ||
-      activePath.indexOf('class') !== -1,
-  },
-  {
-    id: 1,
-    text: 'Informações',
-    selectedIcon: <Info />,
-    unselectedIcon: <InfoOutlined />,
-    pathname: '/info',
-    isActive: activePath === '/info',
-  },
-  {
-    id: 2,
-    text: 'Calendário',
-    selectedIcon: <CalendarMonth />,
-    unselectedIcon: <CalendarMonthOutlined />,
-    pathname: '/calendar',
-    isActive: activePath === '/calendar',
-  },
-];
 
 export default AuthenticatedApp;

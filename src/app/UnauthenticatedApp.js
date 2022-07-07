@@ -1,8 +1,8 @@
 import { Container } from '@mui/material';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import Login from './screens/Login';
-import UnauthenticatedHome from './screens/UnauthenticatedHome';
+import Login from '../screens/Login';
+import UnauthenticatedHome from '../screens/UnauthenticatedHome';
 
 function UnauthenticatedApp() {
   return (

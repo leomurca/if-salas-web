@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
-import { useAuthState } from './context/auth';
+import { useAuthState } from '../context/auth';
 
-import LoadingIndicator from './components/LoadingIndicator';
+import LoadingIndicator from '../components/LoadingIndicator';
 
 const AuthenticatedApp = lazy(() => import('./AuthenticatedApp'));
 const UnauthenticatedApp = lazy(() => import('./UnauthenticatedApp'));
