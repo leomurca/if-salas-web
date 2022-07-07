@@ -1,7 +1,7 @@
 // ========== Desktop ==========
 const desktopCardContainer = classrooms => ({
   position: 'relative',
-  width: '100%',
+  width: '35em',
   borderLeft: `5px solid ${classrooms[0].color}`,
 });
 

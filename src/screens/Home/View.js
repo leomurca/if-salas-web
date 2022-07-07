@@ -56,7 +56,7 @@ function View({ layoutType, classrooms, assignments, onClickClassCard }) {
                 <Skeleton
                   key={i}
                   variant="rectangular"
-                  width={390}
+                  width="35em"
                   height={145}
                 />
               ))
@@ -130,7 +130,7 @@ function View({ layoutType, classrooms, assignments, onClickClassCard }) {
                 key={i}
                 variant="rectangular"
                 width="100%"
-                height={245}
+                height={190}
               />
             ))
           ) : assignments.length !== 0 ? (
