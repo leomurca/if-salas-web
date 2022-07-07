@@ -1,5 +1,5 @@
 import { sleep } from '../utils/sleep';
-import { allClassrooms, allAssignments, faq } from './mocks';
+import { allClassrooms, allAssignments, faq, user, authFailure } from './mocks';
 
 const getClassrooms = userId =>
   sleep(3000).then(() => {
@@ -33,4 +33,14 @@ const getFaq = () =>
     };
   });
 
-export { getClassrooms, getClassroomById, getAssignments, getFaq };
+const getUser = shouldFail =>
+  sleep(3000).then(() => {
+    if (shouldFail) {
+      return authFailure;
+    } else {
+      window.localStorage.setItem('$USER', JSON.stringify(user));
+      return user;
+    }
+  });
+
+export { getClassrooms, getClassroomById, getAssignments, getFaq, getUser };

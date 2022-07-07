@@ -166,4 +166,16 @@ const faq = [
   },
 ];
 
-export { allClassrooms, allAssignments, faq };
+const user = {
+  id: '0021564',
+  username: 'leonardomurca',
+  name: 'Leonardo',
+  lastName: 'Murça',
+  token: 'skdfb9458hnsdfsif4w38r9234ry98423',
+};
+
+const authFailure = {
+  message: 'Falha na autenticação',
+};
+
+export { allClassrooms, allAssignments, faq, user, authFailure };

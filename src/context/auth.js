@@ -1,20 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { sleep } from '../utils/sleep';
-
-const getUser = shouldFail =>
-  sleep(3000).then(() => {
-    if (shouldFail) {
-      return { message: 'Falha na autenticação' };
-    } else {
-      return {
-        id: '0021564',
-        username: 'leonardomurca',
-        name: 'Leonardo',
-        lastName: 'Murça',
-        token: 'skdfb9458hnsdfsif4w38r9234ry98423',
-      };
-    }
-  });
+import { getUser } from '../services/user-service';
 
 const AuthContext = createContext();
 
@@ -43,7 +28,6 @@ function AuthProvider(props) {
       if (shouldFail) {
         return setState({ status: 'error', user: null, error: data });
       } else {
-        window.localStorage.setItem('$USER', JSON.stringify(data));
         return setState({ status: 'success', user: data, error: null });
       }
     });
