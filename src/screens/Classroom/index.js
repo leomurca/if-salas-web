@@ -9,6 +9,7 @@ function Classroom() {
 
   useEffect(() => {
     async function getClassroomById(classId) {
+      document.title = 'Carregando...';
       const result = await fetchClassroomById(classId);
       setClassroom(result.data);
     }
