@@ -1,5 +1,12 @@
 import { sleep } from '../utils/sleep';
-import { allClassrooms, allAssignments, faq, user, authFailure } from './mocks';
+import {
+  allClassrooms,
+  allAssignments,
+  faq,
+  user,
+  authFailure,
+  allClassroomAnnouncements,
+} from './mocks';
 
 const getClassrooms = userId =>
   sleep(3000).then(() => {
@@ -14,6 +21,14 @@ const getClassroomById = classId =>
     console.log('classId ' + classId);
     return {
       data: allClassrooms.filter(c => c.id === classId)[0],
+    };
+  });
+
+const getClassroomAnnouncementsById = classId =>
+  sleep(3000).then(() => {
+    console.log('classId ' + classId);
+    return {
+      data: allClassroomAnnouncements.filter(c => c.classId === classId),
     };
   });
 
@@ -43,4 +58,11 @@ const getUser = shouldFail =>
     }
   });
 
-export { getClassrooms, getClassroomById, getAssignments, getFaq, getUser };
+export {
+  getClassrooms,
+  getClassroomById,
+  getAssignments,
+  getClassroomAnnouncementsById,
+  getFaq,
+  getUser,
+};

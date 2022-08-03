@@ -8,11 +8,13 @@ import View from './View';
 function Classroom() {
   const params = useParams();
   const layoutType = useLayoutType();
-  const { fetchClassroomById } = useUser();
+  const { fetchClassroomById, fetchClassroomAnnouncements } = useUser();
   const [classroom, setClassroom] = useState(null);
   const [selectedTabOption, setSelectedTabOption] = useState(
     TAB_OPTIONS.map(o => o.value).indexOf('announcements')
   );
+
+  const [announcements, setAnnouncements] = useState(null);
 
   const onSelectTabOption = (_, value) => {
     setSelectedTabOption(value);
@@ -33,6 +35,21 @@ function Classroom() {
       document.title = classroom.name;
     }
   }, [classroom]);
+
+  useEffect(() => {
+    async function getSelectedTabData() {
+      if (selectedTabOption === 0) {
+        console.log('Fetch announcements');
+        const result = await fetchClassroomAnnouncements(params.id);
+        setAnnouncements(result.data);
+      } else if (selectedTabOption === 1) {
+        console.log('Fetch assignments');
+      } else if (selectedTabOption === 2) {
+        console.log('Fetch people');
+      }
+    }
+    getSelectedTabData();
+  }, [fetchClassroomAnnouncements, selectedTabOption, params]);
 
   return (
     <View

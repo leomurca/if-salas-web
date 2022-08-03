@@ -6,6 +6,7 @@ const allClassrooms = [
     color: '#006FF2',
     teachers: [
       {
+        id: '2342',
         name: 'Carlos Alexandre Silva',
         avatar:
           'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=50&q=80',
@@ -19,11 +20,13 @@ const allClassrooms = [
     color: '#7900F2',
     teachers: [
       {
+        id: '1234',
         name: 'Míriam Lúcia Barbosa',
         avatar:
           'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=50&q=80',
       },
       {
+        id: '4321',
         name: 'Alexandre Couto Cardoso',
         avatar: '/assets/alex.jpg',
       },
@@ -36,6 +39,7 @@ const allClassrooms = [
     color: '#FF7A00',
     teachers: [
       {
+        id: '6781',
         name: 'Cristiane Norbiato Targa',
         avatar:
           'https://lh3.googleusercontent.com/a-/AOh14GhwNeQ0h2eKl2WXGuwyDzvLWtrvyrG2kJtZ7A1EBw=s75-c',
@@ -49,6 +53,7 @@ const allClassrooms = [
     color: '#BB0000',
     teachers: [
       {
+        id: '4321',
         name: 'Alexandre Couto Cardoso',
         avatar: '/assets/alex.jpg',
       },
@@ -61,6 +66,7 @@ const allClassrooms = [
     color: '#039200',
     teachers: [
       {
+        id: '9999',
         name: 'Gabriel Felipe Cândido Novy',
         avatar:
           'https://lh3.googleusercontent.com/a-/AOh14GgvfrD--cl25V_3UOAR93sN_jKdYNJ9PXhUH2zXhQ=s75-c',
@@ -138,6 +144,59 @@ const allAssignments = [
   },
 ];
 
+const allClassroomAnnouncements = [
+  {
+    id: '850006245121695744',
+    classId: '321',
+    createdAt: 'Thu Apr 06 15:24:15 +0000 2017',
+    text: '1/ Today we\u2019re sharing our vision for the future of the Twitter API platform!\nhttps://t.co/XweGngmxlP',
+    user: {
+      id: '2342',
+      name: 'Carlos Alexandre Silva',
+      avatar:
+        'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=50&q=80',
+    },
+    classroom: {
+      id: '321',
+      name: 'Introdução à Ciência de Dados',
+      abbreviation: 'ICD',
+      color: '#006FF2',
+      teachers: [
+        {
+          name: 'Carlos Alexandre Silva',
+          avatar:
+            'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=50&q=80',
+        },
+      ],
+    },
+  },
+  {
+    id: '39450273466121695744',
+    classId: '321',
+    createdAt: 'Thu Apr 06 15:24:15 +0000 2017',
+    text: 'Mussum Ipsum, cacilds vidis litro abertis. Quem manda na minha terra sou euzis!Viva Forevis aptent taciti sociosqu ad litora torquent.Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.Quem num gosta di mim que vai caçá sua turmis!',
+    user: {
+      id: '2342',
+      name: 'Carlos Alexandre Silva',
+      avatar:
+        'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=50&q=80',
+    },
+    classroom: {
+      id: '321',
+      name: 'Introdução à Ciência de Dados',
+      abbreviation: 'ICD',
+      color: '#006FF2',
+      teachers: [
+        {
+          name: 'Carlos Alexandre Silva',
+          avatar:
+            'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=50&q=80',
+        },
+      ],
+    },
+  },
+];
+
 const faq = [
   {
     question: 'Como faço para acessar a biblicoteca virtual?',
@@ -178,4 +237,11 @@ const authFailure = {
   message: 'Falha na autenticação',
 };
 
-export { allClassrooms, allAssignments, faq, user, authFailure };
+export {
+  allClassrooms,
+  allAssignments,
+  allClassroomAnnouncements,
+  faq,
+  user,
+  authFailure,
+};

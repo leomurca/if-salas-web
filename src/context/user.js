@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useAuthState } from './auth';
 import {
   getAssignments,
+  getClassroomAnnouncementsById,
   getClassroomById,
   getClassrooms,
   getFaq,
@@ -31,6 +32,9 @@ function UserProvider(props) {
 
   const fetchFAQ = () => getFaq();
 
+  const fetchClassroomAnnouncements = classId =>
+    getClassroomAnnouncementsById(classId);
+
   return (
     <UserContext.Provider
       value={{
@@ -39,6 +43,7 @@ function UserProvider(props) {
         fetchAssignments,
         fetchClassroomById,
         fetchFAQ,
+        fetchClassroomAnnouncements,
       }}
       {...props}
     />
@@ -52,6 +57,7 @@ function useUser() {
     fetchAssignments,
     fetchClassroomById,
     fetchFAQ,
+    fetchClassroomAnnouncements,
   } = useContext(UserContext);
 
   return {
@@ -60,6 +66,7 @@ function useUser() {
     fetchAssignments,
     fetchClassroomById,
     fetchFAQ,
+    fetchClassroomAnnouncements,
   };
 }
 
