@@ -28,7 +28,7 @@ const getClassroomAnnouncementsById = classId =>
   sleep(3000).then(() => {
     console.log('classId ' + classId);
     return {
-      data: allClassroomAnnouncements.filter(c => c.classId === classId),
+      data: allClassroomAnnouncements.filter(c => c.classroom.id === classId),
     };
   });
 

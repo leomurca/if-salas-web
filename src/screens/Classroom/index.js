@@ -64,6 +64,7 @@ function Classroom() {
       announcements={
         tabData && tabData.tab === 'announcements' ? tabData : null
       }
+      people={tabData && tabData.tab === 'people' ? tabData : null}
     />
   );
 }

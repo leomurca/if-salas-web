@@ -147,9 +147,8 @@ const allAssignments = [
 const allClassroomAnnouncements = [
   {
     id: '850006245121695744',
-    classId: '321',
-    createdAt: 'Thu Apr 06 15:24:15 +0000 2017',
-    text: '1/ Today we\u2019re sharing our vision for the future of the Twitter API platform!\nhttps://t.co/XweGngmxlP',
+    createdAt: '2022-08-01T16:00:00.000Z',
+    text: 'Mussum Ipsum, cacilds vidis litro abertis. Viva Forevis aptent taciti sociosqu ad litora torquent.Quem num gosta di mim que vai caçá sua turmis!Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.\n\n Cevadis im ampola pa arma uma pindureta.Paisis, filhis, espiritis santis.Quem manda na minha terra sou euzis!Per aumento de cachacis, eu reclamis.',
     user: {
       id: '2342',
       name: 'Carlos Alexandre Silva',
@@ -169,11 +168,11 @@ const allClassroomAnnouncements = [
         },
       ],
     },
+    attachments: null,
   },
   {
     id: '39450273466121695744',
-    classId: '321',
-    createdAt: 'Thu Apr 06 15:24:15 +0000 2017',
+    createdAt: '2022-05-26T16:00:00.000Z',
     text: 'Mussum Ipsum, cacilds vidis litro abertis. Quem manda na minha terra sou euzis!Viva Forevis aptent taciti sociosqu ad litora torquent.Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.Quem num gosta di mim que vai caçá sua turmis!',
     user: {
       id: '2342',
@@ -194,6 +193,7 @@ const allClassroomAnnouncements = [
         },
       ],
     },
+    attachments: null,
   },
 ];
 

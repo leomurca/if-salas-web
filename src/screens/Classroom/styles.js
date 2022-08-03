@@ -54,10 +54,10 @@ const mobileTitle = {
 
 const mobileContainer = {
   width: '90%',
-  height: '100vh',
   backgroundColor: '#red',
   padding: 0,
   marginTop: '30px',
+  paddingBottom: '100px',
 };
 
 const mobilePaper = classColor => ({
