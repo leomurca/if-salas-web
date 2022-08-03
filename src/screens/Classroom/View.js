@@ -12,7 +12,13 @@ import {
 import { TAB_OPTIONS } from './tabOptions';
 import styles from './styles';
 
-function View({ layoutType, classroom, selectedTabOption, onSelectTabOption }) {
+function View({
+  layoutType,
+  classroom,
+  selectedTabOption,
+  onSelectTabOption,
+  announcements,
+}) {
   const { title, container, paper, tabs, avatar, tooltip } = styles[layoutType];
   return (
     <Container disableGutters sx={container}>
@@ -52,6 +58,28 @@ function View({ layoutType, classroom, selectedTabOption, onSelectTabOption }) {
             </Tabs>
           </Paper>
         </Container>
+      )}
+      {announcements === null ? (
+        <h1>Loading...</h1>
+      ) : (
+        announcements.data.map(announcement => (
+          <Paper
+            sx={{ marginTop: '30px' }}
+            key={announcement.id}
+            elevation={4}
+            variant="elevation"
+          >
+            <Stack alignItems="center" direction="row" spacing={1}>
+              <Avatar
+                key={announcement.user.id}
+                alt={announcement.user.name}
+                src={announcement.user.avatar}
+              />
+              <Typography variant="body1">{announcement.user.name}</Typography>
+            </Stack>
+            {announcement.text}
+          </Paper>
+        ))
       )}
     </Container>
   );

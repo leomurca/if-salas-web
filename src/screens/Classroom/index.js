@@ -14,7 +14,7 @@ function Classroom() {
     TAB_OPTIONS.map(o => o.value).indexOf('announcements')
   );
 
-  const [announcements, setAnnouncements] = useState(null);
+  const [tabData, setTabData] = useState(null);
 
   const onSelectTabOption = (_, value) => {
     setSelectedTabOption(value);
@@ -38,10 +38,14 @@ function Classroom() {
 
   useEffect(() => {
     async function getSelectedTabData() {
+      setTabData(null);
       if (selectedTabOption === 0) {
         console.log('Fetch announcements');
         const result = await fetchClassroomAnnouncements(params.id);
-        setAnnouncements(result.data);
+        setTabData({
+          tab: TAB_OPTIONS[selectedTabOption].value,
+          data: [...result.data],
+        });
       } else if (selectedTabOption === 1) {
         console.log('Fetch assignments');
       } else if (selectedTabOption === 2) {
@@ -57,6 +61,9 @@ function Classroom() {
       classroom={classroom}
       selectedTabOption={selectedTabOption}
       onSelectTabOption={onSelectTabOption}
+      announcements={
+        tabData && tabData.tab === 'announcements' ? tabData : null
+      }
     />
   );
 }
