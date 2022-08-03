@@ -6,6 +6,7 @@ import {
   Grid,
   Link,
   Paper,
+  Skeleton,
   Stack,
   Tab,
   Tabs,
@@ -15,6 +16,7 @@ import {
 import { TAB_OPTIONS } from './tabOptions';
 import styles from './styles';
 import AnnouncementCard from '../../components/AnnouncementCard';
+import { createArrayFrom1ToN } from '../../utils/createArrayFrom1ToN';
 
 function View({
   layoutType,
@@ -28,7 +30,7 @@ function View({
     return (
       <Container disableGutters sx={container}>
         {classroom === null ? (
-          <h1>Loading...</h1>
+          <Skeleton variant="rectangular" width="100%" height={240} />
         ) : (
           <Container disableGutters>
             <Paper
@@ -73,7 +75,22 @@ function View({
           </Container>
         )}
         {announcementsTabData === null ? (
-          <h1>Loading...</h1>
+          <Grid sx={container} container spacing={2}>
+            <Grid item xs={4}>
+              <Skeleton variant="rectangular" width="100%" height={200} />
+            </Grid>
+            <Grid item xs={8}>
+              {createArrayFrom1ToN(4).map(i => (
+                <Skeleton
+                  key={i}
+                  variant="rectangular"
+                  width="100%"
+                  height={250}
+                  sx={{ marginBottom: '30px' }}
+                />
+              ))}
+            </Grid>
+          </Grid>
         ) : (
           <Grid sx={container} container spacing={2}>
             <Grid item xs={4}>
@@ -119,7 +136,7 @@ function View({
     return (
       <Container disableGutters sx={container}>
         {classroom === null ? (
-          <h1>Loading...</h1>
+          <Skeleton variant="rectangular" width="100%" height={240} />
         ) : (
           <Container disableGutters>
             <Paper
@@ -164,7 +181,26 @@ function View({
           </Container>
         )}
         {announcementsTabData === null ? (
-          <h1>Loading...</h1>
+          <Stack
+            alignItems="center"
+            justifyContent="center"
+            flexWrap="wrap"
+            direction="row"
+            gap="30px"
+            sx={{ marginTop: '30px' }}
+          >
+            <Skeleton variant="rectangular" width="100%" height={200} />
+
+            {createArrayFrom1ToN(4).map(i => (
+              <Skeleton
+                key={i}
+                variant="rectangular"
+                width="100%"
+                height={250}
+                sx={{ marginBottom: '30px' }}
+              />
+            ))}
+          </Stack>
         ) : (
           <Stack
             alignItems="center"
