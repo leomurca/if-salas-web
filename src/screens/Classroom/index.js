@@ -8,7 +8,11 @@ import View from './View';
 function Classroom() {
   const params = useParams();
   const layoutType = useLayoutType();
-  const { fetchClassroomById, fetchClassroomAnnouncements } = useUser();
+  const {
+    fetchClassroomById,
+    fetchClassroomAnnouncements,
+    fetchUpcomingAssignments,
+  } = useUser();
   const [classroom, setClassroom] = useState(null);
   const [selectedTabOption, setSelectedTabOption] = useState(
     TAB_OPTIONS.map(o => o.value).indexOf('announcements')
@@ -40,11 +44,13 @@ function Classroom() {
     async function getSelectedTabData() {
       setTabData(null);
       if (selectedTabOption === 0) {
-        console.log('Fetch announcements');
-        const result = await fetchClassroomAnnouncements(params.id);
+        const announcements = await fetchClassroomAnnouncements(params.id);
+        const upcomingAssignments = await fetchUpcomingAssignments(params.id);
+
         setTabData({
           tab: TAB_OPTIONS[selectedTabOption].value,
-          data: [...result.data],
+          announcements: [...announcements.data],
+          upcomingAssignments: [...upcomingAssignments.data],
         });
       } else if (selectedTabOption === 1) {
         console.log('Fetch assignments');
@@ -53,7 +59,12 @@ function Classroom() {
       }
     }
     getSelectedTabData();
-  }, [fetchClassroomAnnouncements, selectedTabOption, params]);
+  }, [
+    fetchClassroomAnnouncements,
+    fetchUpcomingAssignments,
+    selectedTabOption,
+    params,
+  ]);
 
   return (
     <View
@@ -61,10 +72,9 @@ function Classroom() {
       classroom={classroom}
       selectedTabOption={selectedTabOption}
       onSelectTabOption={onSelectTabOption}
-      announcements={
+      announcementsTabData={
         tabData && tabData.tab === 'announcements' ? tabData : null
       }
-      people={tabData && tabData.tab === 'people' ? tabData : null}
     />
   );
 }

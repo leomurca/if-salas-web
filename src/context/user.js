@@ -7,6 +7,7 @@ import {
   getClassroomById,
   getClassrooms,
   getFaq,
+  getUpcomingAssignmentsById,
 } from '../services/user-service';
 
 const UserContext = createContext();
@@ -35,6 +36,9 @@ function UserProvider(props) {
   const fetchClassroomAnnouncements = classId =>
     getClassroomAnnouncementsById(classId);
 
+  const fetchUpcomingAssignments = classId =>
+    getUpcomingAssignmentsById(classId);
+
   return (
     <UserContext.Provider
       value={{
@@ -44,6 +48,7 @@ function UserProvider(props) {
         fetchClassroomById,
         fetchFAQ,
         fetchClassroomAnnouncements,
+        fetchUpcomingAssignments,
       }}
       {...props}
     />
@@ -58,6 +63,7 @@ function useUser() {
     fetchClassroomById,
     fetchFAQ,
     fetchClassroomAnnouncements,
+    fetchUpcomingAssignments,
   } = useContext(UserContext);
 
   return {
@@ -67,6 +73,7 @@ function useUser() {
     fetchClassroomById,
     fetchFAQ,
     fetchClassroomAnnouncements,
+    fetchUpcomingAssignments,
   };
 }
 

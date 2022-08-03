@@ -1,8 +1,10 @@
 import {
   Avatar,
   AvatarGroup,
+  Card,
   Container,
   Grid,
+  Link,
   Paper,
   Stack,
   Tab,
@@ -19,10 +21,9 @@ function View({
   classroom,
   selectedTabOption,
   onSelectTabOption,
-  announcements,
+  announcementsTabData,
 }) {
   const { title, container, paper, tabs, avatar, tooltip } = styles[layoutType];
-
   if (layoutType === 'desktop') {
     return (
       <Container disableGutters sx={container}>
@@ -71,20 +72,26 @@ function View({
             </Paper>
           </Container>
         )}
-        {announcements === null ? (
+        {announcementsTabData === null ? (
           <h1>Loading...</h1>
         ) : (
           <Grid sx={container} container spacing={2}>
             <Grid item xs={4}>
-              <Container
-                disableGutters
-                sx={{
-                  backgroundColor: 'tomato',
-                  height: '100vh',
-                  textAlign: 'center',
-                }}
-              >
-                Left
+              <Container disableGutters>
+                <Card
+                  sx={{ width: '100%', padding: '20px' }}
+                  elevation={4}
+                  variant="elevation"
+                >
+                  <Stack justifyContent="flex-start" spacing={1}>
+                    <h3>Próximas Atividades</h3>
+                    {announcementsTabData.upcomingAssignments.map(ua => (
+                      <Link sx={{ fontSize: '15px' }} key={ua.id}>
+                        {ua.title}
+                      </Link>
+                    ))}
+                  </Stack>
+                </Card>
               </Container>
             </Grid>
             <Grid item xs={8}>
@@ -96,7 +103,7 @@ function View({
                 direction="row"
                 gap="30px"
               >
-                {announcements.data.map(announcement => (
+                {announcementsTabData.announcements.map(announcement => (
                   <AnnouncementCard
                     key={announcement.id}
                     announcement={announcement}
@@ -156,7 +163,7 @@ function View({
             </Paper>
           </Container>
         )}
-        {announcements === null ? (
+        {announcementsTabData === null ? (
           <h1>Loading...</h1>
         ) : (
           <Stack
@@ -167,15 +174,21 @@ function View({
             gap="30px"
             sx={{ marginTop: '30px' }}
           >
-            <Container
-              disableGutters
-              sx={{
-                backgroundColor: 'tomato',
-                height: '400px',
-                textAlign: 'center',
-              }}
-            >
-              Left
+            <Container disableGutters>
+              <Card
+                sx={{ width: '100%', padding: '20px' }}
+                elevation={4}
+                variant="elevation"
+              >
+                <Stack justifyContent="flex-start" spacing={1}>
+                  <h3>Próximas Atividades</h3>
+                  {announcementsTabData.upcomingAssignments.map(ua => (
+                    <Link sx={{ fontSize: '15px' }} key={ua.id}>
+                      {ua.title}
+                    </Link>
+                  ))}
+                </Stack>
+              </Card>
             </Container>
             <Stack
               sx={{ width: '100%' }}
@@ -185,7 +198,7 @@ function View({
               direction="row"
               gap="30px"
             >
-              {announcements.data.map(announcement => (
+              {announcementsTabData.announcements.map(announcement => (
                 <AnnouncementCard
                   key={announcement.id}
                   announcement={announcement}

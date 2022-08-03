@@ -6,6 +6,7 @@ import {
   user,
   authFailure,
   allClassroomAnnouncements,
+  allUpcomingAssignments,
 } from './mocks';
 
 const getClassrooms = userId =>
@@ -29,6 +30,16 @@ const getClassroomAnnouncementsById = classId =>
     console.log('classId ' + classId);
     return {
       data: allClassroomAnnouncements.filter(c => c.classroom.id === classId),
+    };
+  });
+
+const getUpcomingAssignmentsById = classId =>
+  sleep(3000).then(() => {
+    console.log('classId ' + classId);
+    return {
+      data: allUpcomingAssignments.filter(a =>
+        a.classrooms.filter(c => c.id === classId)
+      ),
     };
   });
 
@@ -63,6 +74,7 @@ export {
   getClassroomById,
   getAssignments,
   getClassroomAnnouncementsById,
+  getUpcomingAssignmentsById,
   getFaq,
   getUser,
 };

@@ -90,6 +90,19 @@ const allAssignments = [
     classrooms: allClassrooms.filter(c => c.id === '321'),
   },
   {
+    id: '0128',
+    title:
+      'Prova 2 - Visualização de Dados. Matemática e Estatística em CD. Análise de Dados',
+    dueDate: '2022-09-01 23:59',
+    scores: [
+      {
+        classroomId: '321',
+        value: 30,
+      },
+    ],
+    classrooms: allClassrooms.filter(c => c.id === '321'),
+  },
+  {
     id: '1234',
     title: 'Trabalho NoSQL',
     dueDate: '2022-06-29 22:00',
@@ -197,6 +210,35 @@ const allClassroomAnnouncements = [
   },
 ];
 
+const allUpcomingAssignments = [
+  {
+    id: '5435',
+    title:
+      'Prova 1 - Armazenamento de Dados. Python em CD. Armazenamento Analítico',
+    dueDate: '2022-07-01 23:59',
+    scores: [
+      {
+        classroomId: '321',
+        value: 30,
+      },
+    ],
+    classrooms: allClassrooms.filter(c => c.id === '321'),
+  },
+  {
+    id: '0128',
+    title:
+      'Prova 2 - Visualização de Dados. Matemática e Estatística em CD. Análise de Dados',
+    dueDate: '2022-09-01 23:59',
+    scores: [
+      {
+        classroomId: '321',
+        value: 30,
+      },
+    ],
+    classrooms: allClassrooms.filter(c => c.id === '321'),
+  },
+];
+
 const faq = [
   {
     question: 'Como faço para acessar a biblicoteca virtual?',
@@ -244,4 +286,5 @@ export {
   faq,
   user,
   authFailure,
+  allUpcomingAssignments,
 };
