@@ -208,6 +208,67 @@ const allClassroomAnnouncements = [
     },
     attachments: null,
   },
+  {
+    id: '34752034624396',
+    createdAt: '2021-09-30T09:26:00.000Z',
+    text: 'Mussum Ipsum, cacilds vidis litro abertis. Quem manda na minha terra sou euzis!Viva Forevis aptent taciti sociosqu ad litora torquent.Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.Quem num gosta di mim que vai caçá sua turmis!',
+    user: {
+      id: '4321',
+      name: 'Alexandre Couto Cardoso',
+      avatar: '/assets/alex.jpg',
+    },
+    classroom: {
+      id: '123',
+      name: 'Gestão de Projetos',
+      abbreviation: 'GP',
+      color: '#7900F2',
+      teachers: [
+        {
+          id: '1234',
+          name: 'Míriam Lúcia Barbosa',
+          avatar:
+            'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=50&q=80',
+        },
+        {
+          id: '4321',
+          name: 'Alexandre Couto Cardoso',
+          avatar: '/assets/alex.jpg',
+        },
+      ],
+    },
+    attachments: null,
+  },
+  {
+    id: '34752034624396',
+    createdAt: '2021-08-10T10:10:00.000Z',
+    text: 'Mussum Ipsum, cacilds vidis litro abertis. Não sou faixa preta cumpadi, sou preto inteiris, inteiris.Atirei o pau no gatis, per gatis num morreus.Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis.Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo! Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Interagi no mé, cursus quis, vehicula ac nisi.Aenean aliquam molestie leo, vitae iaculis nisl.Paisis, filhis, espiritis santis. Viva Forevis aptent taciti sociosqu ad litora torquent.Manduma pindureta quium dia nois paga.Cevadis im ampola pa arma uma pindureta.Praesent malesuada urna nisi, quis volutpat erat hendrerit non. Nam vulputate dapibus.',
+    user: {
+      id: '1234',
+      name: 'Míriam Lúcia Barbosa',
+      avatar:
+        'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=50&q=80',
+    },
+    classroom: {
+      id: '123',
+      name: 'Gestão de Projetos',
+      abbreviation: 'GP',
+      color: '#7900F2',
+      teachers: [
+        {
+          id: '1234',
+          name: 'Míriam Lúcia Barbosa',
+          avatar:
+            'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=50&q=80',
+        },
+        {
+          id: '4321',
+          name: 'Alexandre Couto Cardoso',
+          avatar: '/assets/alex.jpg',
+        },
+      ],
+    },
+    attachments: null,
+  },
 ];
 
 const allUpcomingAssignments = [
