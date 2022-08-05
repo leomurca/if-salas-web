@@ -1,6 +1,7 @@
 import {
   Avatar,
   AvatarGroup,
+  Button,
   Card,
   Container,
   Grid,
@@ -17,6 +18,7 @@ import { TAB_OPTIONS } from './tabOptions';
 import styles from './styles';
 import AnnouncementCard from '../../components/AnnouncementCard';
 import { createArrayFrom1ToN } from '../../utils/createArrayFrom1ToN';
+import jitsiLogo from '../../assets/jitsi.svg';
 
 function View({
   layoutType,
@@ -77,7 +79,15 @@ function View({
         {announcementsTabData === null ? (
           <Grid sx={container} container spacing={2}>
             <Grid item xs={4}>
-              <Skeleton variant="rectangular" width="100%" height={200} />
+              {createArrayFrom1ToN(2).map(i => (
+                <Skeleton
+                  key={i}
+                  variant="rectangular"
+                  width="100%"
+                  height={200}
+                  sx={{ marginBottom: '30px' }}
+                />
+              ))}
             </Grid>
             <Grid item xs={8}>
               {createArrayFrom1ToN(4).map(i => (
@@ -94,14 +104,37 @@ function View({
         ) : (
           <Grid sx={container} container spacing={2}>
             <Grid item xs={4}>
-              <Container disableGutters>
+              <Stack gap="30px">
                 <Card
                   sx={{ width: '100%', padding: '20px' }}
                   elevation={4}
                   variant="elevation"
                 >
                   <Stack justifyContent="flex-start" spacing={1}>
-                    <h3>Próximas Atividades</h3>
+                    <Container
+                      disableGutters
+                      sx={{ display: 'flex', justifyContent: 'row' }}
+                    >
+                      <img src={jitsiLogo} alt="Jitsi Meet" />
+                      <h3 style={{ fontWeight: 500 }}>Jitsi</h3>
+                    </Container>
+
+                    <Button
+                      variant="contained"
+                      href="https://google.com"
+                      target="__blank"
+                    >
+                      Entrar
+                    </Button>
+                  </Stack>
+                </Card>
+                <Card
+                  sx={{ width: '100%', padding: '20px' }}
+                  elevation={4}
+                  variant="elevation"
+                >
+                  <Stack justifyContent="flex-start" spacing={1}>
+                    <h3 style={{ fontWeight: 500 }}>Próximas Atividades</h3>
                     {announcementsTabData.upcomingAssignments.map(ua => (
                       <Link sx={{ fontSize: '15px' }} key={ua.id}>
                         {ua.title}
@@ -109,7 +142,7 @@ function View({
                     ))}
                   </Stack>
                 </Card>
-              </Container>
+              </Stack>
             </Grid>
             <Grid item xs={8}>
               <Stack
@@ -189,8 +222,15 @@ function View({
             gap="30px"
             sx={{ marginTop: '30px' }}
           >
-            <Skeleton variant="rectangular" width="100%" height={200} />
-
+            {createArrayFrom1ToN(2).map(i => (
+              <Skeleton
+                key={i}
+                variant="rectangular"
+                width="100%"
+                height={200}
+                sx={{ marginBottom: '30px' }}
+              />
+            ))}
             {createArrayFrom1ToN(4).map(i => (
               <Skeleton
                 key={i}
@@ -210,14 +250,37 @@ function View({
             gap="30px"
             sx={{ marginTop: '30px' }}
           >
-            <Container disableGutters>
+            <Stack gap="30px">
               <Card
                 sx={{ width: '100%', padding: '20px' }}
                 elevation={4}
                 variant="elevation"
               >
                 <Stack justifyContent="flex-start" spacing={1}>
-                  <h3>Próximas Atividades</h3>
+                  <Container
+                    disableGutters
+                    sx={{ display: 'flex', justifyContent: 'row' }}
+                  >
+                    <img src={jitsiLogo} alt="Jitsi Meet" />
+                    <h3 style={{ fontWeight: 500 }}>Jitsi</h3>
+                  </Container>
+
+                  <Button
+                    variant="contained"
+                    href="https://google.com"
+                    target="__blank"
+                  >
+                    Entrar
+                  </Button>
+                </Stack>
+              </Card>
+              <Card
+                sx={{ width: '100%', padding: '20px' }}
+                elevation={4}
+                variant="elevation"
+              >
+                <Stack justifyContent="flex-start" spacing={1}>
+                  <h3 style={{ fontWeight: 500 }}>Próximas Atividades</h3>
                   {announcementsTabData.upcomingAssignments.map(ua => (
                     <Link sx={{ fontSize: '15px' }} key={ua.id}>
                       {ua.title}
@@ -225,7 +288,7 @@ function View({
                   ))}
                 </Stack>
               </Card>
-            </Container>
+            </Stack>
             <Stack
               sx={{ width: '100%' }}
               alignItems="center"
