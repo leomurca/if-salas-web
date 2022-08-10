@@ -8,6 +8,7 @@ const desktopContainer = {
   height: '100vh',
   backgroundColor: '#red',
   padding: 0,
+  margin: 0,
   marginTop: '50px',
 };
 

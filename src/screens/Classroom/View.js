@@ -78,7 +78,7 @@ function View({
         )}
         {announcementsTabData === null ? (
           <Grid sx={container} container spacing={2}>
-            <Grid item xs={4}>
+            <Grid sx={{ padding: '0 !important' }} item xs={4}>
               {createArrayFrom1ToN(2).map(i => (
                 <Skeleton
                   key={i}
@@ -89,7 +89,7 @@ function View({
                 />
               ))}
             </Grid>
-            <Grid item xs={8}>
+            <Grid sx={{ paddingTop: '0 !important' }} item xs={8}>
               {createArrayFrom1ToN(4).map(i => (
                 <Skeleton
                   key={i}
@@ -103,7 +103,7 @@ function View({
           </Grid>
         ) : (
           <Grid sx={container} container spacing={2}>
-            <Grid item xs={4}>
+            <Grid sx={{ padding: '0 !important' }} item xs={4}>
               <Stack gap="30px">
                 <Card
                   sx={{ width: '100%', padding: '20px' }}
@@ -144,9 +144,9 @@ function View({
                 </Card>
               </Stack>
             </Grid>
-            <Grid item xs={8}>
+            <Grid sx={{ paddingTop: '0 !important' }} item xs={8}>
               <Stack
-                sx={{ width: '100%' }}
+                sx={{ width: '100%', paddingTop: 0 }}
                 alignItems="center"
                 justifyContent="center"
                 flexWrap="wrap"
