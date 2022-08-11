@@ -31,14 +31,15 @@ function Classroom() {
       setClassroom(result.data);
     }
 
-    getClassroomById(params.id);
-  }, [fetchClassroomById, params]);
-
-  useEffect(() => {
-    if (classroom !== null) {
-      document.title = classroom.name;
+    function updateDocumentTitle() {
+      if (classroom !== null) {
+        document.title = classroom.name;
+      }
     }
-  }, [classroom]);
+
+    getClassroomById(params.id);
+    updateDocumentTitle();
+  }, [fetchClassroomById, params, classroom]);
 
   useEffect(() => {
     async function getSelectedTabData() {
