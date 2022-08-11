@@ -20,10 +20,6 @@ function Classroom() {
 
   const [tabData, setTabData] = useState(TAB_OPTIONS.announcements);
 
-  const onSelectTabOption = (_, value) => {
-    setSelectedTabOption(value);
-  };
-
   const fetchAndPopulateAnnouncementsTabData = useCallback(async () => {
     const announcements = await fetchClassroomAnnouncements(params.id);
     const upcomingAssignments = await fetchUpcomingAssignments(params.id);
@@ -71,7 +67,7 @@ function Classroom() {
       layoutType={layoutType}
       classroom={classroom}
       selectedTabOption={selectedTabOption}
-      onSelectTabOption={onSelectTabOption}
+      onSelectTabOption={(_, value) => setSelectedTabOption(value)}
       announcementsTabData={
         tabData && tabData.tab === 'announcements' ? tabData : null
       }
