@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useUser } from '../../context/user';
 import useLayoutType from '../../hooks/useLayoutType';
@@ -15,14 +15,39 @@ function Classroom() {
   } = useUser();
   const [classroom, setClassroom] = useState(null);
   const [selectedTabOption, setSelectedTabOption] = useState(
-    TAB_OPTIONS.map(o => o.value).indexOf('announcements')
+    TAB_OPTIONS.announcements.value
   );
 
-  const [tabData, setTabData] = useState(null);
+  const [tabData, setTabData] = useState(TAB_OPTIONS.announcements);
 
   const onSelectTabOption = (_, value) => {
     setSelectedTabOption(value);
   };
+
+  const fetchAndPopulateAnnouncementsTabData = useCallback(async () => {
+    const announcements = await fetchClassroomAnnouncements(params.id);
+    const upcomingAssignments = await fetchUpcomingAssignments(params.id);
+
+    setTabData({
+      tab: 'announcements',
+      announcements: [...announcements.data],
+      upcomingAssignments: [...upcomingAssignments.data],
+    });
+  }, [fetchClassroomAnnouncements, fetchUpcomingAssignments, params.id]);
+
+  useEffect(() => {
+    async function getSelectedTabData() {
+      setTabData(null);
+      if (selectedTabOption === 0) {
+        fetchAndPopulateAnnouncementsTabData();
+      } else if (selectedTabOption === 1) {
+        console.log('Fetch assignments');
+      } else if (selectedTabOption === 2) {
+        console.log('Fetch people');
+      }
+    }
+    getSelectedTabData();
+  }, [selectedTabOption, params, fetchAndPopulateAnnouncementsTabData]);
 
   useEffect(() => {
     async function getClassroomById(classId) {
@@ -40,32 +65,6 @@ function Classroom() {
     getClassroomById(params.id);
     updateDocumentTitle();
   }, [fetchClassroomById, params, classroom]);
-
-  useEffect(() => {
-    async function getSelectedTabData() {
-      setTabData(null);
-      if (selectedTabOption === 0) {
-        const announcements = await fetchClassroomAnnouncements(params.id);
-        const upcomingAssignments = await fetchUpcomingAssignments(params.id);
-
-        setTabData({
-          tab: TAB_OPTIONS[selectedTabOption].value,
-          announcements: [...announcements.data],
-          upcomingAssignments: [...upcomingAssignments.data],
-        });
-      } else if (selectedTabOption === 1) {
-        console.log('Fetch assignments');
-      } else if (selectedTabOption === 2) {
-        console.log('Fetch people');
-      }
-    }
-    getSelectedTabData();
-  }, [
-    fetchClassroomAnnouncements,
-    fetchUpcomingAssignments,
-    selectedTabOption,
-    params,
-  ]);
 
   return (
     <View

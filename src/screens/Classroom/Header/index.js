@@ -45,7 +45,7 @@ function Header({
           variant="fullWidth"
           sx={tabs}
         >
-          {TAB_OPTIONS.map(option => (
+          {Object.values(TAB_OPTIONS).map(option => (
             <Tab key={option.value} label={option.lable} />
           ))}
         </Tabs>

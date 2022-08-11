@@ -1,16 +1,16 @@
-const TAB_OPTIONS = [
-  {
-    value: 'announcements',
+const TAB_OPTIONS = {
+  announcements: {
+    value: 0,
     lable: 'Comunicados',
   },
-  {
-    value: 'assignments',
+  assignments: {
+    value: 1,
     lable: 'Atividades',
   },
-  {
-    value: 'people',
+  people: {
+    value: 2,
     lable: 'Pessoas',
   },
-];
+};
 
 export { TAB_OPTIONS };
