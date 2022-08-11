@@ -31,19 +31,39 @@ function Classroom() {
     });
   }, [fetchClassroomAnnouncements, fetchUpcomingAssignments, params.id]);
 
+  const fetchAndPopulateAssignmentsTabData = useCallback(async () => {
+    console.log('Fetch assignments');
+  }, []);
+
+  const fetchAndPopulatePoepleTabData = useCallback(async () => {
+    console.log('Fetch assignments');
+  }, []);
+
   useEffect(() => {
     async function getSelectedTabData() {
       setTabData(null);
-      if (selectedTabOption === 0) {
-        fetchAndPopulateAnnouncementsTabData();
-      } else if (selectedTabOption === 1) {
-        console.log('Fetch assignments');
-      } else if (selectedTabOption === 2) {
-        console.log('Fetch people');
+      switch (selectedTabOption) {
+        case TAB_OPTIONS.announcements.value:
+          fetchAndPopulateAnnouncementsTabData();
+          break;
+        case TAB_OPTIONS.assignments.value:
+          fetchAndPopulateAssignmentsTabData();
+          break;
+        case TAB_OPTIONS.people.value:
+          fetchAndPopulatePoepleTabData();
+          break;
+        default:
+          console.log('Invalid tab option');
       }
     }
     getSelectedTabData();
-  }, [selectedTabOption, params, fetchAndPopulateAnnouncementsTabData]);
+  }, [
+    selectedTabOption,
+    params,
+    fetchAndPopulateAnnouncementsTabData,
+    fetchAndPopulateAssignmentsTabData,
+    fetchAndPopulatePoepleTabData,
+  ]);
 
   useEffect(() => {
     async function getClassroomById(classId) {
