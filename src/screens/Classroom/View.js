@@ -24,6 +24,7 @@ function View({
       <AnnouncementsTab
         layoutType={layoutType}
         announcementsTabData={announcementsTabData}
+        classroom={classroom && classroom}
       />
     </Container>
   );

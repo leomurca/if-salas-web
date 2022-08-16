@@ -12,6 +12,10 @@ const allClassrooms = [
           'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=50&q=80',
       },
     ],
+    appointmentSlots: [
+      { weekDay: 'Quarta-feira', start: '10:00', end: '11:40' },
+      { weekDay: 'Sexta-feira', start: '10:00', end: '11:40' },
+    ],
   },
   {
     id: '123',
@@ -31,6 +35,10 @@ const allClassrooms = [
         avatar: '/assets/alex.jpg',
       },
     ],
+    appointmentSlots: [
+      { weekDay: 'Segunda-feira', start: '09:00', end: '10:40' },
+      { weekDay: 'Quinta-feira', start: '08:00', end: '09:00' },
+    ],
   },
   {
     id: '666',
@@ -45,6 +53,10 @@ const allClassrooms = [
           'https://lh3.googleusercontent.com/a-/AOh14GhwNeQ0h2eKl2WXGuwyDzvLWtrvyrG2kJtZ7A1EBw=s75-c',
       },
     ],
+    appointmentSlots: [
+      { weekDay: 'Segunda-feira', start: '09:00', end: '10:40' },
+      { weekDay: 'Terça-feira', start: '08:00', end: '09:00' },
+    ],
   },
   {
     id: '765',
@@ -57,6 +69,10 @@ const allClassrooms = [
         name: 'Alexandre Couto Cardoso',
         avatar: '/assets/alex.jpg',
       },
+    ],
+    appointmentSlots: [
+      { weekDay: 'Sexta-feira', start: '20:00', end: '21:00' },
+      { weekDay: 'Terça-feira', start: '19:00', end: '20:10' },
     ],
   },
   {
@@ -71,6 +87,10 @@ const allClassrooms = [
         avatar:
           'https://lh3.googleusercontent.com/a-/AOh14GgvfrD--cl25V_3UOAR93sN_jKdYNJ9PXhUH2zXhQ=s75-c',
       },
+    ],
+    appointmentSlots: [
+      { weekDay: 'Terça-feira', start: '08:00', end: '09:20' },
+      { weekDay: 'Quarta-feira', start: '11:00', end: '12:20' },
     ],
   },
 ];

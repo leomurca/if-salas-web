@@ -6,6 +6,7 @@ import {
   Link,
   Skeleton,
   Stack,
+  Typography,
 } from '@mui/material';
 import AnnouncementCard from '../../../components/AnnouncementCard';
 import { createArrayFrom1ToN } from '../../../utils/createArrayFrom1ToN';
@@ -13,13 +14,13 @@ import { createArrayFrom1ToN } from '../../../utils/createArrayFrom1ToN';
 import styles from './styles';
 import jitsiLogo from '../../../assets/jitsi.svg';
 
-function AnnouncementsTab({ layoutType, announcementsTabData }) {
+function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
   const { container } = styles[layoutType];
   if (layoutType === 'desktop') {
     return announcementsTabData === null ? (
       <Grid sx={container} container spacing={2}>
         <Grid sx={{ padding: '0 !important' }} item xs={4}>
-          {createArrayFrom1ToN(2).map(i => (
+          {createArrayFrom1ToN(3).map(i => (
             <Skeleton
               key={i}
               variant="rectangular"
@@ -86,6 +87,20 @@ function AnnouncementsTab({ layoutType, announcementsTabData }) {
                 ))}
               </Stack>
             </Card>
+            <Card
+              sx={{ width: '100%', padding: '20px' }}
+              elevation={4}
+              variant="elevation"
+            >
+              <Stack justifyContent="flex-start" spacing={1}>
+                <h3 style={{ fontWeight: 500 }}>Horários de Atendimento</h3>
+                {classroom.appointmentSlots.map((appts, index) => (
+                  <Typography key={index} variant="body1">
+                    {appts.weekDay}, {appts.start}h - {appts.end}h
+                  </Typography>
+                ))}
+              </Stack>
+            </Card>
           </Stack>
         </Grid>
         <Grid sx={{ paddingTop: '0 !important' }} item xs={8}>
@@ -117,7 +132,7 @@ function AnnouncementsTab({ layoutType, announcementsTabData }) {
         gap="30px"
         sx={{ marginTop: '30px' }}
       >
-        {createArrayFrom1ToN(2).map(i => (
+        {createArrayFrom1ToN(3).map(i => (
           <Skeleton
             key={i}
             variant="rectangular"
@@ -184,6 +199,20 @@ function AnnouncementsTab({ layoutType, announcementsTabData }) {
                 >
                   {ua.title}
                 </Link>
+              ))}
+            </Stack>
+          </Card>
+          <Card
+            sx={{ width: '100%', padding: '20px' }}
+            elevation={4}
+            variant="elevation"
+          >
+            <Stack justifyContent="flex-start" spacing={1}>
+              <h3 style={{ fontWeight: 500 }}>Horários de Atendimento</h3>
+              {classroom.appointmentSlots.map((appts, index) => (
+                <Typography key={index} variant="body1">
+                  {appts.weekDay}, {appts.start}h - {appts.end}h
+                </Typography>
               ))}
             </Stack>
           </Card>
