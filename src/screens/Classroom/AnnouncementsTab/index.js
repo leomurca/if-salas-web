@@ -76,7 +76,11 @@ function AnnouncementsTab({ layoutType, announcementsTabData }) {
               <Stack justifyContent="flex-start" spacing={1}>
                 <h3 style={{ fontWeight: 500 }}>Próximas Atividades</h3>
                 {announcementsTabData.upcomingAssignments.map(ua => (
-                  <Link sx={{ fontSize: '15px' }} key={ua.id}>
+                  <Link
+                    href={`/assignment/${ua.id}`}
+                    sx={{ fontSize: '15px' }}
+                    key={ua.id}
+                  >
                     {ua.title}
                   </Link>
                 ))}
@@ -173,7 +177,11 @@ function AnnouncementsTab({ layoutType, announcementsTabData }) {
             <Stack justifyContent="flex-start" spacing={1}>
               <h3 style={{ fontWeight: 500 }}>Próximas Atividades</h3>
               {announcementsTabData.upcomingAssignments.map(ua => (
-                <Link sx={{ fontSize: '15px' }} key={ua.id}>
+                <Link
+                  href={`/assignment/${ua.id}`}
+                  sx={{ fontSize: '15px' }}
+                  key={ua.id}
+                >
                   {ua.title}
                 </Link>
               ))}

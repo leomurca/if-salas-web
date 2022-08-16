@@ -10,6 +10,7 @@ import Calendar from '../screens/Calendar';
 import useLayoutType from '../hooks/useLayoutType';
 import Toolbar from '../components/Toolbar';
 import Classroom from '../screens/Classroom';
+import Assignment from '../screens/Assignment';
 
 import { avatarMenuOptions, menuOptions } from './data';
 
@@ -46,6 +47,9 @@ function AuthenticatedApp() {
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/class">
               <Route path=":id" element={<Classroom />} />
+            </Route>
+            <Route path="/assignment">
+              <Route path=":id/" element={<Assignment />} />
             </Route>
             <Route path="/login" element={<Navigate to="/home" />} />
             <Route path="/" element={<Navigate to="/home" />} />
