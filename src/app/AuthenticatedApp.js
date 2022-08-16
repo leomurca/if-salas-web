@@ -49,7 +49,7 @@ function AuthenticatedApp() {
               <Route path=":id" element={<Classroom />} />
             </Route>
             <Route path="/assignment">
-              <Route path=":id/" element={<Assignment />} />
+              <Route path=":id" element={<Assignment />} />
             </Route>
             <Route path="/login" element={<Navigate to="/home" />} />
             <Route path="/" element={<Navigate to="/home" />} />

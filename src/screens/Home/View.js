@@ -6,7 +6,13 @@ import AssignmentCard from '../../components/AssignmentCard';
 import styles from './styles';
 import { createArrayFrom1ToN } from '../../utils/createArrayFrom1ToN';
 
-function View({ layoutType, classrooms, assignments, onClickClassCard }) {
+function View({
+  layoutType,
+  classrooms,
+  assignments,
+  onClickClassCard,
+  onClickAssignmentCard,
+}) {
   const { container, divider, assignmentsStack } = styles[layoutType];
 
   if (layoutType === 'desktop') {
@@ -69,6 +75,7 @@ function View({ layoutType, classrooms, assignments, onClickClassCard }) {
                   dueDate={assignment.dueDate}
                   scores={assignment.scores}
                   layoutType={layoutType}
+                  onClick={() => onClickAssignmentCard(assignment.id)}
                 />
               ))
             ) : (
@@ -142,6 +149,7 @@ function View({ layoutType, classrooms, assignments, onClickClassCard }) {
                 dueDate={assignment.dueDate}
                 scores={assignment.scores}
                 layoutType={layoutType}
+                onClick={() => onClickAssignmentCard(assignment.id)}
               />
             ))
           ) : (

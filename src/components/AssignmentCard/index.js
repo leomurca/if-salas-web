@@ -13,7 +13,14 @@ import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
 
 import styles from './styles';
 
-function AssignmentCard({ title, classrooms, dueDate, scores, layoutType }) {
+function AssignmentCard({
+  title,
+  classrooms,
+  dueDate,
+  scores,
+  layoutType,
+  onClick,
+}) {
   const {
     cardContainer,
     classroomLinesIndicator,
@@ -33,7 +40,7 @@ function AssignmentCard({ title, classrooms, dueDate, scores, layoutType }) {
           classrooms
             .filter((_, i) => i > 0)
             .map(c => <div key={c.id} style={classroomLinesIndicator(c)} />)}
-        <CardActionArea sx={cardActionArea}>
+        <CardActionArea onClick={() => onClick()} sx={cardActionArea}>
           <CardContent sx={cardContent}>
             <Tooltip title={title}>
               <Typography
@@ -72,7 +79,7 @@ function AssignmentCard({ title, classrooms, dueDate, scores, layoutType }) {
   } else if (layoutType === 'mobile') {
     return (
       <Card sx={cardContainer(classrooms)}>
-        <CardActionArea sx={cardActionArea}>
+        <CardActionArea onClick={() => onClick()} sx={cardActionArea}>
           {classrooms.length > 1 &&
             classrooms
               .filter((_, i) => i > 0)

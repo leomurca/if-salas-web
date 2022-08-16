@@ -29,7 +29,8 @@ const menuOptions = activePath => [
       activePath === '/home' ||
       activePath === '/login' ||
       activePath === '/' ||
-      activePath.indexOf('class') !== -1,
+      activePath.indexOf('class') !== -1 ||
+      activePath.indexOf('assignment') !== -1,
   },
   {
     id: 1,

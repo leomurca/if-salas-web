@@ -33,12 +33,17 @@ function Home() {
     navigate(`/class/${id}`, { replace: true });
   };
 
+  const onClickAssignmentCard = id => {
+    navigate(`/assignment/${id}`, { replace: true });
+  };
+
   return (
     <View
       layoutType={layoutType}
       classrooms={classrooms}
       assignments={assignments}
       onClickClassCard={onClickClassCard}
+      onClickAssignmentCard={onClickAssignmentCard}
     />
   );
 }
