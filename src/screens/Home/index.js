@@ -9,7 +9,7 @@ function Home() {
   useDocumentTitle('Página Inicial');
   const navigate = useNavigate();
   const layoutType = useLayoutType();
-  const { fetchClassrooms, fetchAssignments } = useUser();
+  const { fetchClassrooms, fetchAllAssignments } = useUser();
   const [classrooms, setClassrooms] = useState(null);
   const [assignments, setAssignments] = useState(null);
 
@@ -23,11 +23,11 @@ function Home() {
 
   useEffect(() => {
     async function getAssignments() {
-      const result = await fetchAssignments();
+      const result = await fetchAllAssignments();
       setAssignments(result.data);
     }
     getAssignments();
-  }, [fetchAssignments]);
+  }, [fetchAllAssignments]);
 
   const onClickClassCard = id => {
     navigate(`/class/${id}`, { replace: true });

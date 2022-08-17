@@ -2,12 +2,13 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAuthState } from './auth';
 import {
-  getAssignments,
+  getAllAssignments,
+  getAssignmentsByClassId,
   getClassroomAnnouncementsById,
   getClassroomById,
   getClassrooms,
   getFaq,
-  getUpcomingAssignmentsById,
+  getUpcomingAssignmentsByClassId,
 } from '../services/user-service';
 
 const UserContext = createContext();
@@ -27,7 +28,9 @@ function UserProvider(props) {
 
   const fetchClassrooms = () => getClassrooms(user.id);
 
-  const fetchAssignments = () => getAssignments(user.id);
+  const fetchAllAssignments = () => getAllAssignments(user.id);
+
+  const fetchAssignmentsByClassId = classId => getAssignmentsByClassId(classId);
 
   const fetchClassroomById = classId => getClassroomById(classId);
 
@@ -36,19 +39,20 @@ function UserProvider(props) {
   const fetchClassroomAnnouncements = classId =>
     getClassroomAnnouncementsById(classId);
 
-  const fetchUpcomingAssignments = classId =>
-    getUpcomingAssignmentsById(classId);
+  const fetchUpcomingAssignmentsByClassId = classId =>
+    getUpcomingAssignmentsByClassId(classId);
 
   return (
     <UserContext.Provider
       value={{
         state,
         fetchClassrooms,
-        fetchAssignments,
+        fetchAllAssignments,
+        fetchAssignmentsByClassId,
         fetchClassroomById,
         fetchFAQ,
         fetchClassroomAnnouncements,
-        fetchUpcomingAssignments,
+        fetchUpcomingAssignmentsByClassId,
       }}
       {...props}
     />
@@ -59,21 +63,23 @@ function useUser() {
   const {
     state,
     fetchClassrooms,
-    fetchAssignments,
+    fetchAllAssignments,
+    fetchAssignmentsByClassId,
     fetchClassroomById,
     fetchFAQ,
     fetchClassroomAnnouncements,
-    fetchUpcomingAssignments,
+    fetchUpcomingAssignmentsByClassId,
   } = useContext(UserContext);
 
   return {
     state,
     fetchClassrooms,
-    fetchAssignments,
+    fetchAllAssignments,
+    fetchAssignmentsByClassId,
     fetchClassroomById,
     fetchFAQ,
     fetchClassroomAnnouncements,
-    fetchUpcomingAssignments,
+    fetchUpcomingAssignmentsByClassId,
   };
 }
 

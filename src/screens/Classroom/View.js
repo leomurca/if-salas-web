@@ -2,6 +2,7 @@ import { Container } from '@mui/material';
 
 import Header from './Header';
 import AnnouncementsTab from './AnnouncementsTab';
+import AssignmentsTab from './AssignmentsTab';
 
 import styles from './styles';
 
@@ -11,6 +12,7 @@ function View({
   selectedTabOption,
   onSelectTabOption,
   announcementsTabData,
+  assignmentsTabData,
 }) {
   const { container } = styles[layoutType];
   return (
@@ -26,6 +28,7 @@ function View({
         announcementsTabData={announcementsTabData}
         classroom={classroom && classroom}
       />
+      <AssignmentsTab assignmentsTabData={assignmentsTabData} />
     </Container>
   );
 }

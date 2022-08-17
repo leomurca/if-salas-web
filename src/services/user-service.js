@@ -11,7 +11,7 @@ import {
 
 const getClassrooms = userId =>
   sleep(3000).then(() => {
-    console.log('userId: ' + userId);
+    console.log('Get classrooms ' + userId);
     return {
       data: allClassrooms,
     };
@@ -19,7 +19,7 @@ const getClassrooms = userId =>
 
 const getClassroomById = classId =>
   sleep(3000).then(() => {
-    console.log('classId ' + classId);
+    console.log('Get classroom by id ' + classId);
     return {
       data: allClassrooms.filter(c => c.id === classId)[0],
     };
@@ -27,27 +27,35 @@ const getClassroomById = classId =>
 
 const getClassroomAnnouncementsById = classId =>
   sleep(3000).then(() => {
-    console.log('classId ' + classId);
+    console.log('Get classroon announcements by id ' + classId);
     return {
       data: allClassroomAnnouncements.filter(c => c.classroom.id === classId),
     };
   });
 
-const getUpcomingAssignmentsById = classId =>
+const getUpcomingAssignmentsByClassId = classId =>
   sleep(3000).then(() => {
-    console.log('classId ' + classId);
+    console.log('Getting upcoming assignments by class id ' + classId);
     return {
-      data: allUpcomingAssignments.filter(a =>
-        a.classrooms.filter(c => c.id === classId)
+      data: allUpcomingAssignments.filter(
+        a => a.classrooms.filter(c => c.id === classId)[0]
       ),
     };
   });
 
-const getAssignments = userId =>
+const getAllAssignments = userId =>
   sleep(4000).then(() => {
-    console.log('userId: ' + userId);
+    console.log('Getting all assignments ' + userId);
     return {
       data: allAssignments,
+    };
+  });
+
+const getAssignmentsByClassId = classId =>
+  sleep(4000).then(() => {
+    console.log('Getting assignments by class id ' + classId);
+    return {
+      data: allAssignments.filter(a => a.classrooms[0].id === classId),
     };
   });
 
@@ -72,9 +80,10 @@ const getUser = shouldFail =>
 export {
   getClassrooms,
   getClassroomById,
-  getAssignments,
+  getAllAssignments,
+  getAssignmentsByClassId,
   getClassroomAnnouncementsById,
-  getUpcomingAssignmentsById,
+  getUpcomingAssignmentsByClassId,
   getFaq,
   getUser,
 };

@@ -17,7 +17,7 @@ import jitsiLogo from '../../../assets/jitsi.svg';
 function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
   const { container } = styles[layoutType];
   if (layoutType === 'desktop') {
-    return announcementsTabData === null ? (
+    return announcementsTabData && announcementsTabData.state === 'loading' ? (
       <Grid sx={container} container spacing={2}>
         <Grid sx={{ padding: '0 !important' }} item xs={4}>
           {createArrayFrom1ToN(3).map(i => (
@@ -42,7 +42,7 @@ function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
           ))}
         </Grid>
       </Grid>
-    ) : (
+    ) : announcementsTabData.state === 'gone' ? null : (
       <Grid sx={container} container spacing={2}>
         <Grid sx={{ padding: '0 !important' }} item xs={4}>
           <Stack gap="30px">
@@ -123,7 +123,7 @@ function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
       </Grid>
     );
   } else if (layoutType === 'mobile') {
-    return announcementsTabData === null ? (
+    return announcementsTabData && announcementsTabData.state === 'loading' ? (
       <Stack
         alignItems="center"
         justifyContent="center"
@@ -151,7 +151,7 @@ function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
           />
         ))}
       </Stack>
-    ) : (
+    ) : announcementsTabData.state === 'gone' ? null : (
       <Stack
         alignItems="center"
         justifyContent="center"

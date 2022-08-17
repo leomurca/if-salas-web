@@ -318,6 +318,18 @@ const allUpcomingAssignments = [
     ],
     classrooms: allClassrooms.filter(c => c.id === '321'),
   },
+  {
+    id: '1234',
+    title: 'Trabalho NoSQL',
+    dueDate: '2022-06-29 22:00',
+    scores: [
+      {
+        classroomId: '666',
+        value: 35,
+      },
+    ],
+    classrooms: allClassrooms.filter(c => c.id === '666'),
+  },
 ];
 
 const faq = [
