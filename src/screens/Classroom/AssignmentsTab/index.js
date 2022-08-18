@@ -12,7 +12,10 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
 
         case 'idle':
           return (
-            <Container sx={{ marginTop: '50px' }} disableGutters>
+            <Container
+              sx={{ marginTop: '50px', height: '100vh' }}
+              disableGutters
+            >
               <Container sx={{ width: '90%' }} disableGutters>
                 <Typography
                   sx={{
