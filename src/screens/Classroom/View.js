@@ -28,7 +28,10 @@ function View({
         announcementsTabData={announcementsTabData}
         classroom={classroom && classroom}
       />
-      <AssignmentsTab assignmentsTabData={assignmentsTabData} />
+      <AssignmentsTab
+        layoutType={layoutType}
+        assignmentsTabData={assignmentsTabData}
+      />
     </Container>
   );
 }

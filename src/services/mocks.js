@@ -98,6 +98,7 @@ const allClassrooms = [
 const allAssignments = [
   {
     id: '5435',
+    type: 'assessment',
     title:
       'Prova 1 - Armazenamento de Dados. Python em CD. Armazenamento Analítico',
     dueDate: '2022-07-01 23:59',
@@ -111,6 +112,7 @@ const allAssignments = [
   },
   {
     id: '0128',
+    type: 'assessment',
     title:
       'Prova 2 - Visualização de Dados. Matemática e Estatística em CD. Análise de Dados',
     dueDate: '2022-09-01 23:59',
@@ -124,6 +126,7 @@ const allAssignments = [
   },
   {
     id: '1234',
+    type: 'project',
     title: 'Trabalho NoSQL',
     dueDate: '2022-06-29 22:00',
     scores: [
@@ -136,6 +139,7 @@ const allAssignments = [
   },
   {
     id: '1234',
+    type: 'assessment',
     title: 'Atividade 2 - Estudo de caso Sapiens Informática',
     dueDate: '2022-06-25 23:59',
     scores: [
@@ -148,6 +152,7 @@ const allAssignments = [
   },
   {
     id: '3671',
+    type: 'assessment',
     title:
       'AA08 - Atividade de Aprendizagem 08 - Componentes de rateio de custos',
     dueDate: '2022-07-23 10:00',
@@ -161,6 +166,7 @@ const allAssignments = [
   },
   {
     id: '1717',
+    type: 'project',
     title: 'Trabalho interdisciplinar',
     dueDate: '2022-08-20 23:59',
     scores: [
@@ -294,6 +300,7 @@ const allClassroomAnnouncements = [
 const allUpcomingAssignments = [
   {
     id: '5435',
+    type: 'assessment',
     title:
       'Prova 1 - Armazenamento de Dados. Python em CD. Armazenamento Analítico',
     dueDate: '2022-07-01 23:59',
@@ -307,6 +314,7 @@ const allUpcomingAssignments = [
   },
   {
     id: '0128',
+    type: 'assessment',
     title:
       'Prova 2 - Visualização de Dados. Matemática e Estatística em CD. Análise de Dados',
     dueDate: '2022-09-01 23:59',
@@ -320,6 +328,7 @@ const allUpcomingAssignments = [
   },
   {
     id: '1234',
+    type: 'project',
     title: 'Trabalho NoSQL',
     dueDate: '2022-06-29 22:00',
     scores: [
