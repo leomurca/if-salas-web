@@ -15,11 +15,10 @@ function Classroom() {
     fetchAssignmentsByClassId,
   } = useUser();
   const [classroom, setClassroom] = useState(null);
+  const [tabData, setTabData] = useState(null);
   const [selectedTabOption, setSelectedTabOption] = useState(
     TAB_OPTIONS.announcements.value
   );
-
-  const [tabData, setTabData] = useState(null);
 
   const fetchAndPopulateAnnouncementsTabData = useCallback(async () => {
     setTabData({ tab: 'announcements', state: 'loading' });

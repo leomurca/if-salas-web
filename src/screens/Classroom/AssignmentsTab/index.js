@@ -1,14 +1,84 @@
-import { Container, Link, Stack, Typography } from '@mui/material';
+import { Container, Link, Skeleton, Stack, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 import { capitalizeFirstLetter } from '../../../utils/capitalizeFirstLetter';
 
 function AssignmentsTab({ assignmentsTabData, layoutType }) {
-  console.log(assignmentsTabData);
   const layoutResolver = (state, assignments, layoutType) => {
     if (layoutType === 'desktop') {
       switch (state) {
         case 'loading':
-          return <h1>Loading...</h1>;
+          return (
+            <Container
+              sx={{ marginTop: '50px', height: '100vh' }}
+              disableGutters
+            >
+              <Stack alignItems="center">
+                <Skeleton
+                  variant="rectangular"
+                  width="90%"
+                  height={70}
+                  sx={{ marginBottom: '30px' }}
+                />
+                <Stack alignItems="flex-start" sx={{ width: '90%' }}>
+                  <Skeleton variant="rectangular" height={50} width="95%" />
+                  <Skeleton
+                    variant="rectangular"
+                    height={20}
+                    width={450}
+                    sx={{ marginTop: '25px' }}
+                  />
+                  <Skeleton
+                    variant="rectangular"
+                    height={20}
+                    width={300}
+                    sx={{ marginTop: '15px' }}
+                  />
+                </Stack>
+                <Stack
+                  alignItems="flex-start"
+                  sx={{ width: '90%', marginTop: '30px' }}
+                >
+                  <Skeleton variant="rectangular" height={50} width="95%" />
+                  <Skeleton
+                    variant="rectangular"
+                    height={20}
+                    width={450}
+                    sx={{ marginTop: '25px' }}
+                  />
+                  <Skeleton
+                    variant="rectangular"
+                    height={20}
+                    width={300}
+                    sx={{ marginTop: '15px' }}
+                  />
+                </Stack>
+              </Stack>
+
+              <Stack sx={{ marginTop: '50px' }} alignItems="center">
+                <Skeleton
+                  variant="rectangular"
+                  width="90%"
+                  height={70}
+                  sx={{ marginBottom: '30px' }}
+                />
+                <Stack alignItems="flex-start" sx={{ width: '90%' }}>
+                  <Skeleton variant="rectangular" height={50} width="95%" />
+                  <Skeleton
+                    variant="rectangular"
+                    height={20}
+                    width={450}
+                    sx={{ marginTop: '25px' }}
+                  />
+                  <Skeleton
+                    variant="rectangular"
+                    height={20}
+                    width={300}
+                    sx={{ marginTop: '15px' }}
+                  />
+                </Stack>
+              </Stack>
+            </Container>
+          );
 
         case 'idle':
           return (
