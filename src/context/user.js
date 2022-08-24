@@ -8,6 +8,7 @@ import {
   getClassroomById,
   getClassrooms,
   getFaq,
+  getPeopleByClassId,
   getUpcomingAssignmentsByClassId,
 } from '../services/user-service';
 
@@ -42,6 +43,8 @@ function UserProvider(props) {
   const fetchUpcomingAssignmentsByClassId = classId =>
     getUpcomingAssignmentsByClassId(classId);
 
+  const fetchPeopleByClassId = classId => getPeopleByClassId(classId);
+
   return (
     <UserContext.Provider
       value={{
@@ -53,6 +56,7 @@ function UserProvider(props) {
         fetchFAQ,
         fetchClassroomAnnouncements,
         fetchUpcomingAssignmentsByClassId,
+        fetchPeopleByClassId,
       }}
       {...props}
     />
@@ -69,6 +73,7 @@ function useUser() {
     fetchFAQ,
     fetchClassroomAnnouncements,
     fetchUpcomingAssignmentsByClassId,
+    fetchPeopleByClassId,
   } = useContext(UserContext);
 
   return {
@@ -80,6 +85,7 @@ function useUser() {
     fetchFAQ,
     fetchClassroomAnnouncements,
     fetchUpcomingAssignmentsByClassId,
+    fetchPeopleByClassId,
   };
 }
 

@@ -7,6 +7,7 @@ import {
   authFailure,
   allClassroomAnnouncements,
   allUpcomingAssignments,
+  allPeople,
 } from './mocks';
 
 const getClassrooms = userId =>
@@ -59,6 +60,14 @@ const getAssignmentsByClassId = classId =>
     };
   });
 
+const getPeopleByClassId = classId =>
+  sleep(4000).then(() => {
+    console.log('Getting people by class id ' + classId);
+    return {
+      data: allPeople.filter(p => p.classes[0].id === classId),
+    };
+  });
+
 const getFaq = () =>
   sleep(2000).then(() => {
     console.log('Fetching FAQ...');
@@ -84,6 +93,7 @@ export {
   getAssignmentsByClassId,
   getClassroomAnnouncementsById,
   getUpcomingAssignmentsByClassId,
+  getPeopleByClassId,
   getFaq,
   getUser,
 };

@@ -13,6 +13,7 @@ function Classroom() {
     fetchClassroomAnnouncements,
     fetchUpcomingAssignmentsByClassId,
     fetchAssignmentsByClassId,
+    fetchPeopleByClassId,
   } = useUser();
   const [classroom, setClassroom] = useState(null);
   const [tabData, setTabData] = useState(null);
@@ -51,8 +52,15 @@ function Classroom() {
   }, [fetchAssignmentsByClassId, params.id]);
 
   const fetchAndPopulatePoepleTabData = useCallback(async () => {
-    console.log('Fetch assignments');
-  }, []);
+    setTabData({ tab: 'people', state: 'loading' });
+    const people = await fetchPeopleByClassId(params.id);
+
+    setTabData({
+      tab: 'people',
+      state: 'idle',
+      people: [...people.data],
+    });
+  }, [fetchPeopleByClassId, params.id]);
 
   useEffect(() => {
     async function getSelectedTabData() {
@@ -107,6 +115,9 @@ function Classroom() {
       }
       assignmentsTabData={
         tabData && tabData.tab === 'assignments' ? tabData : { state: 'gone' }
+      }
+      peopleTabData={
+        tabData && tabData.tab === 'people' ? tabData : { state: 'gone' }
       }
     />
   );

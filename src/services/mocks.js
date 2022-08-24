@@ -369,6 +369,159 @@ const faq = [
   },
 ];
 
+const allPeople = [
+  {
+    id: '1234',
+    name: 'Míriam Lúcia Barbosa',
+    avatar:
+      'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=50&q=80',
+    role: 'PROFESSOR',
+    classes: [
+      {
+        id: '123',
+        name: 'Gestão de Projetos',
+        abbreviation: 'GP',
+        color: '#7900F2',
+      },
+    ],
+  },
+  {
+    id: '4321',
+    name: 'Alexandre Couto Cardoso',
+    avatar: '/assets/alex.jpg',
+    role: 'PROFESSOR',
+    classes: [
+      {
+        id: '123',
+        name: 'Gestão de Projetos',
+        abbreviation: 'GP',
+        color: '#7900F2',
+      },
+      {
+        id: '765',
+        name: 'Contabilidade Básica',
+        abbreviation: 'CB',
+        color: '#BB0000',
+      },
+    ],
+  },
+  {
+    id: '2342',
+    name: 'Carlos Alexandre Silva',
+    avatar:
+      'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=50&q=80',
+    role: 'PROFESSOR',
+    classes: [
+      {
+        id: '321',
+        name: 'Introdução à Ciência de Dados',
+        abbreviation: 'ICD',
+        color: '#006FF2',
+      },
+    ],
+  },
+  {
+    id: '6781',
+    name: 'Cristiane Norbiato Targa',
+    avatar:
+      'https://lh3.googleusercontent.com/a-/AOh14GhwNeQ0h2eKl2WXGuwyDzvLWtrvyrG2kJtZ7A1EBw=s75-c',
+    role: 'PROFESSOR',
+    classes: [
+      {
+        id: '666',
+        name: 'Banco de Dados II',
+        abbreviation: 'BDII',
+        color: '#FF7A00',
+      },
+    ],
+  },
+  {
+    id: '9999',
+    name: 'Gabriel Felipe Cândido Novy',
+    avatar:
+      'https://lh3.googleusercontent.com/a-/AOh14GgvfrD--cl25V_3UOAR93sN_jKdYNJ9PXhUH2zXhQ=s75-c',
+    role: 'PROFESSOR',
+    classes: [
+      {
+        id: '333',
+        name: 'Linguagens de Programação',
+        abbreviation: 'LP',
+        color: '#039200',
+      },
+    ],
+  },
+  {
+    id: '193458673',
+    name: 'Gabriel West',
+    avatar: 'https://i.pravatar.cc/400?img=57',
+    role: 'STUDENT',
+    classes: [
+      {
+        id: '321',
+        name: 'Introdução à Ciência de Dados',
+        abbreviation: 'ICD',
+        color: '#006FF2',
+      },
+    ],
+  },
+  {
+    id: '365967145',
+    name: 'John Pager',
+    avatar: 'https://i.pravatar.cc/400?img=52',
+    role: 'STUDENT',
+    classes: [
+      {
+        id: '321',
+        name: 'Introdução à Ciência de Dados',
+        abbreviation: 'ICD',
+        color: '#006FF2',
+      },
+    ],
+  },
+  {
+    id: '92346574',
+    name: 'Lauren Comber',
+    avatar: 'https://i.pravatar.cc/400?img=44',
+    role: 'STUDENT',
+    classes: [
+      {
+        id: '321',
+        name: 'Introdução à Ciência de Dados',
+        abbreviation: 'ICD',
+        color: '#006FF2',
+      },
+    ],
+  },
+  {
+    id: '239462345',
+    name: 'Marina dos Santos',
+    avatar: 'https://i.pravatar.cc/400?img=41',
+    role: 'STUDENT',
+    classes: [
+      {
+        id: '321',
+        name: 'Introdução à Ciência de Dados',
+        abbreviation: 'ICD',
+        color: '#006FF2',
+      },
+    ],
+  },
+  {
+    id: '3454956749',
+    name: 'Lee Wong',
+    avatar: 'https://i.pravatar.cc/400?img=33',
+    role: 'STUDENT',
+    classes: [
+      {
+        id: '321',
+        name: 'Introdução à Ciência de Dados',
+        abbreviation: 'ICD',
+        color: '#006FF2',
+      },
+    ],
+  },
+];
+
 const user = {
   id: '0021564',
   username: 'leonardomurca',
@@ -385,6 +538,7 @@ export {
   allClassrooms,
   allAssignments,
   allClassroomAnnouncements,
+  allPeople,
   faq,
   user,
   authFailure,

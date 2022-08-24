@@ -3,6 +3,7 @@ import { Container } from '@mui/material';
 import Header from './Header';
 import AnnouncementsTab from './AnnouncementsTab';
 import AssignmentsTab from './AssignmentsTab';
+import PeopleTab from './PeopleTab';
 
 import styles from './styles';
 
@@ -13,6 +14,7 @@ function View({
   onSelectTabOption,
   announcementsTabData,
   assignmentsTabData,
+  peopleTabData,
 }) {
   const { container } = styles[layoutType];
   return (
@@ -32,6 +34,7 @@ function View({
         layoutType={layoutType}
         assignmentsTabData={assignmentsTabData}
       />
+      <PeopleTab layoutType={layoutType} peopleTabData={peopleTabData} />
     </Container>
   );
 }
