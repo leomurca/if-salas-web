@@ -1,4 +1,11 @@
-import { Container, Skeleton, Stack } from '@mui/material';
+import {
+  Avatar,
+  Container,
+  Link,
+  Skeleton,
+  Stack,
+  Typography,
+} from '@mui/material';
 import { createArrayFrom1ToN } from '../../../utils/createArrayFrom1ToN';
 
 function PeopleTab({ layoutType, peopleTabData }) {
@@ -60,7 +67,97 @@ function PeopleTab({ layoutType, peopleTabData }) {
             </Container>
           );
         case 'idle':
-          return people.map(p => <p key={p.id}>{p.name}</p>);
+          return (
+            <Container
+              sx={{ marginTop: '50px', height: '100vh' }}
+              disableGutters
+            >
+              <Container sx={{ width: '90%' }} disableGutters>
+                <Typography
+                  sx={{
+                    padding: '10px',
+                    borderBottom: '2px solid #00420D',
+                    color: '#00420D',
+                  }}
+                  variant="h4"
+                >
+                  Docentes
+                </Typography>
+                <Stack alignItems="center">
+                  {people
+                    .filter(p => p.role === 'PROFESSOR')
+                    .map(p => (
+                      <Container
+                        key={p.id}
+                        sx={{
+                          width: '95%',
+                          padding: '20px',
+                          borderBottom: '2px solid #BCBCBC',
+                          display: 'flex',
+                          alignItems: 'center',
+                        }}
+                        disableGutters
+                      >
+                        <Avatar
+                          alt={p.name}
+                          src={p.avatar}
+                          sx={{
+                            width: '60px',
+                            height: '60px',
+                            marginRight: '15px',
+                          }}
+                        />
+                        <Typography variant="h5">{p.name}</Typography>
+                      </Container>
+                    ))}
+                </Stack>
+              </Container>
+
+              <Container
+                sx={{ width: '90%', marginTop: '30px' }}
+                disableGutters
+              >
+                <Typography
+                  sx={{
+                    padding: '10px',
+                    borderBottom: '2px solid #00420D',
+                    color: '#00420D',
+                  }}
+                  variant="h4"
+                >
+                  Discentes
+                </Typography>
+                <Stack alignItems="center">
+                  {people
+                    .filter(p => p.role === 'STUDENT')
+                    .map(p => (
+                      <Container
+                        key={p.id}
+                        sx={{
+                          width: '95%',
+                          padding: '20px',
+                          borderBottom: '2px solid #BCBCBC',
+                          display: 'flex',
+                          alignItems: 'center',
+                        }}
+                        disableGutters
+                      >
+                        <Avatar
+                          alt={p.name}
+                          src={p.avatar}
+                          sx={{
+                            width: '60px',
+                            height: '60px',
+                            marginRight: '15px',
+                          }}
+                        />
+                        <Typography variant="h5">{p.name}</Typography>
+                      </Container>
+                    ))}
+                </Stack>
+              </Container>
+            </Container>
+          );
         case 'gone':
           return null;
         default:
