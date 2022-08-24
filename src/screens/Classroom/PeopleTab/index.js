@@ -1,11 +1,4 @@
-import {
-  Avatar,
-  Container,
-  Link,
-  Skeleton,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Avatar, Container, Skeleton, Stack, Typography } from '@mui/material';
 import { createArrayFrom1ToN } from '../../../utils/createArrayFrom1ToN';
 
 function PeopleTab({ layoutType, peopleTabData }) {
