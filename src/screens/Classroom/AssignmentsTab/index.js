@@ -1,6 +1,7 @@
 import { Container, Link, Skeleton, Stack, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 import { capitalizeFirstLetter } from '../../../utils/capitalizeFirstLetter';
+import { createArrayFrom1ToN } from '../../../utils/createArrayFrom1ToN';
 
 function AssignmentsTab({ assignmentsTabData, layoutType }) {
   const layoutResolver = (state, assignments, layoutType) => {
@@ -216,10 +217,209 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
     } else if (layoutType === 'mobile') {
       switch (state) {
         case 'loading':
-          return <h1>Loading...</h1>;
+          return (
+            <Stack
+              alignItems="center"
+              flexWrap="wrap"
+              direction="row"
+              sx={{ marginTop: '30px' }}
+            >
+              <Skeleton
+                variant="rectangular"
+                width="100%"
+                height={70}
+                sx={{ marginTop: '30px' }}
+              />
+              <Skeleton
+                variant="rectangular"
+                width="100%"
+                height={30}
+                sx={{ marginTop: '20px' }}
+              />
+              <Skeleton
+                variant="rectangular"
+                width="100%"
+                height={15}
+                sx={{ marginTop: '20px' }}
+              />
+              <Skeleton
+                variant="rectangular"
+                width={250}
+                height={15}
+                sx={{ marginTop: '10px' }}
+              />
+
+              <Skeleton
+                variant="rectangular"
+                width="100%"
+                height={70}
+                sx={{ marginTop: '50px' }}
+              />
+              <Skeleton
+                variant="rectangular"
+                width="100%"
+                height={30}
+                sx={{ marginTop: '20px' }}
+              />
+              <Skeleton
+                variant="rectangular"
+                width="100%"
+                height={15}
+                sx={{ marginTop: '20px' }}
+              />
+              <Skeleton
+                variant="rectangular"
+                width={250}
+                height={15}
+                sx={{ marginTop: '10px' }}
+              />
+            </Stack>
+          );
 
         case 'idle':
-          return <h1>Assignments Tab</h1>;
+          return (
+            <Container
+              sx={{ marginTop: '50px', height: '100vh' }}
+              disableGutters
+            >
+              <Container sx={{ width: '100%' }} disableGutters>
+                <Typography
+                  sx={{
+                    padding: '10px',
+                    borderBottom: '2px solid #00420D',
+                    color: '#00420D',
+                  }}
+                  variant="h4"
+                >
+                  Provas
+                </Typography>
+                <Stack alignItems="center">
+                  {assignments
+                    .filter(a => a.type === 'assessment')
+                    .map(a => (
+                      <Container
+                        key={a.id}
+                        sx={{
+                          width: '100%',
+                          padding: '20px',
+                          borderBottom: '2px solid #BCBCBC',
+                        }}
+                        disableGutters
+                      >
+                        <Typography
+                          variant="body1"
+                          sx={{
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            display: '-webkit-box',
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: 'vertical',
+                          }}
+                        >
+                          <Link
+                            sx={{
+                              color: 'black',
+                              textDecoration: 'underline #000000',
+                            }}
+                            href={`/assignment/${a.id}`}
+                          >
+                            {a.title}
+                          </Link>
+                        </Typography>
+                        <Typography
+                          sx={{ marginTop: '10px', fontSize: '12px' }}
+                          variant="p"
+                          component="div"
+                        >
+                          <strong>Data de entrega: </strong>{' '}
+                          {capitalizeFirstLetter(
+                            dayjs(a.dueDate).format('dddd, DD/MM | HH:mm[h]')
+                          )}
+                        </Typography>
+                        <Typography
+                          sx={{ fontSize: '12px' }}
+                          variant="p"
+                          component="div"
+                        >
+                          <strong>Valor: </strong>
+                          {a.scores.map(s => s.value).join(', ')} pts
+                        </Typography>
+                      </Container>
+                    ))}
+                </Stack>
+              </Container>
+
+              <Container
+                sx={{ width: '100%', marginTop: '30px' }}
+                disableGutters
+              >
+                <Typography
+                  sx={{
+                    padding: '10px',
+                    borderBottom: '2px solid #00420D',
+                    color: '#00420D',
+                  }}
+                  variant="h4"
+                >
+                  Trabalhos
+                </Typography>
+                <Stack alignItems="center">
+                  {assignments
+                    .filter(a => a.type === 'project')
+                    .map(a => (
+                      <Container
+                        key={a.id}
+                        sx={{
+                          width: '95%',
+                          padding: '20px',
+                          borderBottom: '2px solid #BCBCBC',
+                        }}
+                        disableGutters
+                      >
+                        <Typography
+                          variant="body1"
+                          sx={{
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            display: '-webkit-box',
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: 'vertical',
+                          }}
+                        >
+                          <Link
+                            sx={{
+                              color: 'black',
+                              textDecoration: 'underline #000000',
+                            }}
+                            href={`/assignment/${a.id}`}
+                          >
+                            {a.title}
+                          </Link>
+                        </Typography>
+                        <Typography
+                          sx={{ marginTop: '10px', fontSize: '12px' }}
+                          variant="p"
+                          component="div"
+                        >
+                          <strong>Data de entrega: </strong>{' '}
+                          {capitalizeFirstLetter(
+                            dayjs(a.dueDate).format('dddd, DD/MM | HH:mm[h]')
+                          )}
+                        </Typography>
+                        <Typography
+                          sx={{ fontSize: '12px' }}
+                          variant="p"
+                          component="div"
+                        >
+                          <strong>Valor: </strong>
+                          {a.scores.map(s => s.value).join(', ')} pts
+                        </Typography>
+                      </Container>
+                    ))}
+                </Stack>
+              </Container>
+            </Container>
+          );
 
         case 'gone':
           return null;
