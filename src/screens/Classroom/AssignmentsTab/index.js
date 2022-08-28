@@ -1,18 +1,25 @@
 import { Container, Link, Skeleton, Stack, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 import { capitalizeFirstLetter } from '../../../utils/capitalizeFirstLetter';
-import { createArrayFrom1ToN } from '../../../utils/createArrayFrom1ToN';
+import styles from './styles';
 
 function AssignmentsTab({ assignmentsTabData, layoutType }) {
   const layoutResolver = (state, assignments, layoutType) => {
+    const {
+      externalContainer,
+      innerContainer,
+      sectionTitle,
+      assignmentContainer,
+      assignmentTypography,
+      assignmentLink,
+      assignmentDueDate,
+      assignmentScores,
+    } = styles[layoutType];
     if (layoutType === 'desktop') {
       switch (state) {
         case 'loading':
           return (
-            <Container
-              sx={{ marginTop: '50px', height: '100vh' }}
-              disableGutters
-            >
+            <Container sx={externalContainer} disableGutters>
               <Stack alignItems="center">
                 <Skeleton
                   variant="rectangular"
@@ -83,19 +90,9 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
 
         case 'idle':
           return (
-            <Container
-              sx={{ marginTop: '50px', height: '100vh' }}
-              disableGutters
-            >
-              <Container sx={{ width: '90%' }} disableGutters>
-                <Typography
-                  sx={{
-                    padding: '10px',
-                    borderBottom: '2px solid #00420D',
-                    color: '#00420D',
-                  }}
-                  variant="h4"
-                >
+            <Container sx={externalContainer} disableGutters>
+              <Container sx={innerContainer} disableGutters>
+                <Typography sx={sectionTitle} variant="h4">
                   Provas
                 </Typography>
                 <Stack alignItems="center">
@@ -104,26 +101,19 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                     .map(a => (
                       <Container
                         key={a.id}
-                        sx={{
-                          width: '95%',
-                          padding: '20px',
-                          borderBottom: '2px solid #BCBCBC',
-                        }}
+                        sx={assignmentContainer}
                         disableGutters
                       >
-                        <Typography variant="h5">
+                        <Typography sx={assignmentTypography} variant="h5">
                           <Link
-                            sx={{
-                              color: 'black',
-                              textDecoration: 'underline #000000',
-                            }}
+                            sx={assignmentLink}
                             href={`/assignment/${a.id}`}
                           >
                             {a.title}
                           </Link>
                         </Typography>
                         <Typography
-                          sx={{ marginTop: '15px', fontSize: '15px' }}
+                          sx={assignmentDueDate}
                           variant="p"
                           component="div"
                         >
@@ -133,7 +123,7 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                           )}
                         </Typography>
                         <Typography
-                          sx={{ fontSize: '15px' }}
+                          sx={assignmentScores}
                           variant="p"
                           component="div"
                         >
@@ -145,18 +135,8 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                 </Stack>
               </Container>
 
-              <Container
-                sx={{ width: '90%', marginTop: '30px' }}
-                disableGutters
-              >
-                <Typography
-                  sx={{
-                    padding: '10px',
-                    borderBottom: '2px solid #00420D',
-                    color: '#00420D',
-                  }}
-                  variant="h4"
-                >
+              <Container sx={innerContainer} disableGutters>
+                <Typography sx={sectionTitle} variant="h4">
                   Trabalhos
                 </Typography>
                 <Stack alignItems="center">
@@ -165,26 +145,19 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                     .map(a => (
                       <Container
                         key={a.id}
-                        sx={{
-                          width: '95%',
-                          padding: '20px',
-                          borderBottom: '2px solid #BCBCBC',
-                        }}
+                        sx={assignmentContainer}
                         disableGutters
                       >
                         <Typography variant="h5">
                           <Link
-                            sx={{
-                              color: 'black',
-                              textDecoration: 'underline #000000',
-                            }}
+                            sx={assignmentLink}
                             href={`/assignment/${a.id}`}
                           >
                             {a.title}
                           </Link>
                         </Typography>
                         <Typography
-                          sx={{ marginTop: '15px', fontSize: '15px' }}
+                          sx={assignmentDueDate}
                           variant="p"
                           component="div"
                         >
@@ -194,7 +167,7 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                           )}
                         </Typography>
                         <Typography
-                          sx={{ fontSize: '15px' }}
+                          sx={assignmentScores}
                           variant="p"
                           component="div"
                         >
@@ -278,19 +251,9 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
 
         case 'idle':
           return (
-            <Container
-              sx={{ marginTop: '50px', height: '100vh' }}
-              disableGutters
-            >
-              <Container sx={{ width: '100%' }} disableGutters>
-                <Typography
-                  sx={{
-                    padding: '10px',
-                    borderBottom: '2px solid #00420D',
-                    color: '#00420D',
-                  }}
-                  variant="h4"
-                >
+            <Container sx={externalContainer} disableGutters>
+              <Container sx={innerContainer} disableGutters>
+                <Typography sx={sectionTitle} variant="h4">
                   Provas
                 </Typography>
                 <Stack alignItems="center">
@@ -299,35 +262,19 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                     .map(a => (
                       <Container
                         key={a.id}
-                        sx={{
-                          width: '100%',
-                          padding: '20px',
-                          borderBottom: '2px solid #BCBCBC',
-                        }}
+                        sx={assignmentContainer}
                         disableGutters
                       >
-                        <Typography
-                          variant="body1"
-                          sx={{
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            display: '-webkit-box',
-                            WebkitLineClamp: 2,
-                            WebkitBoxOrient: 'vertical',
-                          }}
-                        >
+                        <Typography variant="body1" sx={assignmentTypography}>
                           <Link
-                            sx={{
-                              color: 'black',
-                              textDecoration: 'underline #000000',
-                            }}
+                            sx={assignmentLink}
                             href={`/assignment/${a.id}`}
                           >
                             {a.title}
                           </Link>
                         </Typography>
                         <Typography
-                          sx={{ marginTop: '10px', fontSize: '12px' }}
+                          sx={assignmentDueDate}
                           variant="p"
                           component="div"
                         >
@@ -337,7 +284,7 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                           )}
                         </Typography>
                         <Typography
-                          sx={{ fontSize: '12px' }}
+                          sx={assignmentScores}
                           variant="p"
                           component="div"
                         >
@@ -349,18 +296,8 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                 </Stack>
               </Container>
 
-              <Container
-                sx={{ width: '100%', marginTop: '30px' }}
-                disableGutters
-              >
-                <Typography
-                  sx={{
-                    padding: '10px',
-                    borderBottom: '2px solid #00420D',
-                    color: '#00420D',
-                  }}
-                  variant="h4"
-                >
+              <Container sx={innerContainer} disableGutters>
+                <Typography sx={sectionTitle} variant="h4">
                   Trabalhos
                 </Typography>
                 <Stack alignItems="center">
@@ -369,35 +306,19 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                     .map(a => (
                       <Container
                         key={a.id}
-                        sx={{
-                          width: '95%',
-                          padding: '20px',
-                          borderBottom: '2px solid #BCBCBC',
-                        }}
+                        sx={assignmentContainer}
                         disableGutters
                       >
-                        <Typography
-                          variant="body1"
-                          sx={{
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            display: '-webkit-box',
-                            WebkitLineClamp: 2,
-                            WebkitBoxOrient: 'vertical',
-                          }}
-                        >
+                        <Typography variant="body1" sx={assignmentTypography}>
                           <Link
-                            sx={{
-                              color: 'black',
-                              textDecoration: 'underline #000000',
-                            }}
+                            sx={assignmentLink}
                             href={`/assignment/${a.id}`}
                           >
                             {a.title}
                           </Link>
                         </Typography>
                         <Typography
-                          sx={{ marginTop: '10px', fontSize: '12px' }}
+                          sx={assignmentDueDate}
                           variant="p"
                           component="div"
                         >
@@ -407,7 +328,7 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                           )}
                         </Typography>
                         <Typography
-                          sx={{ fontSize: '12px' }}
+                          sx={assignmentScores}
                           variant="p"
                           component="div"
                         >
