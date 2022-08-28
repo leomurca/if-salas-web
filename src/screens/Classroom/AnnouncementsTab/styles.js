@@ -8,8 +8,15 @@ const desktopContainer = {
   marginTop: '50px',
 };
 
+const desktopEmptyStateContainer = {
+  display: 'flex',
+  justifyContent: 'center',
+  marginTop: '30px',
+};
+
 const desktop = {
   container: desktopContainer,
+  emptyStateContainer: desktopEmptyStateContainer,
 };
 
 // ========== Mobile ==========
@@ -21,8 +28,15 @@ const mobileContainer = {
   paddingBottom: '100px',
 };
 
+const mobileEmptyStateContainer = {
+  display: 'flex',
+  justifyContent: 'center',
+  marginTop: '30px',
+};
+
 const mobile = {
   container: mobileContainer,
+  emptyStateContainer: mobileEmptyStateContainer,
 };
 
 // ========== Unset ==========

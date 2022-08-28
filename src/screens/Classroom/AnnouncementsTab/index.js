@@ -15,7 +15,7 @@ import styles from './styles';
 import jitsiLogo from '../../../assets/jitsi.svg';
 
 function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
-  const { container } = styles[layoutType];
+  const { container, emptyStateContainer } = styles[layoutType];
 
   const layoutResolver = (state, layoutType) => {
     if (layoutType === 'desktop') {
@@ -83,15 +83,21 @@ function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
                   >
                     <Stack justifyContent="flex-start" spacing={1}>
                       <h3 style={{ fontWeight: 500 }}>Próximas Atividades</h3>
-                      {announcementsTabData.upcomingAssignments.map(ua => (
-                        <Link
-                          href={`/assignment/${ua.id}`}
-                          sx={{ fontSize: '15px' }}
-                          key={ua.id}
-                        >
-                          {ua.title}
-                        </Link>
-                      ))}
+                      {announcementsTabData.upcomingAssignments.length !== 0 ? (
+                        announcementsTabData.upcomingAssignments.map(ua => (
+                          <Link
+                            href={`/assignment/${ua.id}`}
+                            sx={{ fontSize: '15px' }}
+                            key={ua.id}
+                          >
+                            {ua.title}
+                          </Link>
+                        ))
+                      ) : (
+                        <Container disableGutters>
+                          <p>Nenhuma atividade encontrada!</p>
+                        </Container>
+                      )}
                     </Stack>
                   </Card>
                   <Card
@@ -121,12 +127,18 @@ function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
                   direction="row"
                   gap="30px"
                 >
-                  {announcementsTabData.announcements.map(announcement => (
-                    <AnnouncementCard
-                      key={announcement.id}
-                      announcement={announcement}
-                    />
-                  ))}
+                  {announcementsTabData.announcements.length !== 0 ? (
+                    announcementsTabData.announcements.map(announcement => (
+                      <AnnouncementCard
+                        key={announcement.id}
+                        announcement={announcement}
+                      />
+                    ))
+                  ) : (
+                    <Container sx={emptyStateContainer} disableGutters>
+                      <p>Nenhum comunicado encontrado!</p>
+                    </Container>
+                  )}
                 </Stack>
               </Grid>
             </Grid>
@@ -212,15 +224,21 @@ function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
                 >
                   <Stack justifyContent="flex-start" spacing={1}>
                     <h3 style={{ fontWeight: 500 }}>Próximas Atividades</h3>
-                    {announcementsTabData.upcomingAssignments.map(ua => (
-                      <Link
-                        href={`/assignment/${ua.id}`}
-                        sx={{ fontSize: '15px' }}
-                        key={ua.id}
-                      >
-                        {ua.title}
-                      </Link>
-                    ))}
+                    {announcementsTabData.upcomingAssignments.length !== 0 ? (
+                      announcementsTabData.upcomingAssignments.map(ua => (
+                        <Link
+                          href={`/assignment/${ua.id}`}
+                          sx={{ fontSize: '15px' }}
+                          key={ua.id}
+                        >
+                          {ua.title}
+                        </Link>
+                      ))
+                    ) : (
+                      <Container disableGutters>
+                        <p>Nenhuma atividade encontrada!</p>
+                      </Container>
+                    )}
                   </Stack>
                 </Card>
                 <Card
@@ -246,12 +264,18 @@ function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
                 direction="row"
                 gap="30px"
               >
-                {announcementsTabData.announcements.map(announcement => (
-                  <AnnouncementCard
-                    key={announcement.id}
-                    announcement={announcement}
-                  />
-                ))}
+                {announcementsTabData.announcements.length !== 0 ? (
+                  announcementsTabData.announcements.map(announcement => (
+                    <AnnouncementCard
+                      key={announcement.id}
+                      announcement={announcement}
+                    />
+                  ))
+                ) : (
+                  <Container sx={emptyStateContainer} disableGutters>
+                    <p>Nenhum comunicado encontrado!</p>
+                  </Container>
+                )}
               </Stack>
             </Stack>
           );

@@ -31,6 +31,12 @@ const desktopPersonAvatar = {
 
 const desktopPersonName = {};
 
+const desktopEmptyStateContainer = {
+  display: 'flex',
+  justifyContent: 'center',
+  marginTop: '30px',
+};
+
 const desktop = {
   externalContainer: desktopExternalContainer,
   sectionContainer: desktopSectionContainer,
@@ -38,6 +44,7 @@ const desktop = {
   personContainer: desktopPersonContainer,
   personAvatar: desktopPersonAvatar,
   personName: desktopPersonName,
+  emptyStateContainer: desktopEmptyStateContainer,
 };
 
 // ========== Mobile ==========
@@ -79,6 +86,12 @@ const mobilePersonName = {
   WebkitBoxOrient: 'vertical',
 };
 
+const mobileEmptyStateContainer = {
+  display: 'flex',
+  justifyContent: 'center',
+  marginTop: '30px',
+};
+
 const mobile = {
   externalContainer: mobileExternalContainer,
   sectionContainer: mobileSectionContainer,
@@ -86,6 +99,7 @@ const mobile = {
   personContainer: mobilePersonContainer,
   personAvatar: mobilePersonAvatar,
   personName: mobilePersonName,
+  emptyStateContainer: mobileEmptyStateContainer,
 };
 
 // ========== Unset ==========

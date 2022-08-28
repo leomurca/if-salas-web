@@ -11,6 +11,7 @@ function PeopleTab({ layoutType, peopleTabData }) {
       personContainer,
       personAvatar,
       personName,
+      emptyStateContainer,
     } = styles[layoutType];
     if (layoutType === 'desktop') {
       switch (state) {
@@ -66,6 +67,9 @@ function PeopleTab({ layoutType, peopleTabData }) {
             </Container>
           );
         case 'idle':
+          const professors = people.filter(p => p.role === 'PROFESSOR');
+          const students = people.filter(p => p.role === 'STUDENT');
+
           return (
             <Container sx={externalContainer} disableGutters>
               <Container sx={sectionContainer} disableGutters>
@@ -73,16 +77,20 @@ function PeopleTab({ layoutType, peopleTabData }) {
                   Docentes
                 </Typography>
                 <Stack alignItems="center">
-                  {people
-                    .filter(p => p.role === 'PROFESSOR')
-                    .map(p => (
+                  {professors.length !== 0 ? (
+                    professors.map(p => (
                       <Container key={p.id} sx={personContainer} disableGutters>
                         <Avatar alt={p.name} src={p.avatar} sx={personAvatar} />
                         <Typography sx={personName} variant="h5">
                           {p.name}
                         </Typography>
                       </Container>
-                    ))}
+                    ))
+                  ) : (
+                    <Container sx={emptyStateContainer} disableGutters>
+                      <p>Nenhum professor encontrado!</p>
+                    </Container>
+                  )}
                 </Stack>
               </Container>
 
@@ -91,16 +99,20 @@ function PeopleTab({ layoutType, peopleTabData }) {
                   Discentes
                 </Typography>
                 <Stack alignItems="center">
-                  {people
-                    .filter(p => p.role === 'STUDENT')
-                    .map(p => (
+                  {students.length !== 0 ? (
+                    students.map(p => (
                       <Container key={p.id} sx={personContainer} disableGutters>
                         <Avatar alt={p.name} src={p.avatar} sx={personAvatar} />
                         <Typography sx={personName} variant="h5">
                           {p.name}
                         </Typography>
                       </Container>
-                    ))}
+                    ))
+                  ) : (
+                    <Container sx={emptyStateContainer} disableGutters>
+                      <p>Nenhum estudante encontrado!</p>
+                    </Container>
+                  )}
                 </Stack>
               </Container>
             </Container>
@@ -164,6 +176,9 @@ function PeopleTab({ layoutType, peopleTabData }) {
             </Container>
           );
         case 'idle':
+          const professors = people.filter(p => p.role === 'PROFESSOR');
+          const students = people.filter(p => p.role === 'STUDENT');
+
           return (
             <Container sx={externalContainer} disableGutters>
               <Container sx={sectionContainer} disableGutters>
@@ -171,16 +186,20 @@ function PeopleTab({ layoutType, peopleTabData }) {
                   Docentes
                 </Typography>
                 <Stack alignItems="center">
-                  {people
-                    .filter(p => p.role === 'PROFESSOR')
-                    .map(p => (
+                  {professors.length !== 0 ? (
+                    professors.map(p => (
                       <Container key={p.id} sx={personContainer} disableGutters>
                         <Avatar alt={p.name} src={p.avatar} sx={personAvatar} />
                         <Typography sx={personName} variant="body1">
                           {p.name}
                         </Typography>
                       </Container>
-                    ))}
+                    ))
+                  ) : (
+                    <Container sx={emptyStateContainer} disableGutters>
+                      <p>Nenhum professor encontrado!</p>
+                    </Container>
+                  )}
                 </Stack>
               </Container>
 
@@ -189,16 +208,20 @@ function PeopleTab({ layoutType, peopleTabData }) {
                   Discentes
                 </Typography>
                 <Stack alignItems="center">
-                  {people
-                    .filter(p => p.role === 'STUDENT')
-                    .map(p => (
+                  {students.length !== 0 ? (
+                    students.map(p => (
                       <Container key={p.id} sx={personContainer} disableGutters>
                         <Avatar alt={p.name} src={p.avatar} sx={personAvatar} />
                         <Typography sx={personName} variant="body1">
                           {p.name}
                         </Typography>
                       </Container>
-                    ))}
+                    ))
+                  ) : (
+                    <Container sx={emptyStateContainer} disableGutters>
+                      <p>Nenhum estudante encontrado!</p>
+                    </Container>
+                  )}
                 </Stack>
               </Container>
             </Container>

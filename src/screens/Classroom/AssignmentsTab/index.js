@@ -14,6 +14,7 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
       assignmentLink,
       assignmentDueDate,
       assignmentScores,
+      emptyStateContainer,
     } = styles[layoutType];
     if (layoutType === 'desktop') {
       switch (state) {
@@ -89,6 +90,9 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
           );
 
         case 'idle':
+          const assesments = assignments.filter(a => a.type === 'assessment');
+          const projects = assignments.filter(a => a.type === 'project');
+
           return (
             <Container sx={externalContainer} disableGutters>
               <Container sx={innerContainer} disableGutters>
@@ -96,9 +100,8 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                   Provas
                 </Typography>
                 <Stack alignItems="center">
-                  {assignments
-                    .filter(a => a.type === 'assessment')
-                    .map(a => (
+                  {assesments.length !== 0 ? (
+                    assesments.map(a => (
                       <Container
                         key={a.id}
                         sx={assignmentContainer}
@@ -131,7 +134,12 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                           {a.scores.map(s => s.value).join(', ')} pts
                         </Typography>
                       </Container>
-                    ))}
+                    ))
+                  ) : (
+                    <Container sx={emptyStateContainer} disableGutters>
+                      <p>Nenhuma prova encontrada!</p>
+                    </Container>
+                  )}
                 </Stack>
               </Container>
 
@@ -140,9 +148,8 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                   Trabalhos
                 </Typography>
                 <Stack alignItems="center">
-                  {assignments
-                    .filter(a => a.type === 'project')
-                    .map(a => (
+                  {projects.length !== 0 ? (
+                    projects.map(a => (
                       <Container
                         key={a.id}
                         sx={assignmentContainer}
@@ -175,7 +182,12 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                           {a.scores.map(s => s.value).join(', ')} pts
                         </Typography>
                       </Container>
-                    ))}
+                    ))
+                  ) : (
+                    <Container sx={emptyStateContainer} disableGutters>
+                      <p>Nenhum trabalho encontrado!</p>
+                    </Container>
+                  )}
                 </Stack>
               </Container>
             </Container>
@@ -250,6 +262,9 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
           );
 
         case 'idle':
+          const assesments = assignments.filter(a => a.type === 'assessment');
+          const projects = assignments.filter(a => a.type === 'project');
+
           return (
             <Container sx={externalContainer} disableGutters>
               <Container sx={innerContainer} disableGutters>
@@ -257,9 +272,8 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                   Provas
                 </Typography>
                 <Stack alignItems="center">
-                  {assignments
-                    .filter(a => a.type === 'assessment')
-                    .map(a => (
+                  {assesments.length !== 0 ? (
+                    assesments.map(a => (
                       <Container
                         key={a.id}
                         sx={assignmentContainer}
@@ -292,7 +306,12 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                           {a.scores.map(s => s.value).join(', ')} pts
                         </Typography>
                       </Container>
-                    ))}
+                    ))
+                  ) : (
+                    <Container sx={emptyStateContainer} disableGutters>
+                      <p>Nenhuma prova encontrada!</p>
+                    </Container>
+                  )}
                 </Stack>
               </Container>
 
@@ -301,9 +320,8 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                   Trabalhos
                 </Typography>
                 <Stack alignItems="center">
-                  {assignments
-                    .filter(a => a.type === 'project')
-                    .map(a => (
+                  {projects.length !== 0 ? (
+                    projects.map(a => (
                       <Container
                         key={a.id}
                         sx={assignmentContainer}
@@ -336,7 +354,12 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                           {a.scores.map(s => s.value).join(', ')} pts
                         </Typography>
                       </Container>
-                    ))}
+                    ))
+                  ) : (
+                    <Container sx={emptyStateContainer} disableGutters>
+                      <p>Nenhum trabalho encontrado!</p>
+                    </Container>
+                  )}
                 </Stack>
               </Container>
             </Container>

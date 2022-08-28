@@ -37,6 +37,12 @@ const desktopAssignmentScores = {
   fontSize: '15px',
 };
 
+const desktopEmptyStateContainer = {
+  display: 'flex',
+  justifyContent: 'center',
+  marginTop: '30px',
+};
+
 const desktop = {
   externalContainer: desktopExternalContainer,
   innerContainer: desktopInnerContainer,
@@ -46,6 +52,7 @@ const desktop = {
   assignmentLink: desktopAssignmentLink,
   assignmentDueDate: desktopAssignmentDueDate,
   assignmentScores: desktopAssignmentScores,
+  emptyStateContainer: desktopEmptyStateContainer,
 };
 
 // ========== Mobile ==========
@@ -93,6 +100,12 @@ const mobileAssignmentScores = {
   fontSize: '12px',
 };
 
+const mobileEmptyStateContainer = {
+  display: 'flex',
+  justifyContent: 'center',
+  marginTop: '30px',
+};
+
 const mobile = {
   externalContainer: mobileExternalContainer,
   innerContainer: mobileInnerContainer,
@@ -102,6 +115,7 @@ const mobile = {
   assignmentLink: mobileAssignmentLink,
   assignmentDueDate: mobileAssignmentDueDate,
   assignmentScores: mobileAssignmentScores,
+  emptyStateContainer: mobileEmptyStateContainer,
 };
 
 // ========== Unset ==========
