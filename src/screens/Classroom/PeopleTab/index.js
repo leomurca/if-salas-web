@@ -1,16 +1,22 @@
 import { Avatar, Container, Skeleton, Stack, Typography } from '@mui/material';
 import { createArrayFrom1ToN } from '../../../utils/createArrayFrom1ToN';
+import styles from './styles';
 
 function PeopleTab({ layoutType, peopleTabData }) {
   const layoutResolver = (state, people, layoutType) => {
+    const {
+      externalContainer,
+      sectionContainer,
+      sectionTitle,
+      personContainer,
+      personAvatar,
+      personName,
+    } = styles[layoutType];
     if (layoutType === 'desktop') {
       switch (state) {
         case 'loading':
           return (
-            <Container
-              sx={{ marginTop: '50px', height: '100vh' }}
-              disableGutters
-            >
+            <Container sx={externalContainer} disableGutters>
               <Stack alignItems="center">
                 <Skeleton
                   variant="rectangular"
@@ -61,90 +67,38 @@ function PeopleTab({ layoutType, peopleTabData }) {
           );
         case 'idle':
           return (
-            <Container
-              sx={{ marginTop: '50px', height: '100vh' }}
-              disableGutters
-            >
-              <Container sx={{ width: '90%' }} disableGutters>
-                <Typography
-                  sx={{
-                    padding: '10px',
-                    borderBottom: '2px solid #00420D',
-                    color: '#00420D',
-                  }}
-                  variant="h4"
-                >
+            <Container sx={externalContainer} disableGutters>
+              <Container sx={sectionContainer} disableGutters>
+                <Typography sx={sectionTitle} variant="h4">
                   Docentes
                 </Typography>
                 <Stack alignItems="center">
                   {people
                     .filter(p => p.role === 'PROFESSOR')
                     .map(p => (
-                      <Container
-                        key={p.id}
-                        sx={{
-                          width: '95%',
-                          padding: '20px',
-                          borderBottom: '2px solid #BCBCBC',
-                          display: 'flex',
-                          alignItems: 'center',
-                        }}
-                        disableGutters
-                      >
-                        <Avatar
-                          alt={p.name}
-                          src={p.avatar}
-                          sx={{
-                            width: '60px',
-                            height: '60px',
-                            marginRight: '15px',
-                          }}
-                        />
-                        <Typography variant="h5">{p.name}</Typography>
+                      <Container key={p.id} sx={personContainer} disableGutters>
+                        <Avatar alt={p.name} src={p.avatar} sx={personAvatar} />
+                        <Typography sx={personName} variant="h5">
+                          {p.name}
+                        </Typography>
                       </Container>
                     ))}
                 </Stack>
               </Container>
 
-              <Container
-                sx={{ width: '90%', marginTop: '30px' }}
-                disableGutters
-              >
-                <Typography
-                  sx={{
-                    padding: '10px',
-                    borderBottom: '2px solid #00420D',
-                    color: '#00420D',
-                  }}
-                  variant="h4"
-                >
+              <Container sx={sectionContainer} disableGutters>
+                <Typography sx={sectionTitle} variant="h4">
                   Discentes
                 </Typography>
                 <Stack alignItems="center">
                   {people
                     .filter(p => p.role === 'STUDENT')
                     .map(p => (
-                      <Container
-                        key={p.id}
-                        sx={{
-                          width: '95%',
-                          padding: '20px',
-                          borderBottom: '2px solid #BCBCBC',
-                          display: 'flex',
-                          alignItems: 'center',
-                        }}
-                        disableGutters
-                      >
-                        <Avatar
-                          alt={p.name}
-                          src={p.avatar}
-                          sx={{
-                            width: '60px',
-                            height: '60px',
-                            marginRight: '15px',
-                          }}
-                        />
-                        <Typography variant="h5">{p.name}</Typography>
+                      <Container key={p.id} sx={personContainer} disableGutters>
+                        <Avatar alt={p.name} src={p.avatar} sx={personAvatar} />
+                        <Typography sx={personName} variant="h5">
+                          {p.name}
+                        </Typography>
                       </Container>
                     ))}
                 </Stack>
@@ -160,10 +114,7 @@ function PeopleTab({ layoutType, peopleTabData }) {
       switch (state) {
         case 'loading':
           return (
-            <Container
-              sx={{ marginTop: '50px', height: '100vh' }}
-              disableGutters
-            >
+            <Container sx={externalContainer} disableGutters>
               <Stack alignItems="center">
                 <Skeleton
                   variant="rectangular"
@@ -214,55 +165,18 @@ function PeopleTab({ layoutType, peopleTabData }) {
           );
         case 'idle':
           return (
-            <Container
-              sx={{ marginTop: '50px', height: '100vh' }}
-              disableGutters
-            >
-              <Container sx={{ width: '90%' }} disableGutters>
-                <Typography
-                  sx={{
-                    padding: '10px',
-                    borderBottom: '2px solid #00420D',
-                    color: '#00420D',
-                  }}
-                  variant="h5"
-                >
+            <Container sx={externalContainer} disableGutters>
+              <Container sx={sectionContainer} disableGutters>
+                <Typography sx={sectionTitle} variant="h5">
                   Docentes
                 </Typography>
                 <Stack alignItems="center">
                   {people
                     .filter(p => p.role === 'PROFESSOR')
                     .map(p => (
-                      <Container
-                        key={p.id}
-                        sx={{
-                          width: '95%',
-                          padding: '20px',
-                          borderBottom: '2px solid #BCBCBC',
-                          display: 'flex',
-                          alignItems: 'center',
-                        }}
-                        disableGutters
-                      >
-                        <Avatar
-                          alt={p.name}
-                          src={p.avatar}
-                          sx={{
-                            width: '40px',
-                            height: '40px',
-                            marginRight: '15px',
-                          }}
-                        />
-                        <Typography
-                          sx={{
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            display: '-webkit-box',
-                            WebkitLineClamp: 1,
-                            WebkitBoxOrient: 'vertical',
-                          }}
-                          variant="body1"
-                        >
+                      <Container key={p.id} sx={personContainer} disableGutters>
+                        <Avatar alt={p.name} src={p.avatar} sx={personAvatar} />
+                        <Typography sx={personName} variant="body1">
                           {p.name}
                         </Typography>
                       </Container>
@@ -270,54 +184,17 @@ function PeopleTab({ layoutType, peopleTabData }) {
                 </Stack>
               </Container>
 
-              <Container
-                sx={{ width: '90%', marginTop: '30px' }}
-                disableGutters
-              >
-                <Typography
-                  sx={{
-                    padding: '10px',
-                    borderBottom: '2px solid #00420D',
-                    color: '#00420D',
-                  }}
-                  variant="h5"
-                >
+              <Container sx={sectionContainer} disableGutters>
+                <Typography sx={sectionTitle} variant="h5">
                   Discentes
                 </Typography>
                 <Stack alignItems="center">
                   {people
                     .filter(p => p.role === 'STUDENT')
                     .map(p => (
-                      <Container
-                        key={p.id}
-                        sx={{
-                          width: '95%',
-                          padding: '20px',
-                          borderBottom: '2px solid #BCBCBC',
-                          display: 'flex',
-                          alignItems: 'center',
-                        }}
-                        disableGutters
-                      >
-                        <Avatar
-                          alt={p.name}
-                          src={p.avatar}
-                          sx={{
-                            width: '40px',
-                            height: '40px',
-                            marginRight: '15px',
-                          }}
-                        />
-                        <Typography
-                          sx={{
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            display: '-webkit-box',
-                            WebkitLineClamp: 1,
-                            WebkitBoxOrient: 'vertical',
-                          }}
-                          variant="body1"
-                        >
+                      <Container key={p.id} sx={personContainer} disableGutters>
+                        <Avatar alt={p.name} src={p.avatar} sx={personAvatar} />
+                        <Typography sx={personName} variant="body1">
                           {p.name}
                         </Typography>
                       </Container>
