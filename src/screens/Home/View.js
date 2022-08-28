@@ -1,4 +1,4 @@
-import { Grid, Skeleton, Stack } from '@mui/material';
+import { Container, Grid, Skeleton, Stack } from '@mui/material';
 
 import ClassCard from '../../components/ClassCard';
 import AssignmentCard from '../../components/AssignmentCard';
@@ -43,7 +43,16 @@ function View({
                 />
               ))
             ) : (
-              <h1>Nenhuma sala de aula encontrada!</h1>
+              <Container
+                sx={{
+                  height: '100vh',
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
+                disableGutters
+              >
+                <p>Nenhuma sala de aula encontrada!</p>
+              </Container>
             )}
           </Stack>
         </Grid>
@@ -79,7 +88,16 @@ function View({
                 />
               ))
             ) : (
-              <h1>Nenhuma atividade encontrada!</h1>
+              <Container
+                sx={{
+                  height: '100vh',
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
+                disableGutters
+              >
+                <p>Nenhuma atividade encontrada!</p>
+              </Container>
             )}
           </Stack>
         </Grid>
@@ -118,7 +136,9 @@ function View({
               />
             ))
           ) : (
-            <h1>Nenhuma sala de aula encontrada!</h1>
+            <Container disableGutters>
+              <p>Nenhuma sala de aula encontrada!</p>
+            </Container>
           )}
         </Stack>
         <h1 style={divider}>Atividades</h1>
@@ -153,7 +173,9 @@ function View({
               />
             ))
           ) : (
-            <h1>Nenhuma sala de aula encontrada!</h1>
+            <Container disableGutters>
+              <p>Nenhuma atividade encontrada!</p>
+            </Container>
           )}
         </Stack>
       </Stack>
