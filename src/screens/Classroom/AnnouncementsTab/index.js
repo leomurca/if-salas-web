@@ -193,7 +193,7 @@ function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
               gap="30px"
               sx={{ marginTop: '30px' }}
             >
-              <Stack gap="30px">
+              <Stack gap="30px" sx={{ width: '100%' }}>
                 <Card
                   sx={{ width: '100%', padding: '20px' }}
                   elevation={4}
