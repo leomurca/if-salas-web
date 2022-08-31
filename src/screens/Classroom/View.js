@@ -15,6 +15,7 @@ function View({
   announcementsTabData,
   assignmentsTabData,
   peopleTabData,
+  isLoading,
 }) {
   const { container } = styles[layoutType];
   return (
@@ -24,6 +25,7 @@ function View({
         classroom={classroom}
         selectedTabOption={selectedTabOption}
         onSelectTabOption={onSelectTabOption}
+        isLoading={isLoading}
       />
       <AnnouncementsTab
         layoutType={layoutType}

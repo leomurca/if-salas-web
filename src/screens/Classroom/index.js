@@ -119,6 +119,7 @@ function Classroom() {
       peopleTabData={
         tabData && tabData.tab === 'people' ? tabData : { state: 'gone' }
       }
+      isLoading={tabData && tabData.state === 'loading'}
     />
   );
 }

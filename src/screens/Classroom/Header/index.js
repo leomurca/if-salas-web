@@ -18,6 +18,7 @@ function Header({
   classroom,
   selectedTabOption,
   onSelectTabOption,
+  isLoading,
 }) {
   const { title, paper, tabs, avatar, tooltip } = styles[layoutType];
   return classroom === null ? (
@@ -46,7 +47,11 @@ function Header({
           sx={tabs}
         >
           {Object.values(TAB_OPTIONS).map(option => (
-            <Tab key={option.value} label={option.lable} />
+            <Tab
+              key={option.value}
+              label={option.lable}
+              disabled={isLoading && option.value !== selectedTabOption}
+            />
           ))}
         </Tabs>
       </Paper>
