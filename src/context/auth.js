@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { getUser } from '../services/user-service';
+import { getUser, registerUser } from '../services/user-service';
 
 const AuthContext = createContext();
 
@@ -20,6 +20,20 @@ function AuthProvider(props) {
     bootstrapUser();
   }, []);
 
+  const register = data => {
+    setState({ ...state, status: 'pending' });
+    let shouldFail =
+      data.email !== 'leo@gmail.com' && data.password !== '#leo1234';
+
+    return registerUser(data, shouldFail).then(data => {
+      if (shouldFail) {
+        return setState({ status: 'error', user: null, error: data });
+      } else {
+        return setState({ status: 'success', user: data, error: null });
+      }
+    });
+  };
+
   const login = (email, password) => {
     setState({ ...state, status: 'pending' });
     let shouldFail = email !== 'leo@gmail.com' && password !== '#leo1234';
@@ -38,11 +52,16 @@ function AuthProvider(props) {
     window.localStorage.clear();
   };
 
-  return <AuthContext.Provider value={{ state, login, logout }} {...props} />;
+  return (
+    <AuthContext.Provider
+      value={{ state, register, login, logout }}
+      {...props}
+    />
+  );
 }
 
 function useAuthState() {
-  const { state, login, logout } = useContext(AuthContext);
+  const { state, register, login, logout } = useContext(AuthContext);
   const isPending = state.status === 'pending';
   const isError = state.status === 'error';
   const isSuccess = state.status === 'success';
@@ -55,6 +74,7 @@ function useAuthState() {
     isError,
     isSuccess,
     isAuthenticated,
+    register,
     login,
     logout,
   };

@@ -2,6 +2,7 @@ import { Container } from '@mui/material';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Login from '../screens/Login';
+import Register from '../screens/Register';
 import UnauthenticatedHome from '../screens/UnauthenticatedHome';
 
 function UnauthenticatedApp() {
@@ -10,6 +11,7 @@ function UnauthenticatedApp() {
       <Routes>
         <Route path="/" element={<UnauthenticatedHome />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Container>

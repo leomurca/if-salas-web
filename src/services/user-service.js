@@ -86,6 +86,17 @@ const getUser = shouldFail =>
     }
   });
 
+const registerUser = (data, shouldFail) =>
+  sleep(3000).then(() => {
+    if (shouldFail) {
+      return authFailure;
+    } else {
+      console.log(data);
+      window.localStorage.setItem('$USER', JSON.stringify(data));
+      return data;
+    }
+  });
+
 export {
   getClassrooms,
   getClassroomById,
@@ -96,4 +107,5 @@ export {
   getPeopleByClassId,
   getFaq,
   getUser,
+  registerUser,
 };
