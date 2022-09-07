@@ -72,7 +72,7 @@ function View({
               Entrar
             </Button>
             <Link href="#">Esqueci minha senha</Link>
-            <Link href="#">Cadastre-se</Link>
+            <Link href="register">Cadastre-se</Link>
           </Stack>
         </Box>
       </Paper>

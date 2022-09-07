@@ -27,7 +27,7 @@ function AuthenticatedApp() {
         <Toolbar
           title={
             <p style={{ fontSize: layoutType === 'desktop' ? '30px' : '20px' }}>
-              Olá, <strong>{state.user.name}</strong> 👋
+              Olá, <strong>{state.user.firstName}</strong> 👋
             </p>
           }
           layoutType={layoutType}
@@ -52,6 +52,7 @@ function AuthenticatedApp() {
               <Route path=":id" element={<Assignment />} />
             </Route>
             <Route path="/login" element={<Navigate to="/home" />} />
+            <Route path="/register" element={<Navigate to="/home" />} />
             <Route path="/" element={<Navigate to="/home" />} />
           </Routes>
         </Container>

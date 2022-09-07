@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import {
   Box,
   Button,
+  Checkbox,
   Container,
   FormControl,
   InputLabel,
@@ -11,7 +12,9 @@ import {
   Select,
   Stack,
   TextField,
+  Typography,
 } from '@mui/material';
+import dayjs from 'dayjs';
 
 import SnackbarIndicator from '../../components/SnackbarIndicator';
 import LoadingIndicator from '../../components/LoadingIndicator';
@@ -19,7 +22,6 @@ import LoadingIndicator from '../../components/LoadingIndicator';
 import logoImage from '../../assets/if-salas-logo.svg';
 
 import styles from './styles';
-import dayjs from 'dayjs';
 
 function View({
   isPending,
@@ -28,11 +30,11 @@ function View({
   layoutType,
   data,
   onChangeInput,
+  onChangeCheckbox,
   onTryRegister,
 }) {
   const { paper, boxLogo, boxForm, logoContainer } = styles[layoutType];
   const currentYear = dayjs().year();
-  console.log(currentYear);
 
   return (
     <Fragment>
@@ -144,15 +146,29 @@ function View({
               value={data.password}
               onChange={onChangeInput}
             />
+            <Stack flexDirection="row" alignItems="center">
+              <Checkbox
+                name="termsAgreed"
+                value={data.termsAgreed}
+                onChange={onChangeCheckbox}
+              />
+              <Typography sx={{ color: '#595959' }} variant="body1">
+                Eu li e aceito os <Link href="#">termos de uso. </Link>
+              </Typography>
+            </Stack>
             <Button
-              // disabled={!isSubmitable}
               onClick={onTryRegister}
               variant="contained"
+              disabled={!data.termsAgreed}
             >
-              Entrar
+              Criar conta
             </Button>
-            <Link href="#">Esqueci minha senha</Link>
-            <Link href="#">Cadastre-se</Link>
+
+            <Stack alignItems="center">
+              <Typography sx={{ color: '#595959' }} variant="body1">
+                Já possui uma conta? Então <Link href="login">faça login.</Link>
+              </Typography>
+            </Stack>
           </Stack>
         </Box>
         <Box sx={boxLogo}>

@@ -1,4 +1,3 @@
-import { Button } from '@mui/material';
 import { useState } from 'react';
 import { useAuthState } from '../../context/auth';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
@@ -7,7 +6,7 @@ import useLayoutType from '../../hooks/useLayoutType';
 import View from './View';
 
 function Register() {
-  useDocumentTitle('Entrar');
+  useDocumentTitle('Criar conta');
   const { register, isPending, isError, error } = useAuthState();
   const layoutType = useLayoutType();
   const [data, setData] = useState({
@@ -33,6 +32,13 @@ function Register() {
     setData(prev => ({ ...prev, [name]: value }));
   };
 
+  const onChangeCheckbox = e => {
+    const name = e.target.name;
+    const value = e.target.checked;
+
+    setData(prev => ({ ...prev, [name]: value }));
+  };
+
   return (
     <View
       isPending={isPending}
@@ -41,6 +47,7 @@ function Register() {
       layoutType={layoutType}
       data={data}
       onChangeInput={onChangeInput}
+      onChangeCheckbox={onChangeCheckbox}
       onTryRegister={onTryRegister}
     />
   );
