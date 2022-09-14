@@ -13,7 +13,7 @@ import { useState } from 'react';
 
 import styles from './styles';
 
-function Toolbar({ title, layoutType, avatarMenuOptions }) {
+function Toolbar({ title, layoutType, avatarMenuOptions, user }) {
   const {
     box,
     menuBoxContainer,
@@ -63,7 +63,7 @@ function Toolbar({ title, layoutType, avatarMenuOptions }) {
                 onClick={e => setAnchorElUser(e.currentTarget)}
                 sx={{ p: 0 }}
               >
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt={user.firstName} src={user.avatar} />
               </IconButton>
             </Tooltip>
 
@@ -125,7 +125,7 @@ function Toolbar({ title, layoutType, avatarMenuOptions }) {
                 onClick={e => setAnchorElUser(e.currentTarget)}
                 sx={{ p: 0 }}
               >
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt={user.firstName} src={user.avatar} />
               </IconButton>
             </Tooltip>
 

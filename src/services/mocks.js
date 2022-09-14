@@ -523,11 +523,19 @@ const allPeople = [
 ];
 
 const user = {
-  id: '0021564',
-  username: 'leonardomurca',
-  name: 'Leonardo',
+  id: '123',
+  ra: '0021564',
+  username: 'leo@gmail.com',
+  email: 'leo@gmail.com',
+  password: '#leo1234', // TODO: Remove this!
+  firstName: 'Leonardo',
   lastName: 'Murça',
   token: 'skdfb9458hnsdfsif4w38r9234ry98423',
+  phone: '31992460019',
+  avatar: 'https://i.pravatar.cc/300?img=61',
+  course: 0,
+  termsAgreed: true,
+  year: 0,
 };
 
 const authFailure = {

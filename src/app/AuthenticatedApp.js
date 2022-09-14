@@ -32,6 +32,7 @@ function AuthenticatedApp() {
           }
           layoutType={layoutType}
           avatarMenuOptions={avatarMenuOptions(navigate, logout)}
+          user={state.user}
         />
         <Container
           maxWidth="false"
