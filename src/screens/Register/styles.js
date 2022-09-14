@@ -1,25 +1,24 @@
 // ========== Desktop  ==========
 const desktopPaper = {
-  width: '1500px',
-  height: '70%',
+  height: 'fit-content',
   display: 'flex',
   justifyContent: 'center',
   color: 'white',
   textAlign: 'center',
 };
-
 const baseBox = {
   width: '100%',
   height: '100%',
   display: 'flex',
   justifyContent: 'center',
   flexDirection: 'column',
-  padding: '0 70px',
+  padding: '30px 70px',
 };
 
 const desktopBoxLogo = {
   ...baseBox,
   backgroundColor: 'secondary.main',
+  height: 'auto',
 };
 
 const desktopBoxForm = {

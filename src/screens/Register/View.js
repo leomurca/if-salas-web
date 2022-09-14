@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import {
   Box,
   Button,
@@ -37,7 +36,13 @@ function View({
   const currentYear = dayjs().year();
 
   return (
-    <Fragment>
+    <Container
+      sx={{
+        margin: '0 auto',
+        padding: '500px 0',
+      }}
+      disableGutters
+    >
       <Paper sx={paper} elevation={4} variant="elevation">
         <Box sx={boxForm}>
           <h1>Criar conta</h1>
@@ -188,7 +193,7 @@ function View({
         severity="error"
         message={error && error.message}
       />
-    </Fragment>
+    </Container>
   );
 }
 
