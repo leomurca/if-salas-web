@@ -17,6 +17,7 @@ import dayjs from 'dayjs';
 
 import SnackbarIndicator from '../../components/SnackbarIndicator';
 import LoadingIndicator from '../../components/LoadingIndicator';
+import InputMask from '../../components/InputMask';
 
 import logoImage from '../../assets/if-salas-logo.svg';
 
@@ -71,6 +72,10 @@ function View({
               type="text"
               value={data.ra}
               onChange={onChangeInput}
+              placeholder="00#####"
+              InputProps={{
+                inputComponent: InputMask,
+              }}
             />
             <FormControl sx={{ textAlign: 'start' }} fullWidth>
               <InputLabel variant="standard" id="course">
@@ -112,7 +117,9 @@ function View({
                 onChange={onChangeInput}
               >
                 {createArrayFrom1ToN(8).map(i => (
-                  <MenuItem value={i}>{currentYear - i}</MenuItem>
+                  <MenuItem key={i - 1} value={i - 1}>
+                    {currentYear - (i - 1)}
+                  </MenuItem>
                 ))}
               </Select>
             </FormControl>
@@ -125,6 +132,10 @@ function View({
               type="phone"
               value={data.phone}
               onChange={onChangeInput}
+              placeholder="(##) #####-####"
+              InputProps={{
+                inputComponent: InputMask,
+              }}
             />
             <TextField
               id="email"
