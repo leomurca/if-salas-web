@@ -1,4 +1,12 @@
 // ========== Desktop  ==========
+const desktopContainer = {
+  width: '100%',
+  height: '100vh',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
+
 const desktopPaper = {
   width: '950px',
   height: '500px',
@@ -39,6 +47,7 @@ const desktopBoxForm = {
 const logoContainerDesktop = {};
 
 const desktop = {
+  container: desktopContainer,
   paper: desktopPaper,
   boxLogo: desktopBoxLogo,
   boxForm: desktopBoxForm,
@@ -46,6 +55,8 @@ const desktop = {
 };
 
 // ========== Mobile ==========
+const mobileContainer = { ...desktopContainer };
+
 const mobilePaper = {
   ...desktopPaper,
   flexDirection: 'column',
@@ -71,6 +82,7 @@ const logoContainerMobile = {
 };
 
 const mobile = {
+  container: mobileContainer,
   paper: mobilePaper,
   boxLogo: mobileBoxLogo,
   boxForm: mobileBoxForm,
@@ -79,6 +91,7 @@ const mobile = {
 
 // ========== Unset ==========
 const unset = {
+  container: null,
   paper: null,
   boxLogo: null,
   boxForm: null,

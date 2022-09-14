@@ -7,7 +7,7 @@ import UnauthenticatedHome from '../screens/UnauthenticatedHome';
 
 function UnauthenticatedApp() {
   return (
-    <Container maxWidth="false" sx={container}>
+    <Container disableGutters maxWidth="false" sx={container}>
       <Routes>
         <Route path="/" element={<UnauthenticatedHome />} />
         <Route path="/login" element={<Login />} />
@@ -19,7 +19,7 @@ function UnauthenticatedApp() {
 }
 
 const container = {
-  height: '100vh',
+  height: 'auto',
   margin: 0,
   padding: 0,
   display: 'flex',

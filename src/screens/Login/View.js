@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import {
   Box,
   Button,
@@ -28,10 +27,11 @@ function View({
   error,
   layoutType,
 }) {
-  const { paper, boxLogo, boxForm, logoContainer } = styles[layoutType];
+  const { container, paper, boxLogo, boxForm, logoContainer } =
+    styles[layoutType];
 
   return (
-    <Fragment>
+    <Container disableGutters sx={container}>
       <Paper sx={paper} elevation={4} variant="elevation">
         <Box sx={boxLogo}>
           <Container sx={logoContainer}>
@@ -82,7 +82,7 @@ function View({
         severity="error"
         message={error && error.message}
       />
-    </Fragment>
+    </Container>
   );
 }
 

@@ -38,8 +38,9 @@ function View({
   return (
     <Container
       sx={{
+        height: 'auto',
         margin: '0 auto',
-        padding: '500px 0',
+        padding: '100px 0',
       }}
       disableGutters
     >
