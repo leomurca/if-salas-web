@@ -30,11 +30,11 @@ function Home() {
   }, [fetchAllAssignments]);
 
   const onClickClassCard = id => {
-    navigate(`/class/${id}`, { replace: true });
+    navigate(`/class/${id}`);
   };
 
   const onClickAssignmentCard = id => {
-    navigate(`/assignment/${id}`, { replace: true });
+    navigate(`/assignment/${id}`);
   };
 
   return (

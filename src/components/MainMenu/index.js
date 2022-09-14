@@ -51,7 +51,7 @@ function MainMenu({ options, layoutType }) {
           onChange={(_, newValue) => {
             const newOption = options.find(option => option.id === newValue);
             setSelectedOption(newOption);
-            navigate(newOption.pathname, { replace: true });
+            navigate(newOption.pathname);
           }}
           sx={navigator}
           showLabels

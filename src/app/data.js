@@ -10,7 +10,7 @@ import {
 const avatarMenuOptions = (navigate, logout) => [
   {
     text: 'Meu Perfil',
-    action: () => navigate('/profile', { replace: true }),
+    action: () => navigate('/profile'),
   },
   {
     text: 'Sair',
