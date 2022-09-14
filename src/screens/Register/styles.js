@@ -1,7 +1,10 @@
 // ========== Desktop  ==========
 const desktopContainer = {
   height: 'auto',
-  margin: '0 auto',
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
   padding: '100px 0',
 };
 
@@ -11,6 +14,7 @@ const desktopPaper = {
   justifyContent: 'center',
   color: 'white',
   textAlign: 'center',
+  width: '100%',
 };
 const baseBox = {
   width: '100%',
