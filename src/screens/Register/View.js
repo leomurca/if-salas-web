@@ -21,6 +21,7 @@ import LoadingIndicator from '../../components/LoadingIndicator';
 import logoImage from '../../assets/if-salas-logo.svg';
 
 import styles from './styles';
+import { createArrayFrom1ToN } from '../../utils/createArrayFrom1ToN';
 
 function View({
   isPending,
@@ -110,12 +111,9 @@ function View({
                 label="Ano da turma"
                 onChange={onChangeInput}
               >
-                <MenuItem value={0}>{currentYear}</MenuItem>
-                <MenuItem value={1}>{currentYear - 1}</MenuItem>
-                <MenuItem value={2}>{currentYear - 2}</MenuItem>
-                <MenuItem value={3}>{currentYear - 3}</MenuItem>
-                <MenuItem value={4}>{currentYear - 4}</MenuItem>
-                <MenuItem value={5}>{currentYear - 5}</MenuItem>
+                {createArrayFrom1ToN(8).map(i => (
+                  <MenuItem value={i}>{currentYear - i}</MenuItem>
+                ))}
               </Select>
             </FormControl>
             {/* TODO: Add field mask */}
