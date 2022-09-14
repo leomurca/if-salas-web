@@ -44,7 +44,7 @@ function View({
           </Container>
         </Box>
         <Box sx={boxForm}>
-          <h1>Login</h1>
+          <h1>Entrar</h1>
           <p>Bem-vindo de volta. Faça o login digitando os dados abaixo.</p>
           <Stack spacing={4} component="form">
             <TextField

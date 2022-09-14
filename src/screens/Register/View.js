@@ -32,18 +32,12 @@ function View({
   onChangeCheckbox,
   onTryRegister,
 }) {
-  const { paper, boxLogo, boxForm, logoContainer } = styles[layoutType];
+  const { container, paper, boxLogo, boxForm, logoContainer } =
+    styles[layoutType];
   const currentYear = dayjs().year();
 
   return (
-    <Container
-      sx={{
-        height: 'auto',
-        margin: '0 auto',
-        padding: '100px 0',
-      }}
-      disableGutters
-    >
+    <Container sx={container} disableGutters>
       <Paper sx={paper} elevation={4} variant="elevation">
         <Box sx={boxForm}>
           <h1>Criar conta</h1>

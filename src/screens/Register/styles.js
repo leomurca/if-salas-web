@@ -1,4 +1,10 @@
 // ========== Desktop  ==========
+const desktopContainer = {
+  height: 'auto',
+  margin: '0 auto',
+  padding: '100px 0',
+};
+
 const desktopPaper = {
   height: 'fit-content',
   display: 'flex',
@@ -38,6 +44,7 @@ const desktopBoxForm = {
 const logoContainerDesktop = {};
 
 const desktop = {
+  container: desktopContainer,
   paper: desktopPaper,
   boxLogo: desktopBoxLogo,
   boxForm: desktopBoxForm,
@@ -45,12 +52,15 @@ const desktop = {
 };
 
 // ========== Mobile ==========
+const mobileContainer = {
+  ...desktopContainer,
+  padding: '100px 10px',
+};
+
 const mobilePaper = {
   ...desktopPaper,
-  flexDirection: 'column',
-  height: '700px',
-  marginLeft: '10px',
-  marginRight: '10px',
+  flexDirection: 'column-reverse',
+  height: 'fit-content',
 };
 
 const mobileBoxLogo = {
@@ -61,8 +71,8 @@ const mobileBoxLogo = {
 
 const mobileBoxForm = {
   ...desktopBoxForm,
-  padding: '0 15px',
-  width: 'fit-content',
+  padding: '20px 15px',
+  width: '100%',
 };
 
 const logoContainerMobile = {
@@ -70,6 +80,7 @@ const logoContainerMobile = {
 };
 
 const mobile = {
+  container: mobileContainer,
   paper: mobilePaper,
   boxLogo: mobileBoxLogo,
   boxForm: mobileBoxForm,
@@ -78,6 +89,7 @@ const mobile = {
 
 // ========== Unset ==========
 const unset = {
+  container: null,
   paper: null,
   boxLogo: null,
   boxForm: null,
