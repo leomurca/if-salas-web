@@ -535,7 +535,7 @@ const user = {
   avatar: 'https://i.pravatar.cc/300?img=61',
   course: 0,
   termsAgreed: true,
-  year: 0,
+  year: 2018,
 };
 
 const authFailure = {

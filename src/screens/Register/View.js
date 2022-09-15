@@ -13,7 +13,6 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import dayjs from 'dayjs';
 
 import SnackbarIndicator from '../../components/SnackbarIndicator';
 import LoadingIndicator from '../../components/LoadingIndicator';
@@ -23,6 +22,7 @@ import logoImage from '../../assets/if-salas-logo.svg';
 
 import styles from './styles';
 import { createArrayFrom1ToN } from '../../utils/createArrayFrom1ToN';
+import { COURSES } from '../../utils/constants';
 
 function View({
   isPending,
@@ -33,10 +33,10 @@ function View({
   onChangeInput,
   onChangeCheckbox,
   onTryRegister,
+  currentYear,
 }) {
   const { container, paper, boxLogo, boxForm, logoContainer } =
     styles[layoutType];
-  const currentYear = dayjs().year();
 
   return (
     <Container sx={container} disableGutters>
@@ -90,17 +90,11 @@ function View({
                 label="Curso"
                 onChange={onChangeInput}
               >
-                <MenuItem value={0}>
-                  Bacharelado em Sistemas de Informação
-                </MenuItem>
-                <MenuItem value={1}>
-                  Tecnologia em Processos Gerenciais
-                </MenuItem>
-                <MenuItem value={2}>Tecnologia em Logística</MenuItem>
-                <MenuItem value={3}>
-                  Engenharia de Controle e Automação
-                </MenuItem>
-                <MenuItem value={4}>Bacharelado em Administração</MenuItem>
+                {COURSES.map(course => (
+                  <MenuItem key={course.value} value={course.value}>
+                    {course.name}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
             <FormControl sx={{ textAlign: 'start' }} fullWidth>
@@ -117,7 +111,7 @@ function View({
                 onChange={onChangeInput}
               >
                 {createArrayFrom1ToN(8).map(i => (
-                  <MenuItem key={i - 1} value={i - 1}>
+                  <MenuItem key={i - 1} value={currentYear - (i - 1)}>
                     {currentYear - (i - 1)}
                   </MenuItem>
                 ))}

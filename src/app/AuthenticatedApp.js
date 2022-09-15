@@ -13,6 +13,7 @@ import Classroom from '../screens/Classroom';
 import Assignment from '../screens/Assignment';
 
 import { avatarMenuOptions, menuOptions } from './data';
+import Profile from '../screens/Profile';
 
 function AuthenticatedApp() {
   const navigate = useNavigate();
@@ -46,6 +47,7 @@ function AuthenticatedApp() {
             <Route path="/home" element={<Home />} />
             <Route path="/info" element={<Information />} />
             <Route path="/calendar" element={<Calendar />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/class">
               <Route path=":id" element={<Classroom />} />
             </Route>

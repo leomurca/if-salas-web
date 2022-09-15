@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { useState } from 'react';
 import { useAuthState } from '../../context/auth';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
@@ -7,6 +8,7 @@ import View from './View';
 
 function Register() {
   useDocumentTitle('Criar conta');
+  const currentYear = dayjs().year();
   const { register, isPending, isError, error } = useAuthState();
   const layoutType = useLayoutType();
   const [data, setData] = useState({
@@ -14,7 +16,7 @@ function Register() {
     lastName: '',
     ra: '',
     course: 0,
-    year: 0,
+    year: currentYear,
     phone: '',
     email: '',
     password: '',
@@ -49,6 +51,7 @@ function Register() {
       onChangeInput={onChangeInput}
       onChangeCheckbox={onChangeCheckbox}
       onTryRegister={onTryRegister}
+      currentYear={currentYear}
     />
   );
 }
