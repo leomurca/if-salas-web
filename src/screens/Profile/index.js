@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useUser } from '../../context/user';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import View from './View';
 
 function Profile() {
+  useDocumentTitle('Meu perfil');
   const { state } = useUser();
   const [data, setData] = useState(state && state.user);
 

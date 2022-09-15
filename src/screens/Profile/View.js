@@ -29,27 +29,25 @@ function View({ data, onChangeInput }) {
           display: 'flex',
           alignItems: 'center',
           width: '100%',
-          // TODO: Check issue with screen heights too small
           height: '400px',
-          padding: '30px',
         }}
       >
         <Avatar
           alt={fullName}
           src={data.avatar}
-          sx={{ width: 250, height: 250 }}
+          sx={{ width: 200, height: 200 }}
         />
         <Stack sx={{ marginLeft: '30px' }}>
-          <Typography sx={{ fontWeight: 'bold' }} variant="h3">
+          <Typography sx={{ fontWeight: 'bold' }} variant="h4">
             {fullName}
           </Typography>
-          <Typography sx={{ fontSize: '20px' }} variant="body1">
+          <Typography sx={{ fontSize: '15px' }} variant="body1">
             Estudante de {COURSES.filter(c => c.value === data.course)[0].name}
           </Typography>
-          <Typography sx={{ fontSize: '20px' }} variant="body1">
+          <Typography sx={{ fontSize: '15px' }} variant="body1">
             Turma de {data.year}
           </Typography>
-          <Typography sx={{ fontSize: '20px' }} variant="body1">
+          <Typography sx={{ fontSize: '15px' }} variant="body1">
             <strong>RA: </strong> {data.ra}
           </Typography>
         </Stack>
@@ -170,7 +168,7 @@ function View({ data, onChangeInput }) {
             variant="standard"
             type="text"
             value={data.ra}
-            placeholder="00#####"
+            placeholder="#######"
             disabled
             sx={{ width: '45%', cursor: 'no-drop' }}
             InputProps={{
