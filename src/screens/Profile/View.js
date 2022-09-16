@@ -1,3 +1,4 @@
+import { Edit } from '@mui/icons-material';
 import {
   Avatar,
   Box,
@@ -10,6 +11,7 @@ import {
   Typography,
   Container,
   Button,
+  Fab,
 } from '@mui/material';
 import dayjs from 'dayjs';
 
@@ -19,10 +21,18 @@ import { COURSES } from '../../utils/constants';
 import { createArrayFrom1ToN } from '../../utils/createArrayFrom1ToN';
 import styles from './styles';
 
-function View({ data, onChangeInput, layoutType }) {
+function View({
+  data,
+  onChangeInput,
+  onChangeFile,
+  hiddenInputImageFileRef,
+  layoutType,
+}) {
   const {
     profileSummaryBox,
+    avatarStack,
     avatar,
+    avatarFab,
     profileSummaryStack,
     formBox,
     formField,
@@ -36,7 +46,25 @@ function View({ data, onChangeInput, layoutType }) {
   return (
     <Container disableGutters sx={{ display: 'flex', flexDirection: 'column' }}>
       <Box sx={profileSummaryBox}>
-        <Avatar alt={fullName} src={data.avatar} sx={avatar} />
+        <Stack sx={avatarStack}>
+          <Avatar alt={fullName} src={data.avatar} sx={avatar} />
+          <input
+            type="file"
+            name="avatar"
+            ref={hiddenInputImageFileRef}
+            onChange={onChangeFile}
+            style={{ display: 'none' }}
+          />
+          <Fab
+            onClick={() => hiddenInputImageFileRef.current.click()}
+            sx={avatarFab}
+            size="small"
+            color="primary"
+            aria-label="add"
+          >
+            <Edit />
+          </Fab>
+        </Stack>
         <Stack sx={profileSummaryStack}>
           <Typography sx={fullNameTypography} variant="h4">
             {fullName}

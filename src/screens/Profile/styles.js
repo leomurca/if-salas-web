@@ -6,9 +6,19 @@ const desktopProfileSummaryBox = {
   marginTop: '70px',
 };
 
+const desktopAvatarStack = {
+  position: 'relative',
+};
+
 const desktopAvatar = {
   width: 200,
   height: 200,
+};
+
+const desktopAvatarFab = {
+  position: 'absolute',
+  bottom: '10%',
+  right: 0,
 };
 
 const desktopProfileSummaryStack = {
@@ -42,7 +52,9 @@ const desktopButton = {
 
 const desktop = {
   profileSummaryBox: desktopProfileSummaryBox,
+  avatarStack: desktopAvatarStack,
   avatar: desktopAvatar,
+  avatarFab: desktopAvatarFab,
   profileSummaryStack: desktopProfileSummaryStack,
   formBox: desktopFormBox,
   formField: desktopFormField,
@@ -59,10 +71,18 @@ const mobileProfileSummaryBox = {
   height: 'fit-content',
 };
 
+const mobileAvatarStack = {
+  ...desktopAvatarStack,
+};
+
 const mobileAvatar = {
   ...desktopAvatar,
   width: 170,
   height: 170,
+};
+
+const mobileAvatarFab = {
+  ...desktopAvatarFab,
 };
 
 const mobileProfileSummaryStack = {};
@@ -96,7 +116,9 @@ const mobileButton = {
 
 const mobile = {
   profileSummaryBox: mobileProfileSummaryBox,
+  avatarStack: mobileAvatarStack,
   avatar: mobileAvatar,
+  avatarFab: mobileAvatarFab,
   profileSummaryStack: mobileProfileSummaryStack,
   formBox: mobileFormBox,
   formField: mobileFormField,
@@ -108,6 +130,7 @@ const mobile = {
 // ========== Unset ==========
 const unset = {
   profileSummaryBox: null,
+  avatarStack: null,
   avatar: null,
   profileSummaryStack: null,
   formBox: null,
