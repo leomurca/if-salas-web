@@ -17,58 +17,49 @@ import InputMask from '../../components/InputMask';
 
 import { COURSES } from '../../utils/constants';
 import { createArrayFrom1ToN } from '../../utils/createArrayFrom1ToN';
+import styles from './styles';
 
-function View({ data, onChangeInput }) {
+function View({ data, onChangeInput, layoutType }) {
+  const {
+    profileSummaryBox,
+    avatar,
+    profileSummaryStack,
+    formBox,
+    formField,
+    formStack,
+    fullNameTypography,
+    button,
+  } = styles[layoutType];
   const fullName = `${data.firstName} ${data.lastName}`;
   const currentYear = dayjs().year();
 
   return (
     <Container disableGutters sx={{ display: 'flex', flexDirection: 'column' }}>
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          width: '100%',
-          height: '400px',
-        }}
-      >
-        <Avatar
-          alt={fullName}
-          src={data.avatar}
-          sx={{ width: 200, height: 200 }}
-        />
-        <Stack sx={{ marginLeft: '30px' }}>
-          <Typography sx={{ fontWeight: 'bold' }} variant="h4">
+      <Box sx={profileSummaryBox}>
+        <Avatar alt={fullName} src={data.avatar} sx={avatar} />
+        <Stack sx={profileSummaryStack}>
+          <Typography sx={fullNameTypography} variant="h4">
             {fullName}
           </Typography>
-          <Typography sx={{ fontSize: '15px' }} variant="body1">
+          <Typography variant="body2">
             Estudante de {COURSES.filter(c => c.value === data.course)[0].name}
           </Typography>
-          <Typography sx={{ fontSize: '15px' }} variant="body1">
-            Turma de {data.year}
-          </Typography>
-          <Typography sx={{ fontSize: '15px' }} variant="body1">
+          <Typography variant="body2">Turma de {data.year}</Typography>
+          <Typography variant="body2">
             <strong>RA: </strong> {data.ra}
           </Typography>
         </Stack>
       </Box>
 
-      <Box sx={{ width: '100%', height: '800px' }}>
-        <Stack
-          gap={10}
-          paddingTop="30px"
-          flexWrap="wrap"
-          flexDirection="row"
-          justifyContent="space-around"
-          component="form"
-        >
+      <Box sx={formBox}>
+        <Stack {...formStack} component="form">
           <TextField
             id="firstName"
             name="firstName"
             label="Primeiro nome"
             variant="standard"
             type="text"
-            sx={{ width: '45%' }}
+            sx={formField}
             value={data.firstName}
             onChange={onChangeInput}
           />
@@ -79,7 +70,7 @@ function View({ data, onChangeInput }) {
             label="Sobrenome"
             variant="standard"
             type="text"
-            sx={{ width: '45%' }}
+            sx={formField}
             value={data.lastName}
             onChange={onChangeInput}
           />
@@ -93,7 +84,7 @@ function View({ data, onChangeInput }) {
             value={data.phone}
             onChange={onChangeInput}
             placeholder="(##) #####-####"
-            sx={{ width: '45%' }}
+            sx={formField}
             InputProps={{
               inputComponent: InputMask,
             }}
@@ -107,7 +98,7 @@ function View({ data, onChangeInput }) {
             type="email"
             value={data.email}
             onChange={onChangeInput}
-            sx={{ width: '45%' }}
+            sx={formField}
           />
 
           <TextField
@@ -118,10 +109,10 @@ function View({ data, onChangeInput }) {
             type="password"
             value={data.password}
             onChange={onChangeInput}
-            sx={{ width: '45%' }}
+            sx={formField}
           />
 
-          <FormControl sx={{ textAlign: 'start', width: '45%' }} fullWidth>
+          <FormControl sx={{ ...formField, textAlign: 'start' }} fullWidth>
             <InputLabel variant="standard" id="course">
               Curso
             </InputLabel>
@@ -141,7 +132,7 @@ function View({ data, onChangeInput }) {
               ))}
             </Select>
           </FormControl>
-          <FormControl sx={{ textAlign: 'start', width: '45%' }} fullWidth>
+          <FormControl sx={{ ...formField, textAlign: 'start' }} fullWidth>
             <InputLabel variant="standard" id="course">
               Ano da turma
             </InputLabel>
@@ -170,14 +161,14 @@ function View({ data, onChangeInput }) {
             value={data.ra}
             placeholder="#######"
             disabled
-            sx={{ width: '45%', cursor: 'no-drop' }}
+            sx={{ ...formField, cursor: 'no-drop' }}
             InputProps={{
               inputComponent: InputMask,
             }}
           />
 
           <Button
-            sx={{ width: '30%' }}
+            sx={button}
             onClick={() => console.log('clicked')}
             variant="contained"
           >

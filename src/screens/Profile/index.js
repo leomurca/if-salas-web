@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useUser } from '../../context/user';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
+import useLayoutType from '../../hooks/useLayoutType';
 import View from './View';
 
 function Profile() {
   useDocumentTitle('Meu perfil');
+  const layoutType = useLayoutType();
   const { state } = useUser();
   const [data, setData] = useState(state && state.user);
 
@@ -15,7 +17,9 @@ function Profile() {
     setData(prev => ({ ...prev, [name]: value }));
   };
 
-  return <View data={data} onChangeInput={onChangeInput} />;
+  return (
+    <View data={data} onChangeInput={onChangeInput} layoutType={layoutType} />
+  );
 }
 
 export default Profile;
