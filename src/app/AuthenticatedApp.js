@@ -11,15 +11,18 @@ import useLayoutType from '../hooks/useLayoutType';
 import Toolbar from '../components/Toolbar';
 import Classroom from '../screens/Classroom';
 import Assignment from '../screens/Assignment';
+import Profile from '../screens/Profile';
 
 import { avatarMenuOptions, menuOptions } from './data';
-import Profile from '../screens/Profile';
+
+import styles from './styles';
 
 function AuthenticatedApp() {
   const navigate = useNavigate();
   const { state } = useUser();
   const { logout } = useAuthState();
   const layoutType = useLayoutType();
+  const { container, toolbar } = styles[layoutType];
 
   return (
     state &&
@@ -27,7 +30,7 @@ function AuthenticatedApp() {
       <>
         <Toolbar
           title={
-            <p style={{ fontSize: layoutType === 'desktop' ? '30px' : '20px' }}>
+            <p style={toolbar}>
               Olá, <strong>{state.user.firstName}</strong> 👋
             </p>
           }
@@ -35,10 +38,7 @@ function AuthenticatedApp() {
           avatarMenuOptions={avatarMenuOptions(navigate, logout)}
           user={state.user}
         />
-        <Container
-          maxWidth="false"
-          sx={layoutType === 'desktop' ? container : mobileContainer}
-        >
+        <Container maxWidth="false" sx={container}>
           <MainMenu
             options={menuOptions(state.pathname)}
             layoutType={layoutType}
@@ -63,21 +63,5 @@ function AuthenticatedApp() {
     )
   );
 }
-
-const container = {
-  height: 'auto',
-  margin: 0,
-  padding: 0,
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: 'primary.mainBackground',
-};
-
-const mobileContainer = {
-  ...container,
-  flexDirection: 'column',
-  justifyContent: 'start',
-};
 
 export default AuthenticatedApp;

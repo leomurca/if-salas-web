@@ -5,7 +5,10 @@ import Login from '../screens/Login';
 import Register from '../screens/Register';
 import UnauthenticatedHome from '../screens/UnauthenticatedHome';
 
+import styles from './styles';
+
 function UnauthenticatedApp() {
+  const { container } = styles['desktop'];
   return (
     <Container disableGutters maxWidth="false" sx={container}>
       <Routes>
@@ -17,15 +20,5 @@ function UnauthenticatedApp() {
     </Container>
   );
 }
-
-const container = {
-  height: 'auto',
-  margin: 0,
-  padding: 0,
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: 'primary.mainBackground',
-};
 
 export default UnauthenticatedApp;
