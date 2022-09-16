@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useAuthState } from './auth';
 import {
   getAllAssignments,
+  getAssignmentById,
   getAssignmentsByClassId,
   getClassroomAnnouncementsById,
   getClassroomById,
@@ -31,6 +32,8 @@ function UserProvider(props) {
 
   const fetchAllAssignments = () => getAllAssignments(user.id);
 
+  const fetchAssignmentById = assignmentId => getAssignmentById(assignmentId);
+
   const fetchAssignmentsByClassId = classId => getAssignmentsByClassId(classId);
 
   const fetchClassroomById = classId => getClassroomById(classId);
@@ -51,6 +54,7 @@ function UserProvider(props) {
         state,
         fetchClassrooms,
         fetchAllAssignments,
+        fetchAssignmentById,
         fetchAssignmentsByClassId,
         fetchClassroomById,
         fetchFAQ,
@@ -67,6 +71,7 @@ function useUser() {
   const {
     state,
     fetchClassrooms,
+    fetchAssignmentById,
     fetchAllAssignments,
     fetchAssignmentsByClassId,
     fetchClassroomById,
@@ -80,6 +85,7 @@ function useUser() {
     state,
     fetchClassrooms,
     fetchAllAssignments,
+    fetchAssignmentById,
     fetchAssignmentsByClassId,
     fetchClassroomById,
     fetchFAQ,

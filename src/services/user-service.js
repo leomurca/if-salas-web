@@ -38,8 +38,8 @@ const getUpcomingAssignmentsByClassId = classId =>
   sleep(3000).then(() => {
     console.log('Getting upcoming assignments by class id ' + classId);
     return {
-      data: allUpcomingAssignments.filter(
-        a => a.classrooms.filter(c => c.id === classId)[0]
+      data: allUpcomingAssignments.filter(a =>
+        a.classrooms.filter(c => c.id === classId)
       ),
     };
   });
@@ -52,8 +52,16 @@ const getAllAssignments = userId =>
     };
   });
 
-const getAssignmentsByClassId = classId =>
+const getAssignmentById = assignmentId =>
   sleep(4000).then(() => {
+    console.log('Getting assignment by id ' + assignmentId);
+    return {
+      data: allAssignments.filter(a => a.id === assignmentId)[0],
+    };
+  });
+
+const getAssignmentsByClassId = classId =>
+  sleep(3000).then(() => {
     console.log('Getting assignments by class id ' + classId);
     return {
       data: allAssignments.filter(a => a.classrooms[0].id === classId),
@@ -101,6 +109,7 @@ export {
   getClassrooms,
   getClassroomById,
   getAllAssignments,
+  getAssignmentById,
   getAssignmentsByClassId,
   getClassroomAnnouncementsById,
   getUpcomingAssignmentsByClassId,
