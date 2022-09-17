@@ -1,13 +1,22 @@
 import parse from 'html-react-parser';
-import { Box, Button, Container, Stack, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Container,
+  Skeleton,
+  Stack,
+  Typography,
+} from '@mui/material';
 import dayjs from 'dayjs';
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
 
 import styles from './styles';
+import { createArrayFrom1ToN } from '../../utils/createArrayFrom1ToN';
 
 function View({ assignment, dropzone, layoutType }) {
   const {
     container,
+    loadingContainer,
     headerStack,
     title,
     classroomColorStack,
@@ -21,7 +30,40 @@ function View({ assignment, dropzone, layoutType }) {
   } = styles[layoutType];
 
   return assignment === null ? (
-    <h1>Loading...</h1>
+    <Container sx={loadingContainer} disableGutters>
+      <Stack sx={headerStack}>
+        <Skeleton variant="rectangular" width="100%" height={60} />
+        <Skeleton
+          sx={{ marginTop: '20px' }}
+          variant="rectangular"
+          width="30%"
+          height={20}
+        />
+        <Stack sx={subHeaderStack}>
+          <Skeleton variant="rectangular" width="20%" height={20} />
+          <Skeleton variant="rectangular" width="50%" height={20} />
+        </Stack>
+      </Stack>
+      <Stack sx={descriptionStack}>
+        {createArrayFrom1ToN(12).map(i => (
+          <Skeleton
+            key={i}
+            variant="text"
+            sx={{ marginTop: i % 4 === 1 && '20px', fontSize: '1rem' }}
+          />
+        ))}
+      </Stack>
+
+      <Stack sx={dropzoneStack} flexDirection="column" alignItems="flex-end">
+        <Skeleton variant="rectangular" width="100%" height={150} />
+        <Skeleton
+          sx={{ marginTop: '30px' }}
+          variant="rectangular"
+          width="30%"
+          height={40}
+        />
+      </Stack>
+    </Container>
   ) : (
     <Container sx={container} disableGutters>
       <Stack sx={headerStack}>

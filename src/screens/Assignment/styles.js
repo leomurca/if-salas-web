@@ -7,6 +7,14 @@ const desktopContainer = {
   marginTop: '30px',
 };
 
+const desktopLoadingContainer = {
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  marginTop: '50px',
+};
+
 const desktopHeaderStack = {
   width: '70%',
   paddingBottom: '5px',
@@ -68,6 +76,7 @@ const desktopButton = {
 
 const desktop = {
   container: desktopContainer,
+  loadingContainer: desktopLoadingContainer,
   headerStack: desktopHeaderStack,
   title: desktopTitle,
   classroomColorStack: desktopClassroomColorStack,
@@ -83,6 +92,11 @@ const desktop = {
 // ========== Mobile ==========
 const mobileContainer = {
   ...desktopContainer,
+  marginBottom: '100px',
+};
+
+const mobileLoadingContainer = {
+  ...desktopLoadingContainer,
   marginBottom: '100px',
 };
 
@@ -136,6 +150,7 @@ const mobileButton = {
 
 const mobile = {
   container: mobileContainer,
+  loadingContainer: mobileLoadingContainer,
   headerStack: mobileHeaderStack,
   title: mobileTitle,
   classroomColorStack: mobileClassroomColorStack,
@@ -151,6 +166,7 @@ const mobile = {
 // ========== Unset ==========
 const unset = {
   container: null,
+  loadingContainer: null,
   headerStack: null,
   title: null,
   classroomColorStack: null,

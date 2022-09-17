@@ -53,7 +53,7 @@ const getAllAssignments = userId =>
   });
 
 const getAssignmentById = assignmentId =>
-  sleep(400).then(() => {
+  sleep(4000).then(() => {
     console.log('Getting assignment by id ' + assignmentId);
     return {
       data: allAssignments.filter(a => a.id === assignmentId)[0],
