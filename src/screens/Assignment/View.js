@@ -27,8 +27,23 @@ function View({ assignment, dropzone, layoutType }) {
         <Typography sx={{ fontWeight: 'bold', padding: '15px 0' }} variant="h4">
           {assignment.title}
         </Typography>
+        <Stack flexDirection="row" alignItems="center">
+          {assignment.classrooms.map(c => (
+            <div
+              style={{
+                backgroundColor: c.color,
+                width: '15px',
+                height: '15px',
+                marginRight: '5px',
+              }}
+            ></div>
+          ))}
+          <Typography variant="body1">
+            {assignment.classrooms.map(c => c.name).join(', ')}
+          </Typography>
+        </Stack>
         <Stack
-          sx={{ padding: '5px 0' }}
+          sx={{ paddingBottom: '5px', paddingTop: '20px' }}
           flexDirection="row"
           justifyContent="space-between"
         >
