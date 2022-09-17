@@ -38,8 +38,8 @@ const getUpcomingAssignmentsByClassId = classId =>
   sleep(300).then(() => {
     console.log('Getting upcoming assignments by class id ' + classId);
     return {
-      data: allUpcomingAssignments.filter(a =>
-        a.classrooms.filter(c => c.id === classId)
+      data: allUpcomingAssignments.filter(
+        a => a.classrooms.filter(c => c.id === classId)[0]
       ),
     };
   });
