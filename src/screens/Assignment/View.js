@@ -1,9 +1,9 @@
 import parse from 'html-react-parser';
-import { Button, Container, Stack, Typography } from '@mui/material';
+import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
 
-function View({ assignment, layoutType }) {
+function View({ assignment, dropzone, layoutType }) {
   return assignment === null ? (
     <h1>Loading...</h1>
   ) : (
@@ -60,11 +60,35 @@ function View({ assignment, layoutType }) {
           paddingTop: '30px',
           paddingBottom: '30px',
         }}
-        flexDirection="row"
-        justifyContent="flex-end"
+        flexDirection="column"
+        alignItems="flex-end"
       >
+        {/* TODO: Create a custom component for dropzone */}
+        <Box
+          sx={{
+            width: '100%',
+            height: '150px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            border: '2px dashed black',
+          }}
+          {...dropzone.getRootProps({ className: 'dropzone' })}
+        >
+          <input {...dropzone.getInputProps()} />
+          <Typography variant="body1" component="div">
+            Clique ou arraste um arquivo até aqui
+          </Typography>
+        </Box>
+        <ul>
+          {dropzone.acceptedFiles.map(file => (
+            <li key={file.path}>
+              {file.path} - {file.size} bytes
+            </li>
+          ))}
+        </ul>
         <Button
-          sx={{ width: '30%' }}
+          sx={{ width: '30%', marginTop: '20px' }}
           onClick={() => console.log('clicked')}
           variant="contained"
         >

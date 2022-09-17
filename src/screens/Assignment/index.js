@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useDropzone } from 'react-dropzone';
 import { useParams } from 'react-router-dom';
 import { useUser } from '../../context/user';
 import useLayoutType from '../../hooks/useLayoutType';
@@ -9,6 +10,7 @@ function Assignment() {
   const layoutType = useLayoutType();
   const { fetchAssignmentById } = useUser();
   const [assignment, setAssignment] = useState(null);
+  const dropzone = useDropzone({ maxFiles: 5 });
 
   useEffect(() => {
     async function getAssignmentById(assignmentId) {
@@ -27,7 +29,9 @@ function Assignment() {
     updateDocumentTitle();
   }, [params, fetchAssignmentById, assignment]);
 
-  return <View assignment={assignment} layoutType={layoutType} />;
+  return (
+    <View assignment={assignment} dropzone={dropzone} layoutType={layoutType} />
+  );
 }
 
 export default Assignment;
