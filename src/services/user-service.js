@@ -11,7 +11,7 @@ import {
 } from './mocks';
 
 const getClassrooms = userId =>
-  sleep(3000).then(() => {
+  sleep(300).then(() => {
     console.log('Get classrooms ' + userId);
     return {
       data: allClassrooms,
@@ -19,7 +19,7 @@ const getClassrooms = userId =>
   });
 
 const getClassroomById = classId =>
-  sleep(3000).then(() => {
+  sleep(300).then(() => {
     console.log('Get classroom by id ' + classId);
     return {
       data: allClassrooms.filter(c => c.id === classId)[0],
@@ -27,7 +27,7 @@ const getClassroomById = classId =>
   });
 
 const getClassroomAnnouncementsById = classId =>
-  sleep(3000).then(() => {
+  sleep(300).then(() => {
     console.log('Get classroon announcements by id ' + classId);
     return {
       data: allClassroomAnnouncements.filter(c => c.classroom.id === classId),
@@ -35,7 +35,7 @@ const getClassroomAnnouncementsById = classId =>
   });
 
 const getUpcomingAssignmentsByClassId = classId =>
-  sleep(3000).then(() => {
+  sleep(300).then(() => {
     console.log('Getting upcoming assignments by class id ' + classId);
     return {
       data: allUpcomingAssignments.filter(a =>
@@ -45,7 +45,7 @@ const getUpcomingAssignmentsByClassId = classId =>
   });
 
 const getAllAssignments = userId =>
-  sleep(4000).then(() => {
+  sleep(400).then(() => {
     console.log('Getting all assignments ' + userId);
     return {
       data: allAssignments,
@@ -53,7 +53,7 @@ const getAllAssignments = userId =>
   });
 
 const getAssignmentById = assignmentId =>
-  sleep(4000).then(() => {
+  sleep(400).then(() => {
     console.log('Getting assignment by id ' + assignmentId);
     return {
       data: allAssignments.filter(a => a.id === assignmentId)[0],
@@ -61,7 +61,7 @@ const getAssignmentById = assignmentId =>
   });
 
 const getAssignmentsByClassId = classId =>
-  sleep(3000).then(() => {
+  sleep(300).then(() => {
     console.log('Getting assignments by class id ' + classId);
     return {
       data: allAssignments.filter(a => a.classrooms[0].id === classId),
@@ -69,7 +69,7 @@ const getAssignmentsByClassId = classId =>
   });
 
 const getPeopleByClassId = classId =>
-  sleep(4000).then(() => {
+  sleep(400).then(() => {
     console.log('Getting people by class id ' + classId);
     return {
       data: allPeople.filter(p => p.classes[0].id === classId),
@@ -77,7 +77,7 @@ const getPeopleByClassId = classId =>
   });
 
 const getFaq = () =>
-  sleep(2000).then(() => {
+  sleep(300).then(() => {
     console.log('Fetching FAQ...');
     return {
       data: faq,
@@ -85,7 +85,7 @@ const getFaq = () =>
   });
 
 const getUser = shouldFail =>
-  sleep(3000).then(() => {
+  sleep(300).then(() => {
     if (shouldFail) {
       return authFailure;
     } else {
@@ -95,7 +95,7 @@ const getUser = shouldFail =>
   });
 
 const registerUser = (data, shouldFail) =>
-  sleep(3000).then(() => {
+  sleep(300).then(() => {
     if (shouldFail) {
       return authFailure;
     } else {
