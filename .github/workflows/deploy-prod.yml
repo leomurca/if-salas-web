@@ -1,0 +1,29 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+
+    runs-on: ubuntu-latest
+
+    env:
+      SSH_KEY: ${{secrets.SSH_KEY}}
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js 16
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+    - run: npm install
+    - run: npm build
+    - run: mkdir ~/.ssh
+    - run: 'echo "$SSH_KEY" >> ~/.ssh/id_ed25519_ifsalas'
+    - run: chmod 400 ~/.ssh/id_ed25519_ifsalas'
+    - run: echo -e "Host ifsalas\n\tUser ifsalas\n\tHostname 45.76.5.44\n\tIdentityFile ~/.ssh/id_ed25519_ifsalas\n\tStrictHostKeyChecking No" >> ~/.ssh/config
+    - run: rsync -rLtvz build/ ifsalas:/home/ifsalas/web/prod
+    - run: ssh ifsalas "pm2 reload all"
