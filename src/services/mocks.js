@@ -537,10 +537,10 @@ const allPeople = [
 const user = {
   id: '123',
   ra: '0021123',
-  username: 'josedasilva',
-  email: 'jose@gmail.com',
-  password: '#jose1234', // TODO: Remove this!
-  firstName: 'Arthur',
+  username: 'ronaldosilva',
+  email: 'ronaldo@gmail.com',
+  password: '#ronaldo1234', // TODO: Remove this!
+  firstName: 'Ronaldo',
   lastName: 'Silva',
   token: 'skdfb9458hnsdfsif4w38r9234ry98423',
   phone: '31999999999',
