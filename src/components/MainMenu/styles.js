@@ -8,6 +8,16 @@ const desktopMenuContainer = {
     boxSizing: 'border-box',
     backgroundColor: 'secondary.main',
   },
+  position: 'relative',
+};
+
+const desktopEnvDashVersionTypography = {
+  position: 'absolute',
+  bottom: '0',
+  textAlign: 'center',
+  color: '#ffffff',
+  width: '100%',
+  marginBottom: '20px',
 };
 
 const desktopToolbar = {
@@ -35,6 +45,7 @@ const desktopListItemIcon = {
 
 const desktop = {
   menuContainer: desktopMenuContainer,
+  envDashVersionTypography: desktopEnvDashVersionTypography,
   navigator: desktopToolbar,
   item: desktopListItem,
   itemIcon: desktopListItemIcon,
@@ -50,6 +61,7 @@ const mobileMenuContainer = {
 
 const mobile = {
   menuContainer: mobileMenuContainer,
+  envDashVersionTypography: null,
   navigator: null,
   item: null,
   itemIcon: null,
@@ -58,6 +70,7 @@ const mobile = {
 // ========== Unset ==========
 const unset = {
   menuContainer: null,
+  envDashVersionTypography: null,
   navigator: null,
   item: null,
   itemIcon: null,

@@ -11,6 +11,7 @@
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
     "dayjs": "^1.11.3",
+    "env-cmd": "^10.1.0",
     "html-react-parser": "^3.0.4",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -26,6 +27,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "start:dev": "env-cmd -f .env.dev npm run start",
+    "start:prod": "env-cmd -f .env.prod npm run start ",
+    "build:dev": "env-cmd -f .env.dev npm run build",
+    "build:prod": "env-cmd -f .env.prod npm run build",
     "deploy:prod": "rsync -avz --progress build/ ifsalas:/home/ifsalas/web/prod --delete",
     "deploy:dev": "rsync -avz --progress build/ ifsalas:/home/ifsalas/web/dev --delete"
   },

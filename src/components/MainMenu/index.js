@@ -10,13 +10,16 @@ import {
   ListItemIcon,
   ListItemText,
   Toolbar,
+  Typography,
 } from '@mui/material';
 import { NavLink, useNavigate } from 'react-router-dom';
 import logoImage from '../../assets/if-salas-logo.svg';
 import styles from './styles';
+import { environmentNameDashAppVersion } from '../../utils/env';
 
 function MainMenu({ options, layoutType }) {
-  const { menuContainer, navigator, item, itemIcon } = styles[layoutType];
+  const { menuContainer, envDashVersionTypography, navigator, item, itemIcon } =
+    styles[layoutType];
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState(
     options.find(option => option.isActive)
@@ -42,6 +45,10 @@ function MainMenu({ options, layoutType }) {
             </ListItem>
           ))}
         </List>
+
+        <Typography sx={envDashVersionTypography} variant="body2">
+          {environmentNameDashAppVersion()}
+        </Typography>
       </Drawer>
     );
   } else if (layoutType === 'mobile') {
