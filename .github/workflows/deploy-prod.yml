@@ -20,7 +20,7 @@ jobs:
         node-version: 16
         cache: 'npm'
     - run: npm install
-    - run: npm build
+    - run: npm run build
     - run: mkdir ~/.ssh
     - run: 'echo "$SSH_KEY" >> ~/.ssh/id_ed25519_ifsalas'
     - run: chmod 400 ~/.ssh/id_ed25519_ifsalas'
