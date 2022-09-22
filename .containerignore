@@ -1,7 +1,0 @@
-Containerfile
-.containerignore
-.gitignore
-README.md
-
-build
-node_modules
