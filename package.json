@@ -26,7 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy:prod": "rsync -avz --progress build/ ifsalas:/home/ifsalas/web/prod --delete"
+    "deploy:prod": "rsync -avz --progress build/ ifsalas:/home/ifsalas/web/prod --delete",
+    "deploy:dev": "rsync -avz --progress build/ ifsalas:/home/ifsalas/web/dev --delete"
   },
   "eslintConfig": {
     "extends": [
