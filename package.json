@@ -29,6 +29,8 @@
     "eject": "react-scripts eject",
     "start:dev": "env-cmd -f .env.dev npm run start",
     "start:prod": "env-cmd -f .env.prod npm run start ",
+    "build:dev": "env-cmd -f .env.dev npm run build",
+    "build:prod": "env-cmd -f .env.prod npm run build",
     "deploy:prod": "rsync -avz --progress build/ ifsalas:/home/ifsalas/web/prod --delete",
     "deploy:dev": "rsync -avz --progress build/ ifsalas:/home/ifsalas/web/dev --delete"
   },
