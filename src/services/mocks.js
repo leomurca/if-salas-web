@@ -540,7 +540,7 @@ const user = {
   username: 'josedasilva',
   email: 'jose@gmail.com',
   password: '#jose1234', // TODO: Remove this!
-  firstName: 'Arthur',
+  firstName: 'Fernando',
   lastName: 'Silva',
   token: 'skdfb9458hnsdfsif4w38r9234ry98423',
   phone: '31999999999',
