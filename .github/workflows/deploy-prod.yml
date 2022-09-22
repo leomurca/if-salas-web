@@ -23,7 +23,7 @@ jobs:
     - run: npm run build
     - run: mkdir ~/.ssh
     - run: 'echo "$SSH_KEY" >> ~/.ssh/id_ed25519_ifsalas'
-    - run: chmod 400 ~/.ssh/id_ed25519_ifsalas'
+    - run: chmod 400 ~/.ssh/id_ed25519_ifsalas
     - run: echo -e "Host ifsalas\n\tUser ifsalas\n\tHostname 45.76.5.44\n\tIdentityFile ~/.ssh/id_ed25519_ifsalas\n\tStrictHostKeyChecking No" >> ~/.ssh/config
     - run: rsync -rLtvz build/ ifsalas:/home/ifsalas/web/prod
     - run: ssh ifsalas "pm2 reload all"
