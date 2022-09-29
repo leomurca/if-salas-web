@@ -22,8 +22,7 @@ function AuthProvider(props) {
 
   const register = data => {
     setState({ ...state, status: 'pending' });
-    let shouldFail =
-      data.email !== 'leo@gmail.com' && data.password !== '#leo1234';
+    let shouldFail = false;
 
     return registerUser(data, shouldFail).then(data => {
       if (shouldFail) {
@@ -36,7 +35,7 @@ function AuthProvider(props) {
 
   const login = (email, password) => {
     setState({ ...state, status: 'pending' });
-    let shouldFail = email !== 'leo@gmail.com' && password !== '#leo1234';
+    let shouldFail = email !== 'teste@teste.com' || password !== '#teste1234';
 
     return getUser(shouldFail).then(data => {
       if (shouldFail) {
