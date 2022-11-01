@@ -21,4 +21,4 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: npm run build:prod
-    - run: sh ${GITHUB_WORKSPACE}/scripts/deploy.sh prod
+    - run: sh ${GITHUB_WORKSPACE}/scripts/deploy.sh $SSH_KEY prod
