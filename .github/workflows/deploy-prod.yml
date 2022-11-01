@@ -21,5 +21,4 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: npm run build:prod
-    - name: Copying build files to server
     - run: sh ${GITHUB_WORKSPACE}/scripts/deploy.sh prod
