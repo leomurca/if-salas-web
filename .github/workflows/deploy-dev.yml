@@ -19,10 +19,10 @@ jobs:
       with:
         node-version: 16
         cache: 'npm'
-    - run: mkdir ~/.ssh
-    - run: 'echo "$SSH_KEY" >> ~/.ssh/id_rsa_ifsalas'
-    - run: chmod 400 ~/.ssh/id_rsa_ifsalas
-    - run: echo -e "Host ifsalas\n\tUser ifsalas\n\tHostname 45.76.5.44\n\tIdentityFile ~/.ssh/id_rsa_ifsalas\n\tStrictHostKeyChecking No" >> ~/.ssh/config
     - run: npm install
     - run: npm run build:dev
-    - run: npm run deploy:dev
+    - run: mkdir ~/.ssh
+    - run: echo "$SSH_KEY" >> ~/.ssh/id_rsa_ifsalas
+    - run: chmod 400 ~/.ssh/id_rsa_ifsalas
+    - run: echo -e "Host ifsalas\n\tUser ifsalas\n\tHostname 45.76.5.44\n\tIdentityFile ~/.ssh/id_rsa_ifsalas\n\tStrictHostKeyChecking No" >> ~/.ssh/config
+    - run: rsync -avz --progress build/ ifsalas:/home/ifsalas/web/dev --delete
