@@ -3,7 +3,8 @@ import {
   allClassrooms,
   allAssignments,
   faq,
-  user,
+  studentUser,
+  professorUser,
   authFailure,
   allClassroomAnnouncements,
   allUpcomingAssignments,
@@ -84,14 +85,18 @@ const getFaq = () =>
     };
   });
 
-const getUser = shouldFail =>
+const getUser = (email, password) =>
   sleep(300).then(() => {
-    if (shouldFail) {
-      return authFailure;
+    let user;
+    if (email === 'p@test.com' && password === 'p123') {
+      user = professorUser;
+    } else if (email === 's@test.com' && password === 's123') {
+      user = studentUser;
     } else {
-      window.localStorage.setItem('$USER', JSON.stringify(user));
-      return user;
+      return authFailure;
     }
+    window.localStorage.setItem('$USER', JSON.stringify(user));
+    return user;
   });
 
 const registerUser = (data, shouldFail) =>
