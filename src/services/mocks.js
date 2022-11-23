@@ -534,7 +534,7 @@ const allPeople = [
   },
 ];
 
-const user = {
+const studentUser = {
   id: '123',
   ra: '0021123',
   username: 'ronaldosilva',
@@ -548,6 +548,24 @@ const user = {
   course: 0,
   termsAgreed: true,
   year: 2018,
+  role: 'STUDENT',
+};
+
+const professorUser = {
+  id: '321',
+  ra: '0021123',
+  username: 'cazalbe',
+  email: 'carlos.junior@ifmg.edu.br',
+  password: '#carlos1234', // TODO: Remove this!
+  firstName: 'Carlos',
+  lastName: 'Severiano',
+  token: 'xkhfb9458hnsdfsi9q8345bsdf9b834yr',
+  phone: '31111111111',
+  avatar: 'https://i.pravatar.cc/300?img=61',
+  course: 0,
+  termsAgreed: true,
+  year: 2018,
+  role: 'PROFESSOR',
 };
 
 const authFailure = {
@@ -560,7 +578,8 @@ export {
   allClassroomAnnouncements,
   allPeople,
   faq,
-  user,
+  studentUser,
+  professorUser,
   authFailure,
   allUpcomingAssignments,
 };
