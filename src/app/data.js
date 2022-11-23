@@ -28,6 +28,7 @@ const menuOptions = activePath => [
     isActive:
       activePath === '/home' ||
       activePath === '/login' ||
+      activePath === '/register' ||
       activePath === '/profile' ||
       activePath === '/' ||
       activePath.indexOf('class') !== -1 ||

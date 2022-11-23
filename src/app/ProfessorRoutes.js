@@ -1,0 +1,14 @@
+import { Navigate, Route, Routes } from 'react-router-dom';
+
+function ProfessorRoutes() {
+  return (
+    <Routes>
+      <Route path="/home" element={<h1>Home</h1>} />
+      <Route path="/login" element={<Navigate to="/home" />} />
+      <Route path="/register" element={<Navigate to="/home" />} />
+      <Route path="/" element={<Navigate to="/home" />} />
+    </Routes>
+  );
+}
+
+export default ProfessorRoutes;

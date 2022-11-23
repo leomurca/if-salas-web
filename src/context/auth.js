@@ -22,10 +22,9 @@ function AuthProvider(props) {
 
   const register = data => {
     setState({ ...state, status: 'pending' });
-    let shouldFail = false;
 
-    return registerUser(data, shouldFail).then(data => {
-      if (shouldFail) {
+    return registerUser(data).then(data => {
+      if (data.message) {
         return setState({ status: 'error', user: null, error: data });
       } else {
         return setState({ status: 'success', user: data, error: null });

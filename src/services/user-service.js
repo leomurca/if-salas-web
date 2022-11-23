@@ -99,15 +99,18 @@ const getUser = (email, password) =>
     return user;
   });
 
-const registerUser = (data, shouldFail) =>
+const registerUser = data =>
   sleep(300).then(() => {
-    if (shouldFail) {
-      return authFailure;
+    let userData;
+    if (data.email === 'p@test.com') {
+      userData = { ...data, role: 'PROFESSOR' };
+    } else if (data.email === 's@test.com') {
+      userData = { ...data, role: 'STUDENT' };
     } else {
-      console.log(data);
-      window.localStorage.setItem('$USER', JSON.stringify(data));
-      return data;
+      return authFailure;
     }
+    window.localStorage.setItem('$USER', JSON.stringify(data));
+    return userData;
   });
 
 export {
