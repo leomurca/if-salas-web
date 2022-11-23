@@ -548,6 +548,7 @@ const user = {
   course: 0,
   termsAgreed: true,
   year: 2018,
+  role: 'STUDENT',
 };
 
 const authFailure = {
