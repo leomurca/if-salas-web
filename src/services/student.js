@@ -1,37 +1,29 @@
-import {
-  getAllAssignments,
-  getAssignmentById,
-  getAssignmentsByClassId,
-  getClassroomAnnouncementsById,
-  getClassroomById,
-  getClassrooms,
-  getFaq,
-  getPeopleByClassId,
-  getUpcomingAssignmentsByClassId,
-} from '../utils/mocks/api';
+import { StudentApi } from '../utils/mocks/api';
 
 export default class StudentService {
   constructor(user) {
     this.user = user;
   }
 
-  fetchClassrooms = () => getClassrooms(this.user.id);
+  fetchClassrooms = () => StudentApi.getClassrooms(this.user.id);
 
-  fetchAllAssignments = () => getAllAssignments(this.user.id);
+  fetchAllAssignments = () => StudentApi.getAllAssignments(this.user.id);
 
-  fetchAssignmentById = assignmentId => getAssignmentById(assignmentId);
+  fetchAssignmentById = assignmentId =>
+    StudentApi.getAssignmentById(assignmentId);
 
-  fetchAssignmentsByClassId = classId => getAssignmentsByClassId(classId);
+  fetchAssignmentsByClassId = classId =>
+    StudentApi.getAssignmentsByClassId(classId);
 
-  fetchClassroomById = classId => getClassroomById(classId);
+  fetchClassroomById = classId => StudentApi.getClassroomById(classId);
 
-  fetchFAQ = () => getFaq();
+  fetchFAQ = () => StudentApi.getFaq();
 
   fetchClassroomAnnouncements = classId =>
-    getClassroomAnnouncementsById(classId);
+    StudentApi.getClassroomAnnouncementsById(classId);
 
   fetchUpcomingAssignmentsByClassId = classId =>
-    getUpcomingAssignmentsByClassId(classId);
+    StudentApi.getUpcomingAssignmentsByClassId(classId);
 
-  fetchPeopleByClassId = classId => getPeopleByClassId(classId);
+  fetchPeopleByClassId = classId => StudentApi.getPeopleByClassId(classId);
 }
