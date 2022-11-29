@@ -2,18 +2,21 @@ export const UserServiceProvider = (function () {
   let instance;
 
   async function createInstance(user) {
-    if (user.role === 'STUDENT') {
-      const service = await import('../services/student-service');
-      if (service) {
-        return new service.default(user);
-      }
-    } else if (user.role === 'PROFESSOR') {
-      const service = await import('../services/professor-service');
-      if (service) {
-        return new service.default(user);
-      }
-    } else {
-      throw new Error('Invalid Role!');
+    switch (user.role) {
+      case 'STUDENT':
+        const studentService = await import('../services/student-service');
+        if (studentService) {
+          return new studentService.default(user);
+        }
+        break;
+      case 'PROFESSOR':
+        const professorService = await import('../services/professor-service');
+        if (professorService) {
+          return new professorService.default(user);
+        }
+        break;
+      default:
+        throw new Error('Invalid Role!');
     }
   }
 
