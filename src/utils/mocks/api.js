@@ -1,4 +1,4 @@
-import { sleep } from '../utils/sleep';
+import { sleep } from '../sleep';
 import {
   allClassrooms,
   allAssignments,
@@ -9,7 +9,7 @@ import {
   allClassroomAnnouncements,
   allUpcomingAssignments,
   allPeople,
-} from './mocks';
+} from './responses';
 
 const getClassrooms = userId =>
   sleep(300).then(() => {

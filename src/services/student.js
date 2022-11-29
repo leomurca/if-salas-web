@@ -8,7 +8,7 @@ import {
   getFaq,
   getPeopleByClassId,
   getUpcomingAssignmentsByClassId,
-} from './user-service';
+} from '../utils/mocks/api';
 
 export default class StudentService {
   constructor(user) {

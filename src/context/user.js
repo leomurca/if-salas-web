@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { UserServiceProvider } from '../services/user-service-provider';
+import { UserServiceProvider } from '../services/provider';
 import { useAuthState } from './auth';
 
 const UserContext = createContext();

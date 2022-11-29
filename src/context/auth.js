@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { getUser, registerUser } from '../services/user-service';
+import { getUser, registerUser } from '../utils/mocks/api';
 
 const AuthContext = createContext();
 

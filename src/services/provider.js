@@ -4,13 +4,13 @@ export const UserServiceProvider = (function () {
   async function createInstance(user) {
     switch (user.role) {
       case 'STUDENT':
-        const studentService = await import('../services/student-service');
+        const studentService = await import('./student');
         if (studentService) {
           return new studentService.default(user);
         }
         break;
       case 'PROFESSOR':
-        const professorService = await import('../services/professor-service');
+        const professorService = await import('./professor');
         if (professorService) {
           return new professorService.default(user);
         }
