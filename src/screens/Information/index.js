@@ -9,16 +9,16 @@ import { sectors } from './data';
 function Information() {
   useDocumentTitle('Informações');
   const layoutType = useLayoutType();
-  const { fetchFAQ } = useUser();
+  const { userService } = useUser();
   const [faq, setFaq] = useState(null);
 
   useEffect(() => {
     async function getClassrooms() {
-      const result = await fetchFAQ();
+      const result = await userService.fetchFAQ();
       setFaq(result.data);
     }
     getClassrooms();
-  }, [fetchFAQ]);
+  }, [userService, userService.fetchFAQ]);
 
   return <View faq={faq} sectors={sectors} layoutType={layoutType} />;
 }

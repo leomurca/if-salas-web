@@ -9,16 +9,16 @@ function Home() {
   useDocumentTitle('Página Inicial');
   const navigate = useNavigate();
   const layoutType = useLayoutType();
-  const { fetchClassrooms } = useUser();
+  const { userService } = useUser();
   const [classrooms, setClassrooms] = useState(null);
 
   useEffect(() => {
     async function getClassrooms() {
-      const result = await fetchClassrooms();
+      const result = await userService.fetchClassrooms();
       setClassrooms(result.data);
     }
     getClassrooms();
-  }, [fetchClassrooms]);
+  }, [userService, userService.fetchClassrooms]);
 
   const onClickClassCard = id => {
     navigate(`/class/${id}`);

@@ -9,25 +9,25 @@ function Home() {
   useDocumentTitle('Página Inicial');
   const navigate = useNavigate();
   const layoutType = useLayoutType();
-  const { fetchClassrooms, fetchAllAssignments } = useUser();
+  const { userService } = useUser();
   const [classrooms, setClassrooms] = useState(null);
   const [assignments, setAssignments] = useState(null);
 
   useEffect(() => {
     async function getClassrooms() {
-      const result = await fetchClassrooms();
+      const result = await userService.fetchClassrooms();
       setClassrooms(result.data);
     }
     getClassrooms();
-  }, [fetchClassrooms]);
+  }, [userService, userService.fetchClassrooms]);
 
   useEffect(() => {
     async function getAssignments() {
-      const result = await fetchAllAssignments();
+      const result = await userService.fetchAllAssignments();
       setAssignments(result.data);
     }
     getAssignments();
-  }, [fetchAllAssignments]);
+  }, [userService, userService.fetchAllAssignments]);
 
   const onClickClassCard = id => {
     navigate(`/class/${id}`);
