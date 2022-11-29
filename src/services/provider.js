@@ -21,9 +21,9 @@ export const UserServiceProvider = (function () {
   }
 
   return {
-    getInstance: function (user) {
+    getInstance: async function (user) {
       if (!instance) {
-        instance = createInstance(user);
+        instance = await createInstance(user);
       }
       return instance;
     },
