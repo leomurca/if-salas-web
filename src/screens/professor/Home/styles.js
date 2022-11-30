@@ -4,8 +4,13 @@ const desktopContainer = {
   margin: 0,
 };
 
+const desktopDivider = {
+  borderLeft: '4px solid #CFCFCF',
+};
+
 const desktop = {
   container: desktopContainer,
+  divider: desktopDivider,
 };
 
 // ========== Mobile ==========
@@ -16,8 +21,14 @@ const mobileContainer = {
   margin: 0,
 };
 
+const mobileDivider = {
+  borderTop: '2px solid #CFCFCF',
+  paddingTop: '15px',
+};
+
 const mobile = {
   container: mobileContainer,
+  divider: mobileDivider,
 };
 
 // ========== Unset ==========

@@ -30,6 +30,7 @@ function View({ layoutType, classrooms, onClickClassCard }) {
                   title={classroom.name}
                   color={classroom.color}
                   teachers={classroom.teachers}
+                  course={classroom.course}
                   layoutType={layoutType}
                   onClick={() => onClickClassCard(classroom.id)}
                 />
@@ -92,6 +93,7 @@ function View({ layoutType, classrooms, onClickClassCard }) {
                 title={classroom.name}
                 color={classroom.color}
                 teachers={classroom.teachers}
+                course={classroom.course}
                 layoutType={layoutType}
                 onClick={() => onClickClassCard(classroom.id)}
               />

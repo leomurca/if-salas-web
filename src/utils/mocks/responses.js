@@ -95,6 +95,41 @@ const allClassrooms = [
   },
 ];
 
+const professorClassrooms = [
+  {
+    id: '321',
+    name: 'Introdução à Ciência de Dados',
+    abbreviation: 'ICD',
+    color: '#006FF2',
+    course: 'BSI 2020',
+    appointmentSlots: [
+      { weekDay: 'Quarta-feira', start: '10:00', end: '11:40' },
+      { weekDay: 'Sexta-feira', start: '10:00', end: '11:40' },
+    ],
+  },
+  {
+    id: '123',
+    name: 'Teoria dos Grafos',
+    abbreviation: 'TDG',
+    color: '#d30000',
+    course: 'BSI 2018',
+    appointmentSlots: [
+      { weekDay: 'Quarta-feira', start: '11:00', end: '12:00' },
+      { weekDay: 'Segunda-feira', start: '10:00', end: '11:40' },
+    ],
+  },
+  {
+    id: '123',
+    name: 'Matemática Discreta',
+    abbreviation: 'MD',
+    color: '#149b00',
+    course: 'BSI 2020',
+    appointmentSlots: [
+      { weekDay: 'Quarta-feira', start: '9:00', end: '10:00' },
+    ],
+  },
+];
+
 const allAssignments = [
   {
     id: '5435',
@@ -582,4 +617,5 @@ export {
   professorUser,
   authFailure,
   allUpcomingAssignments,
+  professorClassrooms,
 };
