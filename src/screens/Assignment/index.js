@@ -8,14 +8,14 @@ import View from './View';
 function Assignment() {
   const params = useParams();
   const layoutType = useLayoutType();
-  const { fetchAssignmentById } = useUser();
+  const { userService } = useUser();
   const [assignment, setAssignment] = useState(null);
   const dropzone = useDropzone({ maxFiles: 5 });
 
   useEffect(() => {
     async function getAssignmentById(assignmentId) {
       document.title = 'Carregando...';
-      const result = await fetchAssignmentById(assignmentId);
+      const result = await userService.fetchAssignmentById(assignmentId);
       setAssignment(result.data);
     }
 
@@ -27,7 +27,7 @@ function Assignment() {
 
     getAssignmentById(params.id);
     updateDocumentTitle();
-  }, [params, fetchAssignmentById, assignment]);
+  }, [params, userService, userService.fetchAssignmentById, assignment]);
 
   return (
     <View assignment={assignment} dropzone={dropzone} layoutType={layoutType} />

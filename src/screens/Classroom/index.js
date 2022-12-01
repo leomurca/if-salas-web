@@ -8,13 +8,7 @@ import View from './View';
 function Classroom() {
   const params = useParams();
   const layoutType = useLayoutType();
-  const {
-    fetchClassroomById,
-    fetchClassroomAnnouncements,
-    fetchUpcomingAssignmentsByClassId,
-    fetchAssignmentsByClassId,
-    fetchPeopleByClassId,
-  } = useUser();
+  const { userService } = useUser();
   const [classroom, setClassroom] = useState(null);
   const [tabData, setTabData] = useState(null);
   const [selectedTabOption, setSelectedTabOption] = useState(
@@ -23,10 +17,11 @@ function Classroom() {
 
   const fetchAndPopulateAnnouncementsTabData = useCallback(async () => {
     setTabData({ tab: 'announcements', state: 'loading' });
-    const announcements = await fetchClassroomAnnouncements(params.id);
-    const upcomingAssignments = await fetchUpcomingAssignmentsByClassId(
+    const announcements = await userService.fetchClassroomAnnouncements(
       params.id
     );
+    const upcomingAssignments =
+      await userService.fetchUpcomingAssignmentsByClassId(params.id);
 
     setTabData({
       tab: 'announcements',
@@ -34,33 +29,29 @@ function Classroom() {
       announcements: [...announcements.data],
       upcomingAssignments: [...upcomingAssignments.data],
     });
-  }, [
-    fetchClassroomAnnouncements,
-    fetchUpcomingAssignmentsByClassId,
-    params.id,
-  ]);
+  }, [userService, params.id]);
 
   const fetchAndPopulateAssignmentsTabData = useCallback(async () => {
     setTabData({ tab: 'assignments', state: 'loading' });
-    const assignments = await fetchAssignmentsByClassId(params.id);
+    const assignments = await userService.fetchAssignmentsByClassId(params.id);
 
     setTabData({
       tab: 'assignments',
       state: 'idle',
       assignments: [...assignments.data],
     });
-  }, [fetchAssignmentsByClassId, params.id]);
+  }, [userService, params.id]);
 
   const fetchAndPopulatePoepleTabData = useCallback(async () => {
     setTabData({ tab: 'people', state: 'loading' });
-    const people = await fetchPeopleByClassId(params.id);
+    const people = await userService.fetchPeopleByClassId(params.id);
 
     setTabData({
       tab: 'people',
       state: 'idle',
       people: [...people.data],
     });
-  }, [fetchPeopleByClassId, params.id]);
+  }, [userService, params.id]);
 
   useEffect(() => {
     async function getSelectedTabData() {
@@ -90,7 +81,7 @@ function Classroom() {
   useEffect(() => {
     async function getClassroomById(classId) {
       document.title = 'Carregando...';
-      const result = await fetchClassroomById(classId);
+      const result = await userService.fetchClassroomById(classId);
       setClassroom(result.data);
     }
 
@@ -102,7 +93,7 @@ function Classroom() {
 
     getClassroomById(params.id);
     updateDocumentTitle();
-  }, [fetchClassroomById, params, classroom]);
+  }, [userService, userService.fetchClassroomById, params, classroom]);
 
   return (
     <View

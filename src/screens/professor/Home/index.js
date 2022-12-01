@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../../context/user';
-import { useDocumentTitle } from '../../hooks/useDocumentTitle';
-import useLayoutType from '../../hooks/useLayoutType';
+import { useUser } from '../../../context/user';
+import { useDocumentTitle } from '../../../hooks/useDocumentTitle';
+import useLayoutType from '../../../hooks/useLayoutType';
 import View from './View';
 
 function Home() {
@@ -11,7 +11,7 @@ function Home() {
   const layoutType = useLayoutType();
   const { userService } = useUser();
   const [classrooms, setClassrooms] = useState(null);
-  const [assignments, setAssignments] = useState(null);
+  const [assignmentsToReview, setAssignmentsToReview] = useState(null);
 
   useEffect(() => {
     async function getClassrooms() {
@@ -22,11 +22,11 @@ function Home() {
   }, [userService, userService.fetchClassrooms]);
 
   useEffect(() => {
-    async function getAssignments() {
-      const result = await userService.fetchAllAssignments();
-      setAssignments(result.data);
+    async function getAssignmentsToReview() {
+      const result = await userService.fetchAssignmentsToReview();
+      setAssignmentsToReview(result.data);
     }
-    getAssignments();
+    getAssignmentsToReview();
   }, [userService, userService.fetchAllAssignments]);
 
   const onClickClassCard = id => {
@@ -41,7 +41,7 @@ function Home() {
     <View
       layoutType={layoutType}
       classrooms={classrooms}
-      assignments={assignments}
+      assignmentsToReview={assignmentsToReview}
       onClickClassCard={onClickClassCard}
       onClickAssignmentCard={onClickAssignmentCard}
     />
