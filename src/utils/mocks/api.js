@@ -10,6 +10,7 @@ import {
   allUpcomingAssignments,
   allPeople,
   professorClassrooms,
+  assignmentsToReview,
 } from './responses';
 
 const CommonApi = {
@@ -126,6 +127,13 @@ const ProfessorApi = {
       console.log('Get classrooms ' + userId);
       return {
         data: professorClassrooms,
+      };
+    }),
+  getAssignmentsToReview: userId =>
+    sleep(400).then(() => {
+      console.log('Getting assignments to review' + userId);
+      return {
+        data: assignmentsToReview,
       };
     }),
 };

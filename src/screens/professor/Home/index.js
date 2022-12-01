@@ -11,6 +11,7 @@ function Home() {
   const layoutType = useLayoutType();
   const { userService } = useUser();
   const [classrooms, setClassrooms] = useState(null);
+  const [assignmentsToReview, setAssignmentsToReview] = useState(null);
 
   useEffect(() => {
     async function getClassrooms() {
@@ -20,17 +21,29 @@ function Home() {
     getClassrooms();
   }, [userService, userService.fetchClassrooms]);
 
+  useEffect(() => {
+    async function getAssignmentsToReview() {
+      const result = await userService.fetchAssignmentsToReview();
+      setAssignmentsToReview(result.data);
+    }
+    getAssignmentsToReview();
+  }, [userService, userService.fetchAllAssignments]);
+
   const onClickClassCard = id => {
     navigate(`/class/${id}`);
   };
 
-  console.log(classrooms);
+  const onClickAssignmentCard = id => {
+    navigate(`/assignment/${id}`);
+  };
 
   return (
     <View
       layoutType={layoutType}
       classrooms={classrooms}
+      assignmentsToReview={assignmentsToReview}
       onClickClassCard={onClickClassCard}
+      onClickAssignmentCard={onClickAssignmentCard}
     />
   );
 }

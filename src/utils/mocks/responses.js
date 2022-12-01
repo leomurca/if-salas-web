@@ -119,7 +119,7 @@ const professorClassrooms = [
     ],
   },
   {
-    id: '123',
+    id: '666',
     name: 'Matemática Discreta',
     abbreviation: 'MD',
     color: '#149b00',
@@ -341,6 +341,80 @@ const allClassroomAnnouncements = [
       ],
     },
     attachments: null,
+  },
+];
+
+const assignmentsToReview = [
+  {
+    id: '0123',
+    type: 'assessment',
+    title:
+      'Prova 1 - Armazenamento de Dados. Python em CD. Armazenamento Analítico',
+    dueDate: '2022-07-01 23:59',
+    scores: [
+      {
+        classroomId: '321',
+        value: 30,
+      },
+    ],
+    classrooms: professorClassrooms.filter(c => c.id === '321'),
+    status: 'OPEN',
+    deliveredByStudents: 10,
+    reviewed: 6,
+    total: 30,
+  },
+  {
+    id: '0128',
+    type: 'assessment',
+    title:
+      'Prova 2 - Visualização de Dados. Matemática e Estatística em CD. Análise de Dados',
+    dueDate: '2022-09-01 23:59',
+    scores: [
+      {
+        classroomId: '321',
+        value: 30,
+      },
+    ],
+    classrooms: professorClassrooms.filter(c => c.id === '321'),
+    status: 'CLOSED',
+    deliveredByStudents: 30,
+    reviewed: 1,
+    total: 30,
+  },
+  {
+    id: '0129',
+    type: 'assessment',
+    title: 'Lista de Exercícios 1 - Caminhos e circuitos',
+    dueDate: '2022-09-01 23:59',
+    scores: [
+      {
+        classroomId: '123',
+        value: 30,
+      },
+    ],
+    classrooms: professorClassrooms.filter(c => c.id === '123'),
+    status: 'CLOSED',
+    deliveredByStudents: 30,
+    reviewed: 0,
+    total: 30,
+  },
+
+  {
+    id: '0130',
+    type: 'assessment',
+    title: 'Lista de Exercícios 2 - Tabela verdade',
+    dueDate: '2022-09-01 23:59',
+    scores: [
+      {
+        classroomId: '666',
+        value: 30,
+      },
+    ],
+    classrooms: professorClassrooms.filter(c => c.id === '666'),
+    status: 'OPEN',
+    deliveredByStudents: 0,
+    reviewed: 0,
+    total: 30,
   },
 ];
 
@@ -618,4 +692,5 @@ export {
   authFailure,
   allUpcomingAssignments,
   professorClassrooms,
+  assignmentsToReview,
 };

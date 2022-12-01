@@ -6,4 +6,7 @@ export default class ProfessorService {
   }
 
   fetchClassrooms = () => ProfessorApi.getClassrooms(this.user.id);
+
+  fetchAssignmentsToReview = () =>
+    ProfessorApi.getAssignmentsToReview(this.user.id);
 }
