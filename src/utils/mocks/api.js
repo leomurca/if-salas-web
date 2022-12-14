@@ -11,6 +11,7 @@ import {
   allPeople,
   professorClassrooms,
   assignmentsToReview,
+  grades,
 } from './responses';
 
 const CommonApi = {
@@ -132,6 +133,13 @@ const ProfessorApi = {
       console.log('Getting assignments to review' + userId);
       return {
         data: assignmentsToReview,
+      };
+    }),
+  getGradesByClassId: classId =>
+    sleep(400).then(() => {
+      console.log('Getting grades' + classId);
+      return {
+        data: grades,
       };
     }),
 };

@@ -1,6 +1,7 @@
 import { Container } from '@mui/system';
 import AnnouncementsTab from './AnnouncementsTab';
 import AssignmentsTab from './AssignmentsTab';
+import GradesTab from './GradesTab';
 import Header from './Header';
 import PeopleTab from './PeopleTab';
 import styles from './styles';
@@ -13,6 +14,7 @@ function View({
   announcementsTabData,
   assignmentsTabData,
   peopleTabData,
+  gradesTabData,
   isLoading,
 }) {
   const { container } = styles[layoutType];
@@ -35,6 +37,7 @@ function View({
         assignmentsTabData={assignmentsTabData}
       />
       <PeopleTab layoutType={layoutType} peopleTabData={peopleTabData} />
+      <GradesTab layoutType={layoutType} gradesTabData={gradesTabData} />
     </Container>
   );
 }

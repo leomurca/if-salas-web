@@ -643,6 +643,13 @@ const allPeople = [
   },
 ];
 
+// TODO: Mock correct data
+const grades = [
+  {
+    id: 'Some grade',
+  },
+];
+
 const studentUser = {
   id: '123',
   ra: '0021123',
@@ -693,4 +700,5 @@ export {
   allUpcomingAssignments,
   professorClassrooms,
   assignmentsToReview,
+  grades,
 };
