@@ -3,7 +3,6 @@ import {
   Card,
   Container,
   Grid,
-  Link,
   Skeleton,
   Stack,
   Typography,
@@ -13,8 +12,16 @@ import AnnouncementCard from '../../../../components/AnnouncementCard';
 import styles from './styles';
 import jitsiLogo from '../../../../assets/jitsi.svg';
 import { createArrayFrom1ToN } from '../../../../utils/createArrayFrom1ToN';
+import PublishAnnouncementCard from '../../../../components/PublishAnnouncementCard';
+import { useState } from 'react';
 
-function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
+function AnnouncementsTab({
+  layoutType,
+  announcementsTabData,
+  classroom,
+  user,
+}) {
+  const [composingTextValue, setComposingTextValue] = useState('');
   const { container, emptyStateContainer } = styles[layoutType];
 
   const layoutResolver = (state, layoutType) => {
@@ -112,6 +119,12 @@ function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
                   direction="row"
                   gap="30px"
                 >
+                  <PublishAnnouncementCard
+                    layoutType={layoutType}
+                    user={user}
+                    value={composingTextValue}
+                    onChange={e => setComposingTextValue(e.target.value)}
+                  />
                   {announcementsTabData.announcements.length !== 0 ? (
                     announcementsTabData.announcements.map(announcement => (
                       <AnnouncementCard
@@ -234,6 +247,12 @@ function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
                 direction="row"
                 gap="30px"
               >
+                <PublishAnnouncementCard
+                  layoutType={layoutType}
+                  user={user}
+                  value={composingTextValue}
+                  onChange={e => setComposingTextValue(e.target.value)}
+                />
                 {announcementsTabData.announcements.length !== 0 ? (
                   announcementsTabData.announcements.map(announcement => (
                     <AnnouncementCard

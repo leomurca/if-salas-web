@@ -8,7 +8,7 @@ import View from './View';
 function Classroom() {
   const params = useParams();
   const layoutType = useLayoutType();
-  const { userService } = useUser();
+  const { userService, state } = useUser();
   const [classroom, setClassroom] = useState(null);
   const [tabData, setTabData] = useState(null);
 
@@ -126,6 +126,7 @@ function Classroom() {
       gradesTabData={
         tabData && tabData.tab === 'grades' ? tabData : { state: 'gone' }
       }
+      user={state && state.user}
       isLoading={tabData && tabData.state === 'loading'}
     />
   );

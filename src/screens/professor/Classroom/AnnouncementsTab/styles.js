@@ -42,6 +42,7 @@ const mobile = {
 // ========== Unset ==========
 const unset = {
   container: null,
+  emptyStateContainer: null,
 };
 
 const styles = { desktop, mobile, unset };

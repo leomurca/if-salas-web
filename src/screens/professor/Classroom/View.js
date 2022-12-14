@@ -15,6 +15,7 @@ function View({
   assignmentsTabData,
   peopleTabData,
   gradesTabData,
+  user,
   isLoading,
 }) {
   const { container } = styles[layoutType];
@@ -31,6 +32,7 @@ function View({
         layoutType={layoutType}
         announcementsTabData={announcementsTabData}
         classroom={classroom && classroom}
+        user={user && user}
       />
       <AssignmentsTab
         layoutType={layoutType}

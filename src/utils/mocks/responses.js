@@ -674,10 +674,11 @@ const professorUser = {
   email: 'carlos.junior@ifmg.edu.br',
   password: '#carlos1234', // TODO: Remove this!
   firstName: 'Carlos',
-  lastName: 'Severiano',
+  lastName: 'Alexandre Silva',
   token: 'xkhfb9458hnsdfsi9q8345bsdf9b834yr',
   phone: '31111111111',
-  avatar: 'https://i.pravatar.cc/300?img=61',
+  avatar:
+    'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=50&q=80',
   course: 0,
   termsAgreed: true,
   year: 2018,
