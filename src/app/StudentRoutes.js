@@ -1,9 +1,10 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import Home from '../screens/Home';
+import Home from '../screens/student/Home';
+import Classroom from '../screens/student/Classroom';
+
 import Information from '../screens/Information';
 import Calendar from '../screens/Calendar';
-import Classroom from '../screens/Classroom';
 import Assignment from '../screens/Assignment';
 import Profile from '../screens/Profile';
 

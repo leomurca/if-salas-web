@@ -1,5 +1,5 @@
 import { Avatar, Container, Skeleton, Stack, Typography } from '@mui/material';
-import { createArrayFrom1ToN } from '../../../utils/createArrayFrom1ToN';
+import { createArrayFrom1ToN } from '../../../../utils/createArrayFrom1ToN';
 import styles from './styles';
 
 function PeopleTab({ layoutType, peopleTabData }) {

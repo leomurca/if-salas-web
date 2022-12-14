@@ -1,10 +1,10 @@
 import { Container, Grid, Skeleton, Stack } from '@mui/material';
 
-import ClassCard from '../../components/ClassCard';
-import AssignmentCard from '../../components/AssignmentCard';
+import ClassCard from '../../../components/ClassCard';
+import AssignmentCard from '../../../components/AssignmentCard';
 
 import styles from './styles';
-import { createArrayFrom1ToN } from '../../utils/createArrayFrom1ToN';
+import { createArrayFrom1ToN } from '../../../utils/createArrayFrom1ToN';
 
 function View({
   layoutType,

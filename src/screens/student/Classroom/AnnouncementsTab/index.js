@@ -8,11 +8,11 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import AnnouncementCard from '../../../components/AnnouncementCard';
-import { createArrayFrom1ToN } from '../../../utils/createArrayFrom1ToN';
+import AnnouncementCard from '../../../../components/AnnouncementCard';
+import { createArrayFrom1ToN } from '../../../../utils/createArrayFrom1ToN';
 
 import styles from './styles';
-import jitsiLogo from '../../../assets/jitsi.svg';
+import jitsiLogo from '../../../../assets/jitsi.svg';
 
 function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
   const { container, emptyStateContainer } = styles[layoutType];

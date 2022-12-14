@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useUser } from '../../context/user';
-import useLayoutType from '../../hooks/useLayoutType';
+import { useUser } from '../../../context/user';
+import useLayoutType from '../../../hooks/useLayoutType';
 import { TAB_OPTIONS } from './tabOptions';
 import View from './View';
 
