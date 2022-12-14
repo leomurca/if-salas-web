@@ -41,6 +41,28 @@ const CommonApi = {
       window.localStorage.setItem('$USER', JSON.stringify(data));
       return userData;
     }),
+
+  getClassroomAnnouncementsById: classId =>
+    sleep(300).then(() => {
+      console.log('Get classroon announcements by id ' + classId);
+      return {
+        data: allClassroomAnnouncements.filter(c => c.classroom.id === classId),
+      };
+    }),
+  getClassroomById: classId =>
+    sleep(300).then(() => {
+      console.log('Get classroom by id ' + classId);
+      return {
+        data: allClassrooms.filter(c => c.id === classId)[0],
+      };
+    }),
+  getAssignmentsByClassId: classId =>
+    sleep(300).then(() => {
+      console.log('Getting assignments by class id ' + classId);
+      return {
+        data: allAssignments.filter(a => a.classrooms[0].id === classId),
+      };
+    }),
 };
 
 const StudentApi = {
@@ -50,22 +72,6 @@ const StudentApi = {
       console.log('Get classrooms ' + userId);
       return {
         data: allClassrooms,
-      };
-    }),
-
-  getClassroomById: classId =>
-    sleep(300).then(() => {
-      console.log('Get classroom by id ' + classId);
-      return {
-        data: allClassrooms.filter(c => c.id === classId)[0],
-      };
-    }),
-
-  getClassroomAnnouncementsById: classId =>
-    sleep(300).then(() => {
-      console.log('Get classroon announcements by id ' + classId);
-      return {
-        data: allClassroomAnnouncements.filter(c => c.classroom.id === classId),
       };
     }),
 
@@ -92,14 +98,6 @@ const StudentApi = {
       console.log('Getting assignment by id ' + assignmentId);
       return {
         data: allAssignments.filter(a => a.id === assignmentId)[0],
-      };
-    }),
-
-  getAssignmentsByClassId: classId =>
-    sleep(300).then(() => {
-      console.log('Getting assignments by class id ' + classId);
-      return {
-        data: allAssignments.filter(a => a.classrooms[0].id === classId),
       };
     }),
 
