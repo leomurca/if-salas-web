@@ -63,6 +63,14 @@ const CommonApi = {
         data: allAssignments.filter(a => a.classrooms[0].id === classId),
       };
     }),
+
+  getPeopleByClassId: classId =>
+    sleep(400).then(() => {
+      console.log('Getting people by class id ' + classId);
+      return {
+        data: allPeople.filter(p => p.classes[0].id === classId),
+      };
+    }),
 };
 
 const StudentApi = {
@@ -98,14 +106,6 @@ const StudentApi = {
       console.log('Getting assignment by id ' + assignmentId);
       return {
         data: allAssignments.filter(a => a.id === assignmentId)[0],
-      };
-    }),
-
-  getPeopleByClassId: classId =>
-    sleep(400).then(() => {
-      console.log('Getting people by class id ' + classId);
-      return {
-        data: allPeople.filter(p => p.classes[0].id === classId),
       };
     }),
 

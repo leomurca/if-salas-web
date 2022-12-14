@@ -42,7 +42,7 @@ function Classroom() {
     });
   }, [userService, params.id]);
 
-  const fetchAndPopulatePoepleTabData = useCallback(async () => {
+  const fetchAndPopulatePeopleTabData = useCallback(async () => {
     setTabData({ tab: 'people', state: 'loading' });
     const people = await userService.fetchPeopleByClassId(params.id);
 
@@ -63,7 +63,7 @@ function Classroom() {
           fetchAndPopulateAssignmentsTabData();
           break;
         case TAB_OPTIONS.people.value:
-          fetchAndPopulatePoepleTabData();
+          fetchAndPopulatePeopleTabData();
           break;
         default:
           console.log('Invalid tab option');
@@ -75,7 +75,7 @@ function Classroom() {
     params,
     fetchAndPopulateAnnouncementsTabData,
     fetchAndPopulateAssignmentsTabData,
-    fetchAndPopulatePoepleTabData,
+    fetchAndPopulatePeopleTabData,
   ]);
 
   useEffect(() => {

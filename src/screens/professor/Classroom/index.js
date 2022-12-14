@@ -57,6 +57,17 @@ function Classroom() {
     updateDocumentTitle();
   }, [userService, userService.fetchClassroomById, params, classroom]);
 
+  const fetchAndPopulatePeopleTabData = useCallback(async () => {
+    setTabData({ tab: 'people', state: 'loading' });
+    const people = await userService.fetchPeopleByClassId(params.id);
+
+    setTabData({
+      tab: 'people',
+      state: 'idle',
+      people: [...people.data],
+    });
+  }, [userService, params.id]);
+
   useEffect(() => {
     async function getSelectedTabData() {
       switch (selectedTabOption) {
@@ -67,7 +78,7 @@ function Classroom() {
           fetchAndPopulateAssignmentsTabData();
           break;
         case TAB_OPTIONS.people.value:
-          // TODO
+          fetchAndPopulatePeopleTabData();
           break;
         default:
           console.log('Invalid tab option');
@@ -79,6 +90,7 @@ function Classroom() {
     params,
     fetchAndPopulateAnnouncementsTabData,
     fetchAndPopulateAssignmentsTabData,
+    fetchAndPopulatePeopleTabData,
   ]);
 
   return (
@@ -92,6 +104,9 @@ function Classroom() {
       }
       assignmentsTabData={
         tabData && tabData.tab === 'assignments' ? tabData : { state: 'gone' }
+      }
+      peopleTabData={
+        tabData && tabData.tab === 'people' ? tabData : { state: 'gone' }
       }
       isLoading={tabData && tabData.state === 'loading'}
     />

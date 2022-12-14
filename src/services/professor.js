@@ -17,4 +17,6 @@ export default class ProfessorService {
 
   fetchClassroomAnnouncements = classId =>
     ProfessorApi.getClassroomAnnouncementsById(classId);
+
+  fetchPeopleByClassId = classId => ProfessorApi.getPeopleByClassId(classId);
 }
