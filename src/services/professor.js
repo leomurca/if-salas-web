@@ -21,4 +21,7 @@ export default class ProfessorService {
   fetchPeopleByClassId = classId => ProfessorApi.getPeopleByClassId(classId);
 
   fetchGradesByClassId = classId => ProfessorApi.getGradesByClassId(classId);
+
+  fetchUpcomingAssignmentsByClassId = classId =>
+    ProfessorApi.getUpcomingAssignmentsByClassId(classId);
 }

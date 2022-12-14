@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import {
   Button,
   Card,
   Container,
   Grid,
+  Link,
   Skeleton,
   Stack,
   Typography,
@@ -13,7 +15,6 @@ import styles from './styles';
 import jitsiLogo from '../../../../assets/jitsi.svg';
 import { createArrayFrom1ToN } from '../../../../utils/createArrayFrom1ToN';
 import PublishAnnouncementCard from '../../../../components/PublishAnnouncementCard';
-import { useState } from 'react';
 
 function AnnouncementsTab({
   layoutType,
@@ -90,6 +91,21 @@ function AnnouncementsTab({
                   >
                     <Stack justifyContent="flex-start" spacing={1}>
                       <h3 style={{ fontWeight: 500 }}>Próximas Atividades</h3>
+                      {announcementsTabData.upcomingAssignments.length !== 0 ? (
+                        announcementsTabData.upcomingAssignments.map(ua => (
+                          <Link
+                            href={`/assignment/${ua.id}`}
+                            sx={{ fontSize: '15px' }}
+                            key={ua.id}
+                          >
+                            {ua.title}
+                          </Link>
+                        ))
+                      ) : (
+                        <Container disableGutters>
+                          <p>Nenhuma atividade encontrada!</p>
+                        </Container>
+                      )}
                     </Stack>
                   </Card>
                   <Card
@@ -222,6 +238,22 @@ function AnnouncementsTab({
                 >
                   <Stack justifyContent="flex-start" spacing={1}>
                     <h3 style={{ fontWeight: 500 }}>Próximas Atividades</h3>
+
+                    {announcementsTabData.upcomingAssignments.length !== 0 ? (
+                      announcementsTabData.upcomingAssignments.map(ua => (
+                        <Link
+                          href={`/assignment/${ua.id}`}
+                          sx={{ fontSize: '15px' }}
+                          key={ua.id}
+                        >
+                          {ua.title}
+                        </Link>
+                      ))
+                    ) : (
+                      <Container disableGutters>
+                        <p>Nenhuma atividade encontrada!</p>
+                      </Container>
+                    )}
                   </Stack>
                 </Card>
                 <Card

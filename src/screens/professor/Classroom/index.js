@@ -22,10 +22,14 @@ function Classroom() {
       params.id
     );
 
+    const upcomingAssignments =
+      await userService.fetchUpcomingAssignmentsByClassId(params.id);
+
     setTabData({
       tab: 'announcements',
       state: 'idle',
       announcements: [...announcements.data],
+      upcomingAssignments: [...upcomingAssignments.data],
     });
   }, [userService, params.id]);
 
