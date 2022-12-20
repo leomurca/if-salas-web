@@ -46,13 +46,13 @@ const mobileTitle = {
 const mobilePaper = classColor => ({
   width: '100%',
   borderTop: `5px solid ${classColor}`,
-  padding: '10px',
+  padding: '20px',
 });
 
 const mobileTabs = {
   marginLeft: '-10px',
   marginRight: '-10px',
-  marginBottom: '-10px',
+  marginBottom: '-20px',
   marginTop: '30px',
 };
 
