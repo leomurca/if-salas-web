@@ -62,7 +62,7 @@ function AnnouncementsTab({
               <Grid sx={{ padding: '0 !important' }} item xs={4}>
                 <Stack gap="30px">
                   <Card
-                    sx={{ width: '100%', padding: '20px' }}
+                    sx={{ width: '100%', padding: '20px', paddingTop: '10px' }}
                     elevation={4}
                     variant="elevation"
                   >
@@ -88,7 +88,7 @@ function AnnouncementsTab({
                     </Stack>
                   </Card>
                   <Card
-                    sx={{ width: '100%', padding: '20px' }}
+                    sx={{ width: '100%', padding: '20px', paddingTop: '10px' }}
                     elevation={4}
                     variant="elevation"
                   >
@@ -112,7 +112,7 @@ function AnnouncementsTab({
                     </Stack>
                   </Card>
                   <Card
-                    sx={{ width: '100%', padding: '20px' }}
+                    sx={{ width: '100%', padding: '20px', paddingTop: '10px' }}
                     elevation={4}
                     variant="elevation"
                   >
@@ -212,7 +212,7 @@ function AnnouncementsTab({
             >
               <Stack gap="30px" sx={{ width: '100%' }}>
                 <Card
-                  sx={{ width: '100%', padding: '20px' }}
+                  sx={{ width: '100%', padding: '20px', paddingTop: '10px' }}
                   elevation={4}
                   variant="elevation"
                 >
@@ -234,7 +234,7 @@ function AnnouncementsTab({
                   </Stack>
                 </Card>
                 <Card
-                  sx={{ width: '100%', padding: '20px' }}
+                  sx={{ width: '100%', padding: '20px', paddingTop: '10px' }}
                   elevation={4}
                   variant="elevation"
                 >
@@ -259,7 +259,7 @@ function AnnouncementsTab({
                   </Stack>
                 </Card>
                 <Card
-                  sx={{ width: '100%', padding: '20px' }}
+                  sx={{ width: '100%', padding: '20px', paddingTop: '10px' }}
                   elevation={4}
                   variant="elevation"
                 >
