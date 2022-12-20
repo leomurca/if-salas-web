@@ -43,7 +43,7 @@ function Header({
           value={selectedTabOption}
           onChange={onSelectTabOption}
           aria-label="Tabs para informações da disciplina"
-          variant="fullWidth"
+          variant={layoutType === 'mobile' ? 'scrollable' : 'fullWidth'}
           sx={tabs}
         >
           {Object.values(TAB_OPTIONS).map(option => (

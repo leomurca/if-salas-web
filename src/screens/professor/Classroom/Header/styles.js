@@ -6,14 +6,16 @@ const desktopTitle = {
 const desktopPaper = classColor => ({
   width: '100%',
   borderTop: `5px solid ${classColor}`,
-  padding: '20px',
+  padding: '30px',
 });
 
 const desktopTabs = {
+  display: 'flex',
   marginLeft: '-20px',
   marginRight: '-20px',
   marginBottom: '-20px',
   marginTop: '30px',
+  padding: '10px',
 };
 
 const desktopAvatar = {

@@ -19,12 +19,17 @@ const desktop = {
 // ========== Mobile ==========
 const mobilePublishAnnouncement = {
   cursor: 'pointer',
+  padding: '10px',
+  width: '100%',
   ':hover': {
     color: '#32A041',
   },
 };
 
-const mobileCard = {};
+const mobileCard = {
+  width: '100%',
+  padding: '10px ',
+};
 
 const mobile = {
   publishAnnouncement: mobilePublishAnnouncement,
