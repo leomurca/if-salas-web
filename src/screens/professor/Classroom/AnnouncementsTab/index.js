@@ -4,11 +4,13 @@ import {
   Card,
   Container,
   Grid,
+  IconButton,
   Link,
   Skeleton,
   Stack,
   Typography,
 } from '@mui/material';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AnnouncementCard from '../../../../components/AnnouncementCard';
 
 import styles from './styles';
@@ -69,12 +71,20 @@ function AnnouncementsTab({
                     <Stack justifyContent="flex-start" spacing={1}>
                       <Container
                         disableGutters
-                        sx={{ display: 'flex', justifyContent: 'row' }}
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                        }}
                       >
-                        <img src={jitsiLogo} alt="Jitsi Meet" />
-                        <h3 style={{ fontWeight: 500 }}>
-                          Sala de aula virtual
-                        </h3>
+                        <Stack direction="row">
+                          <img src={jitsiLogo} alt="Jitsi Meet" />
+                          <h3 style={{ fontWeight: 500 }}>
+                            Sala de aula virtual
+                          </h3>
+                        </Stack>
+                        <IconButton aria-label="edit" size="medium">
+                          <MoreVertIcon fontSize="inherit" />
+                        </IconButton>
                       </Container>
 
                       <Button
@@ -117,9 +127,20 @@ function AnnouncementsTab({
                     variant="elevation"
                   >
                     <Stack justifyContent="flex-start" spacing={1}>
-                      <h3 style={{ fontWeight: 500 }}>
-                        Horários de Atendimento
-                      </h3>
+                      <Container
+                        disableGutters
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                        }}
+                      >
+                        <h3 style={{ fontWeight: 500 }}>
+                          Horários de Atendimento
+                        </h3>
+                        <IconButton aria-label="edit" size="medium">
+                          <MoreVertIcon fontSize="inherit" />
+                        </IconButton>
+                      </Container>
                       {classroom.appointmentSlots.map((appts, index) => (
                         <Typography key={index} variant="body1">
                           {appts.weekDay}, {appts.start}h - {appts.end}h
@@ -219,10 +240,17 @@ function AnnouncementsTab({
                   <Stack justifyContent="flex-start" spacing={1}>
                     <Container
                       disableGutters
-                      sx={{ display: 'flex', justifyContent: 'row' }}
+                      sx={{ display: 'flex', justifyContent: 'space-between' }}
                     >
-                      <img src={jitsiLogo} alt="Jitsi Meet" />
-                      <h3 style={{ fontWeight: 500 }}>Sala de aula virtual</h3>
+                      <Stack direction="row">
+                        <img src={jitsiLogo} alt="Jitsi Meet" />
+                        <h3 style={{ fontWeight: 500 }}>
+                          Sala de aula virtual
+                        </h3>
+                      </Stack>
+                      <IconButton aria-label="edit" size="medium">
+                        <MoreVertIcon fontSize="inherit" />
+                      </IconButton>
                     </Container>
                     <Button
                       variant="contained"
