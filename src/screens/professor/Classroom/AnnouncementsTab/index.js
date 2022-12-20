@@ -72,15 +72,18 @@ function AnnouncementsTab({
                         sx={{ display: 'flex', justifyContent: 'row' }}
                       >
                         <img src={jitsiLogo} alt="Jitsi Meet" />
-                        <h3 style={{ fontWeight: 500 }}>Jitsi</h3>
+                        <h3 style={{ fontWeight: 500 }}>
+                          Sala de aula virtual
+                        </h3>
                       </Container>
 
                       <Button
+                        sx={{ marginTop: '15px' }}
                         variant="contained"
-                        href="https://google.com"
+                        href={classroom.virtualRoom}
                         target="__blank"
                       >
-                        Entrar
+                        Iniciar aula
                       </Button>
                     </Stack>
                   </Card>
@@ -219,15 +222,14 @@ function AnnouncementsTab({
                       sx={{ display: 'flex', justifyContent: 'row' }}
                     >
                       <img src={jitsiLogo} alt="Jitsi Meet" />
-                      <h3 style={{ fontWeight: 500 }}>Jitsi</h3>
+                      <h3 style={{ fontWeight: 500 }}>Sala de aula virtual</h3>
                     </Container>
-
                     <Button
                       variant="contained"
-                      href="https://google.com"
+                      href={classroom.virtualRoom}
                       target="__blank"
                     >
-                      Entrar
+                      Iniciar aula
                     </Button>
                   </Stack>
                 </Card>

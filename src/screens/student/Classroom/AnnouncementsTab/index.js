@@ -64,7 +64,9 @@ function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
                         sx={{ display: 'flex', justifyContent: 'row' }}
                       >
                         <img src={jitsiLogo} alt="Jitsi Meet" />
-                        <h3 style={{ fontWeight: 500 }}>Jitsi</h3>
+                        <h3 style={{ fontWeight: 500 }}>
+                          Sala de aula virtual
+                        </h3>
                       </Container>
 
                       <Button
@@ -205,7 +207,7 @@ function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
                       sx={{ display: 'flex', justifyContent: 'row' }}
                     >
                       <img src={jitsiLogo} alt="Jitsi Meet" />
-                      <h3 style={{ fontWeight: 500 }}>Jitsi</h3>
+                      <h3 style={{ fontWeight: 500 }}>Sala de aula virtual</h3>
                     </Container>
 
                     <Button

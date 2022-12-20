@@ -10,12 +10,10 @@ const desktopPaper = classColor => ({
 });
 
 const desktopTabs = {
-  display: 'flex',
   marginLeft: '-20px',
   marginRight: '-20px',
-  marginBottom: '-20px',
+  marginBottom: '-30px',
   marginTop: '30px',
-  padding: '10px',
 };
 
 const desktopAvatar = {
