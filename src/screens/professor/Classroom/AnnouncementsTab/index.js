@@ -6,26 +6,49 @@ import {
   Grid,
   IconButton,
   Link,
+  Menu,
+  MenuItem,
   Skeleton,
   Stack,
+  TextField,
+  Tooltip,
   Typography,
 } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AnnouncementCard from '../../../../components/AnnouncementCard';
+import PublishAnnouncementCard from '../../../../components/PublishAnnouncementCard';
+import FormDialog from '../../../../components/FormDialog';
 
 import styles from './styles';
 import jitsiLogo from '../../../../assets/jitsi.svg';
 import { createArrayFrom1ToN } from '../../../../utils/createArrayFrom1ToN';
-import PublishAnnouncementCard from '../../../../components/PublishAnnouncementCard';
 
 function AnnouncementsTab({
   layoutType,
   announcementsTabData,
   classroom,
+  onChangeEditInput,
+  onSaveEditChanges,
   user,
 }) {
+  const [anchorEl, setAnchorEl] = useState({
+    virtualRoom: null,
+    appointmentSlots: null,
+  });
+  const [dialogOpened, setDialogOpened] = useState(null);
   const [composingTextValue, setComposingTextValue] = useState('');
   const { container, emptyStateContainer } = styles[layoutType];
+
+  const onSaveEdit = anchorName => {
+    onSaveEditChanges();
+    setDialogOpened(null);
+    setAnchorEl({ ...anchorEl, [anchorName]: null });
+  };
+
+  const onDismissEdit = anchorName => {
+    setDialogOpened(null);
+    setAnchorEl({ ...anchorEl, [anchorName]: null });
+  };
 
   const layoutResolver = (state, layoutType) => {
     if (layoutType === 'desktop') {
@@ -82,9 +105,62 @@ function AnnouncementsTab({
                             Sala de aula virtual
                           </h3>
                         </Stack>
-                        <IconButton aria-label="edit" size="medium">
-                          <MoreVertIcon fontSize="inherit" />
-                        </IconButton>
+
+                        <Tooltip title="Opcoes">
+                          <IconButton
+                            onClick={e =>
+                              setAnchorEl({
+                                ...anchorEl,
+                                virtualRoom: e.currentTarget,
+                              })
+                            }
+                            aria-label="edit"
+                            size="medium"
+                          >
+                            <MoreVertIcon fontSize="inherit" />
+                          </IconButton>
+                        </Tooltip>
+                        <Menu
+                          id="menu-appbar-virtual-room"
+                          anchorEl={anchorEl.virtualRoom}
+                          anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'right',
+                          }}
+                          transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                          }}
+                          open={Boolean(anchorEl.virtualRoom)}
+                          onClose={() =>
+                            setAnchorEl({ ...anchorEl, virtualRoom: null })
+                          }
+                        >
+                          <MenuItem
+                            onClick={() => setDialogOpened('virtualRoom')}
+                          >
+                            <Typography textAlign="center">Editar</Typography>
+                          </MenuItem>
+                        </Menu>
+                        <FormDialog
+                          isOpened={dialogOpened === 'virtualRoom'}
+                          title="Alterar url da sala de aula virtual"
+                          contentText="Edite o campo abaixo para alterar a url da sua sala de aula virtual."
+                          inputs={[
+                            <TextField
+                              autoFocus
+                              margin="dense"
+                              name="virtualRoom"
+                              type="text"
+                              value={classroom.virtualRoom}
+                              onChange={onChangeEditInput}
+                              fullWidth
+                              variant="standard"
+                            />,
+                          ]}
+                          onDismiss={() => onDismissEdit('virtualRoom')}
+                          onSave={() => onSaveEdit('virtualRoom')}
+                        />
                       </Container>
 
                       <Button
@@ -137,9 +213,64 @@ function AnnouncementsTab({
                         <h3 style={{ fontWeight: 500 }}>
                           Horários de Atendimento
                         </h3>
-                        <IconButton aria-label="edit" size="medium">
-                          <MoreVertIcon fontSize="inherit" />
-                        </IconButton>
+                        <Tooltip title="Opcoes">
+                          <IconButton
+                            onClick={e =>
+                              setAnchorEl({
+                                ...anchorEl,
+                                appointmentSlots: e.currentTarget,
+                              })
+                            }
+                            aria-label="edit"
+                            size="medium"
+                          >
+                            <MoreVertIcon fontSize="inherit" />
+                          </IconButton>
+                        </Tooltip>
+                        <Menu
+                          id="menu-appbar-appointment-slots"
+                          anchorEl={anchorEl.appointmentSlots}
+                          anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'right',
+                          }}
+                          transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                          }}
+                          open={Boolean(anchorEl.appointmentSlots)}
+                          onClose={() =>
+                            setAnchorEl({ ...anchorEl, appointmentSlots: null })
+                          }
+                        >
+                          <MenuItem
+                            onClick={() => setDialogOpened('appointmentSlots')}
+                          >
+                            <Typography textAlign="center">Editar</Typography>
+                          </MenuItem>
+                        </Menu>
+                        <FormDialog
+                          isOpened={dialogOpened === 'appointmentSlots'}
+                          title="Alterar horarios de atendimento"
+                          contentText="Edite os campos abaixo para alterar os horarios de atendimento da disciplina."
+                          inputs={[
+                            classroom.appointmentSlots.map((appts, index) => (
+                              <TextField
+                                key={index}
+                                autoFocus
+                                margin="dense"
+                                name={index}
+                                type="text"
+                                value={`${appts.weekDay}, ${appts.start}h - ${appts.end}h`}
+                                onChange={onChangeEditInput}
+                                fullWidth
+                                variant="standard"
+                              />
+                            )),
+                          ]}
+                          onDismiss={() => onDismissEdit('appointmentSlots')}
+                          onSave={() => onSaveEdit('appointmentSlots')}
+                        />
                       </Container>
                       {classroom.appointmentSlots.map((appts, index) => (
                         <Typography key={index} variant="body1">
@@ -248,9 +379,54 @@ function AnnouncementsTab({
                           Sala de aula virtual
                         </h3>
                       </Stack>
-                      <IconButton aria-label="edit" size="medium">
-                        <MoreVertIcon fontSize="inherit" />
-                      </IconButton>
+                      <Tooltip title="Opcoes">
+                        <IconButton
+                          onClick={e => setAnchorEl(e.currentTarget)}
+                          aria-label="edit"
+                          size="medium"
+                        >
+                          <MoreVertIcon fontSize="inherit" />
+                        </IconButton>
+                      </Tooltip>
+                      <Menu
+                        id="menu-appbar"
+                        anchorEl={anchorEl}
+                        anchorOrigin={{
+                          vertical: 'bottom',
+                          horizontal: 'right',
+                        }}
+                        transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right',
+                        }}
+                        open={Boolean(anchorEl)}
+                        onClose={() => setAnchorEl(null)}
+                      >
+                        <MenuItem
+                          onClick={() => setDialogOpened('virtualRoom')}
+                        >
+                          <Typography textAlign="center">Editar</Typography>
+                        </MenuItem>
+                      </Menu>
+                      <FormDialog
+                        isOpened={dialogOpened === 'virtualRoom'}
+                        title="Alterar url da sala de aula virtual"
+                        contentText="Edite o campo abaixo para alterar a url da sua sala de aula virtual."
+                        inputs={[
+                          <TextField
+                            autoFocus
+                            margin="dense"
+                            name="virtualRoom"
+                            type="text"
+                            value={classroom.virtualRoom}
+                            onChange={onChangeEditInput}
+                            fullWidth
+                            variant="standard"
+                          />,
+                        ]}
+                        onDismiss={() => onDismissEdit('virtualRoom')}
+                        onSave={() => onSaveEdit('virtualRoom')}
+                      />
                     </Container>
                     <Button
                       variant="contained"

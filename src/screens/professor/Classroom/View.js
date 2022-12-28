@@ -16,6 +16,8 @@ function View({
   peopleTabData,
   gradesTabData,
   user,
+  onChangeEditInput,
+  onSaveEditChanges,
   isLoading,
 }) {
   const { container } = styles[layoutType];
@@ -23,7 +25,7 @@ function View({
     <Container disableGutters sx={container}>
       <Header
         layoutType={layoutType}
-        classroom={classroom}
+        classroom={classroom && classroom}
         selectedTabOption={selectedTabOption}
         onSelectTabOption={onSelectTabOption}
         isLoading={isLoading}
@@ -33,6 +35,8 @@ function View({
         announcementsTabData={announcementsTabData}
         classroom={classroom && classroom}
         user={user && user}
+        onChangeEditInput={onChangeEditInput}
+        onSaveEditChanges={onSaveEditChanges}
       />
       <AssignmentsTab
         layoutType={layoutType}

@@ -16,6 +16,18 @@ function Classroom() {
     TAB_OPTIONS.announcements.value
   );
 
+  const onChangeEditInput = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setClassroom(prev => ({ ...prev, [name]: value }));
+  };
+
+  const onSaveEditChanges = () => {
+    console.log('Saving edit changes...');
+    console.log(classroom);
+  };
+
   const fetchAndPopulateAnnouncementsTabData = useCallback(async () => {
     setTabData({ tab: 'announcements', state: 'loading' });
     const announcements = await userService.fetchClassroomAnnouncements(
@@ -57,7 +69,10 @@ function Classroom() {
       }
     }
 
-    getClassroomById(params.id);
+    if (!classroom) {
+      getClassroomById(params.id);
+    }
+
     updateDocumentTitle();
   }, [userService, userService.fetchClassroomById, params, classroom]);
 
@@ -131,6 +146,8 @@ function Classroom() {
         tabData && tabData.tab === 'grades' ? tabData : { state: 'gone' }
       }
       user={state && state.user}
+      onChangeEditInput={onChangeEditInput}
+      onSaveEditChanges={onSaveEditChanges}
       isLoading={tabData && tabData.state === 'loading'}
     />
   );
