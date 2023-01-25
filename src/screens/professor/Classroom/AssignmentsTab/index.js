@@ -1,5 +1,4 @@
 import {
-  Button,
   Container,
   Fab,
   Link,
@@ -29,7 +28,13 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
       switch (state) {
         case 'loading':
           return (
-            <Container sx={externalContainer} disableGutters>
+            <Container
+              sx={{
+                ...externalContainer,
+                display: 'block',
+              }}
+              disableGutters
+            >
               <Stack alignItems="center">
                 <Skeleton
                   variant="rectangular"
