@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { getUser, registerUser } from '../services/user-service';
+import { CommonApi } from '../utils/mocks/api';
 
 const AuthContext = createContext();
 
@@ -22,10 +22,9 @@ function AuthProvider(props) {
 
   const register = data => {
     setState({ ...state, status: 'pending' });
-    let shouldFail = false;
 
-    return registerUser(data, shouldFail).then(data => {
-      if (shouldFail) {
+    return CommonApi.registerUser(data).then(data => {
+      if (data.message) {
         return setState({ status: 'error', user: null, error: data });
       } else {
         return setState({ status: 'success', user: data, error: null });
@@ -35,10 +34,9 @@ function AuthProvider(props) {
 
   const login = (email, password) => {
     setState({ ...state, status: 'pending' });
-    let shouldFail = email !== 'teste@teste.com' || password !== '#teste1234';
 
-    return getUser(shouldFail).then(data => {
-      if (shouldFail) {
+    return CommonApi.getUser(email, password).then(data => {
+      if (data.message) {
         return setState({ status: 'error', user: null, error: data });
       } else {
         return setState({ status: 'success', user: data, error: null });

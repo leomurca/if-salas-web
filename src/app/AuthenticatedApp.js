@@ -1,21 +1,19 @@
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { lazy } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Container } from '@mui/system';
-import { useUser } from '../context/user';
 import { useAuthState } from '../context/auth';
+import { useUser } from '../context/user';
 
 import MainMenu from '../components/MainMenu';
-import Home from '../screens/Home';
-import Information from '../screens/Information';
-import Calendar from '../screens/Calendar';
 import useLayoutType from '../hooks/useLayoutType';
 import Toolbar from '../components/Toolbar';
-import Classroom from '../screens/Classroom';
-import Assignment from '../screens/Assignment';
-import Profile from '../screens/Profile';
 
 import { avatarMenuOptions, menuOptions } from './data';
 
 import styles from './styles';
+
+const StudentRoutes = lazy(() => import('./StudentRoutes'));
+const ProfessorRoutes = lazy(() => import('./ProfessorRoutes'));
 
 function AuthenticatedApp() {
   const navigate = useNavigate();
@@ -23,6 +21,17 @@ function AuthenticatedApp() {
   const { logout } = useAuthState();
   const layoutType = useLayoutType();
   const { container, toolbar } = styles[layoutType];
+
+  const routeResolver = role => {
+    switch (role) {
+      case 'STUDENT':
+        return <StudentRoutes />;
+      case 'PROFESSOR':
+        return <ProfessorRoutes />;
+      default:
+        return null;
+    }
+  };
 
   return (
     state &&
@@ -43,21 +52,7 @@ function AuthenticatedApp() {
             options={menuOptions(state.pathname)}
             layoutType={layoutType}
           />
-          <Routes>
-            <Route path="/home" element={<Home />} />
-            <Route path="/info" element={<Information />} />
-            <Route path="/calendar" element={<Calendar />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/class">
-              <Route path=":id" element={<Classroom />} />
-            </Route>
-            <Route path="/assignment">
-              <Route path=":id" element={<Assignment />} />
-            </Route>
-            <Route path="/login" element={<Navigate to="/home" />} />
-            <Route path="/register" element={<Navigate to="/home" />} />
-            <Route path="/" element={<Navigate to="/home" />} />
-          </Routes>
+          {routeResolver(state.user.role)}
         </Container>
       </>
     )

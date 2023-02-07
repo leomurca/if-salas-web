@@ -17,6 +17,7 @@ function ClassCard({
   title,
   color,
   teachers,
+  course,
   layoutType,
   onClick,
 }) {
@@ -45,23 +46,30 @@ function ClassCard({
             >
               {title}
             </Typography>
-            <Stack alignItems="center" direction="row" spacing={1}>
-              <AvatarGroup total={teachers.length}>
-                {teachers.map(t => (
-                  <Avatar
-                    key={t.name}
-                    alt={t.name}
-                    src={t.avatar}
-                    sx={avatar}
-                  />
-                ))}
-              </AvatarGroup>
-              <Tooltip title={teachers.map(t => t.name).join(', ')}>
-                <Typography sx={tooltip} variant="body3" color="text.secondary">
-                  {teachers.map(t => t.name).join(', ')}
-                </Typography>
-              </Tooltip>
-            </Stack>
+            {teachers && (
+              <Stack alignItems="center" direction="row" spacing={1}>
+                <AvatarGroup total={teachers.length}>
+                  {teachers.map(t => (
+                    <Avatar
+                      key={t.name}
+                      alt={t.name}
+                      src={t.avatar}
+                      sx={avatar}
+                    />
+                  ))}
+                </AvatarGroup>
+                <Tooltip title={teachers.map(t => t.name).join(', ')}>
+                  <Typography
+                    sx={tooltip}
+                    variant="body3"
+                    color="text.secondary"
+                  >
+                    {teachers.map(t => t.name).join(', ')}
+                  </Typography>
+                </Tooltip>
+              </Stack>
+            )}
+            {course && <Typography variant="body2">{course}</Typography>}
           </CardContent>
         </CardActionArea>
       </Card>
@@ -82,21 +90,24 @@ function ClassCard({
             >
               {title}
             </Typography>
-            <Stack alignItems="center" direction="row" spacing={1}>
-              <AvatarGroup total={teachers.length}>
-                {teachers.map(t => (
-                  <Avatar
-                    key={t.name}
-                    alt={t.name}
-                    src={t.avatar}
-                    sx={avatar}
-                  />
-                ))}
-              </AvatarGroup>
-              <Typography sx={tooltip} variant="body2" color="text.secondary">
-                {teachers.map(t => t.name).join(', ')}
-              </Typography>
-            </Stack>
+            {teachers && (
+              <Stack alignItems="center" direction="row" spacing={1}>
+                <AvatarGroup total={teachers.length}>
+                  {teachers.map(t => (
+                    <Avatar
+                      key={t.name}
+                      alt={t.name}
+                      src={t.avatar}
+                      sx={avatar}
+                    />
+                  ))}
+                </AvatarGroup>
+                <Typography sx={tooltip} variant="body2" color="text.secondary">
+                  {teachers.map(t => t.name).join(', ')}
+                </Typography>
+              </Stack>
+            )}
+            {course && <Typography variant="body2">{course}</Typography>}
           </CardContent>
         </CardActionArea>
       </Card>

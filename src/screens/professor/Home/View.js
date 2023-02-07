@@ -1,25 +1,24 @@
-import { Container, Grid, Skeleton, Stack } from '@mui/material';
-
-import ClassCard from '../../components/ClassCard';
-import AssignmentCard from '../../components/AssignmentCard';
-
+import { Grid, Skeleton, Stack } from '@mui/material';
+import { Container } from '@mui/system';
+import AssignmentCard from '../../../components/AssignmentCard';
+import ClassCard from '../../../components/ClassCard';
+import { createArrayFrom1ToN } from '../../../utils/createArrayFrom1ToN';
 import styles from './styles';
-import { createArrayFrom1ToN } from '../../utils/createArrayFrom1ToN';
 
 function View({
   layoutType,
   classrooms,
-  assignments,
+  assignmentsToReview,
   onClickClassCard,
-  onClickAssignmentCard,
 }) {
-  const { container, divider, assignmentsStack } = styles[layoutType];
+  const { container, divider, assignmentsStack, onClickAssignmentCard } =
+    styles[layoutType];
 
   if (layoutType === 'desktop') {
     return (
       <Grid sx={container} container spacing={2}>
         <Grid item xs={8}>
-          <h1>Turmas</h1>
+          <h1>Minhas Turmas</h1>
           <Stack alignItems="center" flexWrap="wrap" direction="row" gap="30px">
             {classrooms === null ? (
               createArrayFrom1ToN(6).map(i => (
@@ -38,6 +37,7 @@ function View({
                   title={classroom.name}
                   color={classroom.color}
                   teachers={classroom.teachers}
+                  course={classroom.course}
                   layoutType={layoutType}
                   onClick={() => onClickClassCard(classroom.id)}
                 />
@@ -57,8 +57,7 @@ function View({
           </Stack>
         </Grid>
         <Grid sx={divider} item xs={4}>
-          <h1>Atividades</h1>
-          <h2>Atribuídas</h2>
+          <h1>Atividades para corrigir</h1>
           <Stack
             sx={assignmentsStack}
             alignItems="end"
@@ -66,7 +65,7 @@ function View({
             direction="row"
             gap="30px"
           >
-            {assignments === null ? (
+            {assignmentsToReview === null ? (
               createArrayFrom1ToN(6).map(i => (
                 <Skeleton
                   key={i}
@@ -75,8 +74,8 @@ function View({
                   height={145}
                 />
               ))
-            ) : assignments.length !== 0 ? (
-              assignments.map(assignment => (
+            ) : assignmentsToReview.length !== 0 ? (
+              assignmentsToReview.map(assignment => (
                 <AssignmentCard
                   key={assignment.title}
                   title={assignment.title}
@@ -84,6 +83,10 @@ function View({
                   dueDate={assignment.dueDate}
                   scores={assignment.scores}
                   layoutType={layoutType}
+                  deliveredByStudents={assignment.deliveredByStudents}
+                  reviewed={assignment.reviewed}
+                  isAssignmentToReview={assignment.status !== null}
+                  total={assignment.total}
                   onClick={() => onClickAssignmentCard(assignment.id)}
                 />
               ))
@@ -106,7 +109,7 @@ function View({
   } else if (layoutType === 'mobile') {
     return (
       <Stack sx={container}>
-        <h1>Turmas</h1>
+        <h1>Minhas Turmas</h1>
         <Stack
           alignItems="center"
           justifyContent="center"
@@ -131,6 +134,7 @@ function View({
                 title={classroom.name}
                 color={classroom.color}
                 teachers={classroom.teachers}
+                course={classroom.course}
                 layoutType={layoutType}
                 onClick={() => onClickClassCard(classroom.id)}
               />
@@ -141,8 +145,7 @@ function View({
             </Container>
           )}
         </Stack>
-        <h1 style={divider}>Atividades</h1>
-        <h2>Atribuídas</h2>
+        <h1 style={divider}>Atividades para corrigir</h1>
         <Stack
           sx={assignmentsStack}
           alignItems="center"
@@ -151,17 +154,17 @@ function View({
           direction="row"
           gap="30px"
         >
-          {assignments === null ? (
+          {assignmentsToReview === null ? (
             createArrayFrom1ToN(6).map(i => (
               <Skeleton
                 key={i}
                 variant="rectangular"
-                width="100%"
-                height={190}
+                width="35em"
+                height={145}
               />
             ))
-          ) : assignments.length !== 0 ? (
-            assignments.map(assignment => (
+          ) : assignmentsToReview.length !== 0 ? (
+            assignmentsToReview.map(assignment => (
               <AssignmentCard
                 key={assignment.title}
                 title={assignment.title}
@@ -169,11 +172,22 @@ function View({
                 dueDate={assignment.dueDate}
                 scores={assignment.scores}
                 layoutType={layoutType}
+                deliveredByStudents={assignment.deliveredByStudents}
+                reviewed={assignment.reviewed}
+                isAssignmentToReview={assignment.status !== null}
+                total={assignment.total}
                 onClick={() => onClickAssignmentCard(assignment.id)}
               />
             ))
           ) : (
-            <Container disableGutters>
+            <Container
+              sx={{
+                height: '100vh',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+              disableGutters
+            >
               <p>Nenhuma atividade encontrada!</p>
             </Container>
           )}

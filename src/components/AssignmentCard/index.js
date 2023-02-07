@@ -18,6 +18,10 @@ function AssignmentCard({
   classrooms,
   dueDate,
   scores,
+  deliveredByStudents,
+  reviewed,
+  total,
+  isAssignmentToReview,
   layoutType,
   onClick,
 }) {
@@ -61,16 +65,30 @@ function AssignmentCard({
                 {classrooms.map(c => c.name).join(', ')}
               </Typography>
               <Divider sx={dividerMiddle} />
+
               <Typography sx={typographyDueDate} variant="p" component="div">
                 <strong>Data de entrega: </strong>{' '}
                 {capitalizeFirstLetter(
                   dayjs(dueDate).format('dddd, DD/MM | HH:mm[h]')
                 )}
               </Typography>
-              <Typography variant="p" component="div">
-                <strong>Valor: </strong>
-                {scores.map(s => s.value).join(', ')} pts
-              </Typography>
+              {deliveredByStudents >= 0 && total && (
+                <Typography variant="p" component="div">
+                  <strong>Entregues: </strong>{' '}
+                  {`${deliveredByStudents} de ${total}`}
+                </Typography>
+              )}
+              {reviewed >= 0 && total && (
+                <Typography variant="p" component="div">
+                  <strong>Corrigidas: </strong> {`${reviewed} de ${total}`}
+                </Typography>
+              )}
+              {!isAssignmentToReview && (
+                <Typography variant="p" component="div">
+                  <strong>Valor: </strong>
+                  {scores.map(s => s.value).join(', ')} pts
+                </Typography>
+              )}
             </Stack>
           </CardContent>
         </CardActionArea>
@@ -110,10 +128,23 @@ function AssignmentCard({
                   dayjs(dueDate).format('dddd, DD/MM | HH:mm[h]')
                 )}
               </Typography>
-              <Typography variant="p" component="div">
-                <strong>Valor: </strong>
-                {scores.map(s => s.value).join(', ')} pts
-              </Typography>
+              {deliveredByStudents >= 0 && total && (
+                <Typography variant="p" component="div">
+                  <strong>Entregues: </strong>{' '}
+                  {`${deliveredByStudents} de ${total}`}
+                </Typography>
+              )}
+              {reviewed >= 0 && total && (
+                <Typography variant="p" component="div">
+                  <strong>Corrigidas: </strong> {`${reviewed} de ${total}`}
+                </Typography>
+              )}
+              {!isAssignmentToReview && (
+                <Typography variant="p" component="div">
+                  <strong>Valor: </strong>
+                  {scores.map(s => s.value).join(', ')} pts
+                </Typography>
+              )}
             </Stack>
           </CardContent>
         </CardActionArea>

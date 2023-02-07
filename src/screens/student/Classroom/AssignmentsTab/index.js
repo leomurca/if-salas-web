@@ -1,6 +1,6 @@
 import { Container, Link, Skeleton, Stack, Typography } from '@mui/material';
 import dayjs from 'dayjs';
-import { capitalizeFirstLetter } from '../../../utils/capitalizeFirstLetter';
+import { capitalizeFirstLetter } from '../../../../utils/capitalizeFirstLetter';
 import styles from './styles';
 
 function AssignmentsTab({ assignmentsTabData, layoutType }) {
