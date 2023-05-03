@@ -1,7 +1,8 @@
-import { Grid, Skeleton, Stack } from '@mui/material';
+import { Button, Grid, IconButton, Skeleton, Stack } from '@mui/material';
 import { Container } from '@mui/system';
 import AssignmentCard from '../../../components/AssignmentCard';
 import ClassCard from '../../../components/ClassCard';
+import FilterListSharpIcon from '@mui/icons-material/FilterListSharp';
 import { createArrayFrom1ToN } from '../../../utils/createArrayFrom1ToN';
 import styles from './styles';
 
@@ -18,7 +19,7 @@ function View({
     return (
       <Grid sx={container} container spacing={2}>
         <Grid item xs={8}>
-          <h1>Minhas Turmas</h1>
+          <h2>Minhas Turmas</h2>
           <Stack alignItems="center" flexWrap="wrap" direction="row" gap="30px">
             {classrooms === null ? (
               createArrayFrom1ToN(6).map(i => (
@@ -57,7 +58,19 @@ function View({
           </Stack>
         </Grid>
         <Grid sx={divider} item xs={4}>
-          <h1>Atividades para corrigir</h1>
+          <Container
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+            disableGutters
+          >
+            <h2>Atividades para corrigir</h2>
+            <IconButton sx={{ height: 'fit-content' }} aria-label="filter">
+              <FilterListSharpIcon />
+            </IconButton>
+          </Container>
           <Stack
             sx={assignmentsStack}
             alignItems="end"
@@ -109,7 +122,7 @@ function View({
   } else if (layoutType === 'mobile') {
     return (
       <Stack sx={container}>
-        <h1>Minhas Turmas</h1>
+        <h2>Minhas Turmas</h2>
         <Stack
           alignItems="center"
           justifyContent="center"
@@ -145,7 +158,14 @@ function View({
             </Container>
           )}
         </Stack>
-        <h1 style={divider}>Atividades para corrigir</h1>
+        {/* <h2 style={divider}>Atividades para corrigir</h2> */}
+
+        <Container sx={divider} disableGutters>
+          <h2>Atividades para corrigir</h2>
+          <IconButton sx={{ height: 'fit-content' }} aria-label="filter">
+            <FilterListSharpIcon />
+          </IconButton>
+        </Container>
         <Stack
           sx={assignmentsStack}
           alignItems="center"

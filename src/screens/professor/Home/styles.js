@@ -23,7 +23,10 @@ const mobileContainer = {
 
 const mobileDivider = {
   borderTop: '2px solid #CFCFCF',
-  paddingTop: '15px',
+  marginTop: '30px',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
 };
 
 const mobile = {
