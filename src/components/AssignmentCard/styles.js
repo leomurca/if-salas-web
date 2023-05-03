@@ -45,6 +45,10 @@ const desktopDividerMiddle = {
 
 const desktopTypographyDueDate = {
   marginTop: '10px',
+  display: 'flex',
+  alignItems: 'end',
+  fontSize: '15px',
+  gap: '5px',
 };
 
 const desktop = {
@@ -105,6 +109,10 @@ const mobileDividerMiddle = {
 
 const mobileTypographyDueDate = {
   marginTop: '10px',
+  display: 'flex',
+  alignItems: 'end',
+  fontSize: '15px',
+  gap: '5px',
 };
 
 const mobile = {

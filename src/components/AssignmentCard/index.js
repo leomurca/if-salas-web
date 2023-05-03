@@ -9,6 +9,10 @@ import {
 } from '@mui/material';
 import dayjs from 'dayjs';
 
+import CalendarMonthSharpIcon from '@mui/icons-material/CalendarMonthSharp';
+import AssignmentTurnedInSharpIcon from '@mui/icons-material/AssignmentTurnedInSharp';
+import NumbersSharpIcon from '@mui/icons-material/NumbersSharp';
+
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
 
 import styles from './styles';
@@ -66,26 +70,27 @@ function AssignmentCard({
               </Typography>
               <Divider sx={dividerMiddle} />
 
-              <Typography sx={typographyDueDate} variant="p" component="div">
-                <strong>Data de entrega: </strong>{' '}
+              <Typography sx={typographyDueDate} component="div">
+                <CalendarMonthSharpIcon />
                 {capitalizeFirstLetter(
                   dayjs(dueDate).format('dddd, DD/MM | HH:mm[h]')
                 )}
               </Typography>
-              {deliveredByStudents >= 0 && total && (
-                <Typography variant="p" component="div">
-                  <strong>Entregues: </strong>{' '}
-                  {`${deliveredByStudents} de ${total}`}
-                </Typography>
-              )}
               {reviewed >= 0 && total && (
-                <Typography variant="p" component="div">
-                  <strong>Corrigidas: </strong> {`${reviewed} de ${total}`}
+                <Typography
+                  sx={{ display: 'flex', alignItems: 'center', gap: '5px' }}
+                  component="div"
+                >
+                  <AssignmentTurnedInSharpIcon />
+                  {`${reviewed}/${total} corrigidas`}
                 </Typography>
               )}
               {!isAssignmentToReview && (
-                <Typography variant="p" component="div">
-                  <strong>Valor: </strong>
+                <Typography
+                  sx={{ display: 'flex', alignItems: 'center', gap: '5px' }}
+                  component="div"
+                >
+                  <NumbersSharpIcon />
                   {scores.map(s => s.value).join(', ')} pts
                 </Typography>
               )}
@@ -122,21 +127,19 @@ function AssignmentCard({
                 {classrooms.map(c => c.name).join(', ')}
               </Typography>
               <Divider sx={dividerMiddle} />
-              <Typography sx={typographyDueDate} variant="p" component="div">
-                <strong>Data de entrega: </strong>
+              <Typography sx={typographyDueDate} component="div">
+                <CalendarMonthSharpIcon />
                 {capitalizeFirstLetter(
                   dayjs(dueDate).format('dddd, DD/MM | HH:mm[h]')
                 )}
               </Typography>
-              {deliveredByStudents >= 0 && total && (
-                <Typography variant="p" component="div">
-                  <strong>Entregues: </strong>{' '}
-                  {`${deliveredByStudents} de ${total}`}
-                </Typography>
-              )}
               {reviewed >= 0 && total && (
-                <Typography variant="p" component="div">
-                  <strong>Corrigidas: </strong> {`${reviewed} de ${total}`}
+                <Typography
+                  sx={{ display: 'flex', alignItems: 'center', gap: '5px' }}
+                  component="div"
+                >
+                  <AssignmentTurnedInSharpIcon />
+                  {`${reviewed}/${total} corrigidas`}
                 </Typography>
               )}
               {!isAssignmentToReview && (
