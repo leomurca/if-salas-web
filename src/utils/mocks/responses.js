@@ -654,7 +654,62 @@ const allPeople = [
 // TODO: Mock correct data
 const grades = [
   {
-    id: 'Some grade',
+    id: '193458673',
+    classId: '321',
+    name: 'Gabriel West',
+    avatar: 'https://i.pravatar.cc/400?img=57',
+    role: 'STUDENT',
+    grades: [
+      {
+        id: '0123',
+        type: 'assessment',
+        title:
+          'Prova 1 - Armazenamento de Dados. Python em CD. Armazenamento Analítico',
+        dueDate: '2022-07-01 23:59',
+        grade: 28,
+        total: 30,
+        status: 'RETURNED', // RETURNED, PENDING
+      },
+      {
+        id: '0128',
+        type: 'assessment',
+        title:
+          'Prova 2 - Visualização de Dados. Matemática e Estatística em CD. Análise de Dados',
+        dueDate: '2022-09-01 23:59',
+        grade: 20,
+        total: 30,
+        status: 'PENDING', // RETURNED, PENDING
+      },
+    ],
+  },
+  {
+    id: '365967145',
+    classId: '321',
+    name: 'John Pager',
+    avatar: 'https://i.pravatar.cc/400?img=52',
+    role: 'STUDENT',
+    grades: [
+      {
+        id: '0123',
+        type: 'assessment',
+        title:
+          'Prova 1 - Armazenamento de Dados. Python em CD. Armazenamento Analítico',
+        dueDate: '2022-07-01 23:59',
+        grade: 30,
+        total: 30,
+        status: 'RETURNED', // RETURNED, PENDING
+      },
+      {
+        id: '0128',
+        type: 'assessment',
+        title:
+          'Prova 2 - Visualização de Dados. Matemática e Estatística em CD. Análise de Dados',
+        dueDate: '2022-09-01 23:59',
+        grade: 30,
+        total: 30,
+        status: 'PENDING', // RETURNED, PENDING
+      },
+    ],
   },
 ];
 

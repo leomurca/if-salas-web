@@ -89,7 +89,7 @@ function Classroom() {
 
   const fetchAndPopulateGradesTabData = useCallback(async () => {
     setTabData({ tab: 'people', state: 'loading' });
-    const grades = await userService.fetchPeopleByClassId(params.id);
+    const grades = await userService.fetchGradesByClassId(params.id);
 
     setTabData({
       tab: 'grades',

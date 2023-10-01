@@ -24,6 +24,8 @@ function GradesTab({ gradesTabData, layoutType }) {
       }
     }
   };
+
+  console.log(gradesTabData);
   return layoutResolver(
     gradesTabData && gradesTabData.state,
     gradesTabData && gradesTabData.grades,

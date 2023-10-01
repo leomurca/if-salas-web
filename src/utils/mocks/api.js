@@ -137,9 +137,9 @@ const ProfessorApi = {
     }),
   getGradesByClassId: classId =>
     sleep(400).then(() => {
-      console.log('Getting grades' + classId);
+      console.log('Getting grades ' + classId);
       return {
-        data: grades,
+        data: grades.filter(g => g.classId === classId),
       };
     }),
 };
