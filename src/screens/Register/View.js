@@ -5,7 +5,12 @@ import {
   Container,
   FormControl,
   InputLabel,
+  LinearProgress,
   Link,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
   MenuItem,
   Paper,
   Select,
@@ -13,6 +18,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+import React from 'react';
 
 import SnackbarIndicator from '../../components/SnackbarIndicator';
 import LoadingIndicator from '../../components/LoadingIndicator';
@@ -23,20 +29,31 @@ import logoImage from '../../assets/if-salas-logo.svg';
 import styles from './styles';
 import { createArrayFrom1ToN } from '../../utils/createArrayFrom1ToN';
 import { COURSES } from '../../utils/constants';
+import { Done } from '@mui/icons-material';
 
 function View({
   isPending,
   isError,
   error,
   layoutType,
+  isPasswordFocusedForTheFirstTime,
   data,
   onChangeInput,
+  onChangePasswordInput,
   onChangeCheckbox,
+  onFocusInput,
   onTryRegister,
   currentYear,
 }) {
-  const { container, paper, boxLogo, boxForm, logoContainer } =
-    styles[layoutType];
+  const {
+    container,
+    paper,
+    boxLogo,
+    boxForm,
+    logoContainer,
+    passwordRulesBox,
+    passwordRulesStrength,
+  } = styles[layoutType];
 
   return (
     <Container sx={container} disableGutters>
@@ -72,7 +89,7 @@ function View({
               type="text"
               value={data.ra}
               onChange={onChangeInput}
-              placeholder="00#####"
+              placeholder="#######"
               InputProps={{
                 inputComponent: InputMask,
               }}
@@ -117,7 +134,6 @@ function View({
                 ))}
               </Select>
             </FormControl>
-            {/* TODO: Add field mask */}
             <TextField
               id="phone"
               name="phone"
@@ -146,9 +162,50 @@ function View({
               label="Senha"
               variant="standard"
               type="password"
-              value={data.password}
-              onChange={onChangeInput}
+              value={data.password.value}
+              onChange={onChangePasswordInput}
+              onFocus={onFocusInput}
             />
+            {isPasswordFocusedForTheFirstTime && (
+              <Box sx={passwordRulesBox}>
+                <p style={passwordRulesStrength}>
+                  Força da senha: {data.password.strength}%
+                </p>
+                <LinearProgress
+                  color={data.password.strength === 100 ? 'success' : 'error'}
+                  variant="determinate"
+                  value={data.password.strength}
+                />
+
+                <List dense>
+                  {data.password.rules.map(rule => (
+                    <ListItem
+                      key={rule.label}
+                      style={{
+                        padding: '0',
+                        color: rule.applied ? 'green' : 'black',
+                      }}
+                    >
+                      <ListItemIcon
+                        style={{
+                          minWidth: '40px',
+                          color: rule.applied ? 'green' : 'black',
+                        }}
+                      >
+                        <Done />
+                      </ListItemIcon>
+                      <ListItemText
+                        primaryTypographyProps={{
+                          fontWeight: rule.applied ? 'bolder' : 'inherit',
+                        }}
+                        primary={rule.label}
+                      />
+                    </ListItem>
+                  ))}
+                </List>
+              </Box>
+            )}
+
             <Stack flexDirection="row" alignItems="center">
               <Checkbox
                 name="termsAgreed"
