@@ -24,12 +24,14 @@ const desktopPersonContainer = {
 };
 
 const desktopPersonAvatar = {
-  width: '60px',
-  height: '60px',
+  width: '50px',
+  height: '50px',
   marginRight: '15px',
 };
 
-const desktopPersonName = {};
+const desktopPersonName = {
+  fontSize: '1.3em',
+};
 
 const desktopEmptyStateContainer = {
   display: 'flex',

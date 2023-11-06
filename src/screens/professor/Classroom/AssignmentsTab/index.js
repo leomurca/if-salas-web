@@ -129,7 +129,7 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                         sx={assignmentContainer}
                         disableGutters
                       >
-                        <Typography variant="body1" sx={assignmentTypography}>
+                        <Typography variant="h5" sx={assignmentTypography}>
                           <Link
                             sx={assignmentLink}
                             href={`/assignment/${a.id}`}
@@ -177,7 +177,7 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                         sx={assignmentContainer}
                         disableGutters
                       >
-                        <Typography variant="body1" sx={assignmentTypography}>
+                        <Typography variant="h5" sx={assignmentTypography}>
                           <Link
                             sx={assignmentLink}
                             href={`/assignment/${a.id}`}
