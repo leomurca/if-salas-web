@@ -63,6 +63,7 @@ function View({
               type="password"
               value={password}
               onChange={e => onChangePassword(e.target.value)}
+              onKeyDown={e => (e.key === 'Enter' ? onTryLogin() : null)}
             />
             <Button
               disabled={!isSubmitable}
