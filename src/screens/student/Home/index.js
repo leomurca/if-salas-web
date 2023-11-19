@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../../context/user';
-import { useDocumentTitle } from '../../hooks/useDocumentTitle';
-import useLayoutType from '../../hooks/useLayoutType';
+import { useUser } from '../../../context/user';
+import { useDocumentTitle } from '../../../hooks/useDocumentTitle';
+import useLayoutType from '../../../hooks/useLayoutType';
 import View from './View';
 
 function Home() {

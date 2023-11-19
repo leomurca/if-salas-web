@@ -1,8 +1,11 @@
 import { Grid, Skeleton, Stack } from '@mui/material';
 import { Container } from '@mui/system';
-import AssignmentCard from '../../../components/AssignmentCard';
+
+import AssignmentCard from '../../../components/professor/AssignmentCard';
 import ClassCard from '../../../components/ClassCard';
+
 import { createArrayFrom1ToN } from '../../../utils/createArrayFrom1ToN';
+
 import styles from './styles';
 
 function View({
@@ -81,11 +84,9 @@ function View({
                   title={assignment.title}
                   classrooms={assignment.classrooms}
                   dueDate={assignment.dueDate}
-                  scores={assignment.scores}
                   layoutType={layoutType}
                   deliveredByStudents={assignment.deliveredByStudents}
                   reviewed={assignment.reviewed}
-                  isAssignmentToReview={assignment.status !== null}
                   total={assignment.total}
                   onClick={() => onClickAssignmentCard(assignment.id)}
                 />
@@ -170,11 +171,9 @@ function View({
                 title={assignment.title}
                 classrooms={assignment.classrooms}
                 dueDate={assignment.dueDate}
-                scores={assignment.scores}
                 layoutType={layoutType}
                 deliveredByStudents={assignment.deliveredByStudents}
                 reviewed={assignment.reviewed}
-                isAssignmentToReview={assignment.status !== null}
                 total={assignment.total}
                 onClick={() => onClickAssignmentCard(assignment.id)}
               />

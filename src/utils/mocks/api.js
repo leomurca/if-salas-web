@@ -11,6 +11,7 @@ import {
   allPeople,
   professorClassrooms,
   assignmentsToReview,
+  grades,
 } from './responses';
 
 const CommonApi = {
@@ -41,18 +42,14 @@ const CommonApi = {
       window.localStorage.setItem('$USER', JSON.stringify(data));
       return userData;
     }),
-};
 
-const StudentApi = {
-  ...CommonApi,
-  getClassrooms: userId =>
+  getClassroomAnnouncementsById: classId =>
     sleep(300).then(() => {
-      console.log('Get classrooms ' + userId);
+      console.log('Get classroon announcements by id ' + classId);
       return {
-        data: allClassrooms,
+        data: allClassroomAnnouncements.filter(c => c.classroom.id === classId),
       };
     }),
-
   getClassroomById: classId =>
     sleep(300).then(() => {
       console.log('Get classroom by id ' + classId);
@@ -60,12 +57,19 @@ const StudentApi = {
         data: allClassrooms.filter(c => c.id === classId)[0],
       };
     }),
-
-  getClassroomAnnouncementsById: classId =>
+  getAssignmentsByClassId: classId =>
     sleep(300).then(() => {
-      console.log('Get classroon announcements by id ' + classId);
+      console.log('Getting assignments by class id ' + classId);
       return {
-        data: allClassroomAnnouncements.filter(c => c.classroom.id === classId),
+        data: allAssignments.filter(a => a.classrooms[0].id === classId),
+      };
+    }),
+
+  getPeopleByClassId: classId =>
+    sleep(400).then(() => {
+      console.log('Getting people by class id ' + classId);
+      return {
+        data: allPeople.filter(p => p.classes[0].id === classId),
       };
     }),
 
@@ -76,6 +80,17 @@ const StudentApi = {
         data: allUpcomingAssignments.filter(
           a => a.classrooms.filter(c => c.id === classId)[0]
         ),
+      };
+    }),
+};
+
+const StudentApi = {
+  ...CommonApi,
+  getClassrooms: userId =>
+    sleep(300).then(() => {
+      console.log('Get classrooms ' + userId);
+      return {
+        data: allClassrooms,
       };
     }),
 
@@ -92,22 +107,6 @@ const StudentApi = {
       console.log('Getting assignment by id ' + assignmentId);
       return {
         data: allAssignments.filter(a => a.id === assignmentId)[0],
-      };
-    }),
-
-  getAssignmentsByClassId: classId =>
-    sleep(300).then(() => {
-      console.log('Getting assignments by class id ' + classId);
-      return {
-        data: allAssignments.filter(a => a.classrooms[0].id === classId),
-      };
-    }),
-
-  getPeopleByClassId: classId =>
-    sleep(400).then(() => {
-      console.log('Getting people by class id ' + classId);
-      return {
-        data: allPeople.filter(p => p.classes[0].id === classId),
       };
     }),
 
@@ -134,6 +133,13 @@ const ProfessorApi = {
       console.log('Getting assignments to review' + userId);
       return {
         data: assignmentsToReview,
+      };
+    }),
+  getGradesByClassId: classId =>
+    sleep(400).then(() => {
+      console.log('Getting grades' + classId);
+      return {
+        data: grades,
       };
     }),
 };

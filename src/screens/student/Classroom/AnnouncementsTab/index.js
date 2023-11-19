@@ -8,11 +8,11 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import AnnouncementCard from '../../../components/AnnouncementCard';
-import { createArrayFrom1ToN } from '../../../utils/createArrayFrom1ToN';
+import AnnouncementCard from '../../../../components/AnnouncementCard';
+import { createArrayFrom1ToN } from '../../../../utils/createArrayFrom1ToN';
 
 import styles from './styles';
-import jitsiLogo from '../../../assets/jitsi.svg';
+import jitsiLogo from '../../../../assets/jitsi.svg';
 
 function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
   const { container, emptyStateContainer } = styles[layoutType];
@@ -64,7 +64,9 @@ function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
                         sx={{ display: 'flex', justifyContent: 'row' }}
                       >
                         <img src={jitsiLogo} alt="Jitsi Meet" />
-                        <h3 style={{ fontWeight: 500 }}>Jitsi</h3>
+                        <h3 style={{ fontWeight: 500 }}>
+                          Sala de aula virtual
+                        </h3>
                       </Container>
 
                       <Button
@@ -205,7 +207,7 @@ function AnnouncementsTab({ layoutType, announcementsTabData, classroom }) {
                       sx={{ display: 'flex', justifyContent: 'row' }}
                     >
                       <img src={jitsiLogo} alt="Jitsi Meet" />
-                      <h3 style={{ fontWeight: 500 }}>Jitsi</h3>
+                      <h3 style={{ fontWeight: 500 }}>Sala de aula virtual</h3>
                     </Container>
 
                     <Button

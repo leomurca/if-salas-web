@@ -4,6 +4,7 @@ const allClassrooms = [
     name: 'Introdução à Ciência de Dados',
     abbreviation: 'ICD',
     color: '#006FF2',
+    virtualRoom: 'https://meet.jit.si/ifmg-icd-321',
     teachers: [
       {
         id: '2342',
@@ -22,6 +23,7 @@ const allClassrooms = [
     name: 'Gestão de Projetos',
     abbreviation: 'GP',
     color: '#7900F2',
+    virtualRoom: 'https://meet.jit.si/ifmg-gp-123',
     teachers: [
       {
         id: '1234',
@@ -45,6 +47,7 @@ const allClassrooms = [
     name: 'Banco de Dados II',
     abbreviation: 'BDII',
     color: '#FF7A00',
+    virtualRoom: 'https://meet.jit.si/ifmg-bdii-666',
     teachers: [
       {
         id: '6781',
@@ -63,6 +66,7 @@ const allClassrooms = [
     name: 'Contabilidade Básica',
     abbreviation: 'CB',
     color: '#BB0000',
+    virtualRoom: 'https://meet.jit.si/ifmg-cb-765',
     teachers: [
       {
         id: '4321',
@@ -80,6 +84,7 @@ const allClassrooms = [
     name: 'Linguagens de Programação',
     abbreviation: 'LP',
     color: '#039200',
+    virtualRoom: 'https://meet.jit.si/ifmg-lp-333',
     teachers: [
       {
         id: '9999',
@@ -101,6 +106,7 @@ const professorClassrooms = [
     name: 'Introdução à Ciência de Dados',
     abbreviation: 'ICD',
     color: '#006FF2',
+    virtualRoom: 'https://meet.jit.si/ifmg-icd-321',
     course: 'BSI 2020',
     appointmentSlots: [
       { weekDay: 'Quarta-feira', start: '10:00', end: '11:40' },
@@ -112,6 +118,7 @@ const professorClassrooms = [
     name: 'Teoria dos Grafos',
     abbreviation: 'TDG',
     color: '#d30000',
+    virtualRoom: 'https://meet.jit.si/ifmg-tdg-123',
     course: 'BSI 2018',
     appointmentSlots: [
       { weekDay: 'Quarta-feira', start: '11:00', end: '12:00' },
@@ -123,6 +130,7 @@ const professorClassrooms = [
     name: 'Matemática Discreta',
     abbreviation: 'MD',
     color: '#149b00',
+    virtualRoom: 'https://meet.jit.si/ifmg-md-666',
     course: 'BSI 2020',
     appointmentSlots: [
       { weekDay: 'Quarta-feira', start: '9:00', end: '10:00' },
@@ -643,6 +651,13 @@ const allPeople = [
   },
 ];
 
+// TODO: Mock correct data
+const grades = [
+  {
+    id: 'Some grade',
+  },
+];
+
 const studentUser = {
   id: '123',
   ra: '0021123',
@@ -667,10 +682,11 @@ const professorUser = {
   email: 'carlos.junior@ifmg.edu.br',
   password: '#carlos1234', // TODO: Remove this!
   firstName: 'Carlos',
-  lastName: 'Severiano',
+  lastName: 'Alexandre Silva',
   token: 'xkhfb9458hnsdfsi9q8345bsdf9b834yr',
   phone: '31111111111',
-  avatar: 'https://i.pravatar.cc/300?img=61',
+  avatar:
+    'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=50&q=80',
   course: 0,
   termsAgreed: true,
   year: 2018,
@@ -693,4 +709,5 @@ export {
   allUpcomingAssignments,
   professorClassrooms,
   assignmentsToReview,
+  grades,
 };
