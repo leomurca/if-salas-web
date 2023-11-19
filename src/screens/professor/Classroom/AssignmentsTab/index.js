@@ -148,7 +148,7 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                         >
                           <strong>Data de entrega: </strong>{' '}
                           {capitalizeFirstLetter(
-                            dayjs(a.dueDate).format('dddd, DD/MM | HH:mm[h]')
+                            dayjs(a.dueDate).format('dddd, DD/MM, HH:mm[h]')
                           )}
                         </Typography>
                         <Typography
@@ -196,7 +196,7 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                         >
                           <strong>Data de entrega: </strong>{' '}
                           {capitalizeFirstLetter(
-                            dayjs(a.dueDate).format('dddd, DD/MM | HH:mm[h]')
+                            dayjs(a.dueDate).format('dddd, DD/MM, HH:mm[h]')
                           )}
                         </Typography>
                         <Typography
@@ -326,7 +326,7 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                         >
                           <strong>Data de entrega: </strong>{' '}
                           {capitalizeFirstLetter(
-                            dayjs(a.dueDate).format('dddd, DD/MM | HH:mm[h]')
+                            dayjs(a.dueDate).format('dddd, DD/MM, HH:mm[h]')
                           )}
                         </Typography>
                         <Typography
@@ -374,7 +374,7 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
                         >
                           <strong>Data de entrega: </strong>{' '}
                           {capitalizeFirstLetter(
-                            dayjs(a.dueDate).format('dddd, DD/MM | HH:mm[h]')
+                            dayjs(a.dueDate).format('dddd, DD/MM, HH:mm[h]')
                           )}
                         </Typography>
                         <Typography

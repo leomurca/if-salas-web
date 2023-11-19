@@ -7,7 +7,7 @@ function hasUpperCase(str) {
 }
 
 function hasSpecialChars(str) {
-  const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+  const specialChars = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/;
   return specialChars.test(str);
 }
 
