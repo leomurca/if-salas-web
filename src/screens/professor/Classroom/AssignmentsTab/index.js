@@ -109,7 +109,11 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
           return (
             <Container sx={externalContainer} disableGutters>
               <Fab
-                sx={{ width: 'fit-content', marginRight: '5%' }}
+                sx={{
+                  width: 'fit-content',
+                  marginRight: '5%',
+                  borderRadius: '4px',
+                }}
                 color="primary"
                 aria-label="add"
                 variant="extended"
@@ -287,7 +291,7 @@ function AssignmentsTab({ assignmentsTabData, layoutType }) {
           return (
             <Container sx={externalContainer} disableGutters>
               <Fab
-                sx={{ width: '100%' }}
+                sx={{ width: '100%', borderRadius: '4px' }}
                 color="primary"
                 aria-label="add"
                 variant="extended"

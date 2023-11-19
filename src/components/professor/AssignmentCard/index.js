@@ -9,19 +9,18 @@ import {
 } from '@mui/material';
 import dayjs from 'dayjs';
 
-import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
+import { capitalizeFirstLetter } from '../../../utils/capitalizeFirstLetter';
 
 import styles from './styles';
+import { AssignmentTurnedIn, PendingActions } from '@mui/icons-material';
 
 function AssignmentCard({
   title,
   classrooms,
   dueDate,
-  scores,
   deliveredByStudents,
   reviewed,
   total,
-  isAssignmentToReview,
   layoutType,
   onClick,
 }) {
@@ -64,29 +63,33 @@ function AssignmentCard({
               >
                 {classrooms.map(c => c.name).join(', ')}
               </Typography>
-              <Divider sx={dividerMiddle} />
-
               <Typography sx={typographyDueDate} variant="p" component="div">
-                <strong>Data de entrega: </strong>{' '}
-                {capitalizeFirstLetter(
-                  dayjs(dueDate).format('dddd, DD/MM | HH:mm[h]')
-                )}
+                Data de entrega:{' '}
+                {capitalizeFirstLetter(dayjs(dueDate).format('dddd, DD/MM'))}
               </Typography>
+              <Divider sx={dividerMiddle} />
               {deliveredByStudents >= 0 && total && (
-                <Typography variant="p" component="div">
-                  <strong>Entregues: </strong>{' '}
-                  {`${deliveredByStudents} de ${total}`}
+                <Typography
+                  variant="p"
+                  component="div"
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    marginTop: '10px',
+                  }}
+                >
+                  <AssignmentTurnedIn sx={{ marginRight: '5px' }} />
+                  {`${reviewed}`} corrigidas.
                 </Typography>
               )}
               {reviewed >= 0 && total && (
-                <Typography variant="p" component="div">
-                  <strong>Corrigidas: </strong> {`${reviewed} de ${total}`}
-                </Typography>
-              )}
-              {!isAssignmentToReview && (
-                <Typography variant="p" component="div">
-                  <strong>Valor: </strong>
-                  {scores.map(s => s.value).join(', ')} pts
+                <Typography
+                  variant="p"
+                  component="div"
+                  sx={{ display: 'flex', alignItems: 'center' }}
+                >
+                  <PendingActions sx={{ marginRight: '5px' }} />{' '}
+                  {`${total - reviewed}`} pendentes.
                 </Typography>
               )}
             </Stack>
@@ -121,28 +124,34 @@ function AssignmentCard({
               >
                 {classrooms.map(c => c.name).join(', ')}
               </Typography>
-              <Divider sx={dividerMiddle} />
+
               <Typography sx={typographyDueDate} variant="p" component="div">
-                <strong>Data de entrega: </strong>
-                {capitalizeFirstLetter(
-                  dayjs(dueDate).format('dddd, DD/MM | HH:mm[h]')
-                )}
+                Data de entrega:{' '}
+                {capitalizeFirstLetter(dayjs(dueDate).format('dddd, DD/MM'))}
               </Typography>
+              <Divider sx={dividerMiddle} />
               {deliveredByStudents >= 0 && total && (
-                <Typography variant="p" component="div">
-                  <strong>Entregues: </strong>{' '}
-                  {`${deliveredByStudents} de ${total}`}
+                <Typography
+                  variant="p"
+                  component="div"
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    marginTop: '10px',
+                  }}
+                >
+                  <AssignmentTurnedIn sx={{ marginRight: '5px' }} />
+                  {`${reviewed}`} corrigidas.
                 </Typography>
               )}
               {reviewed >= 0 && total && (
-                <Typography variant="p" component="div">
-                  <strong>Corrigidas: </strong> {`${reviewed} de ${total}`}
-                </Typography>
-              )}
-              {!isAssignmentToReview && (
-                <Typography variant="p" component="div">
-                  <strong>Valor: </strong>
-                  {scores.map(s => s.value).join(', ')} pts
+                <Typography
+                  variant="p"
+                  component="div"
+                  sx={{ display: 'flex', alignItems: 'center' }}
+                >
+                  <PendingActions sx={{ marginRight: '5px' }} />{' '}
+                  {`${total - reviewed}`} pendentes.
                 </Typography>
               )}
             </Stack>
