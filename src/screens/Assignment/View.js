@@ -86,7 +86,7 @@ function View({ assignment, dropzone, layoutType }) {
           <Typography sx={subHeaderTypography} variant="body1" component="div">
             <strong>Data de entrega: </strong>
             {capitalizeFirstLetter(
-              dayjs(assignment.dueDate).format('dddd, DD/MM | HH:mm[h]')
+              dayjs(assignment.dueDate).format('dddd, DD/MM, HH:mm[h]')
             )}
           </Typography>
         </Stack>
