@@ -1,4 +1,4 @@
-import { Button, Link } from '@mui/material';
+import { Button } from '@mui/material';
 import { Container } from '@mui/system';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import screenshot from '../../assets/screenshot.png';
